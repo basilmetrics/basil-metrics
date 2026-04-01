@@ -1,11 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: basilmetrics/basil-metrics
   branch: main
 
 media_folder: public/uploads
 public_folder: /uploads
-site_url: https://basilmetrics.com
-base_url: https://rad-muffin-ea6243.netlify.app
 
 collections:
 
@@ -17,15 +16,11 @@ collections:
     slug: "{{year}}-{{slug}}"
     fields:
       - { label: "Client Name", name: client_name, widget: string }
-      - { label: "Client Logo URL", name: client_logo, widget: string, required: false }
       - { label: "Client Category", name: category, widget: string }
-      - { label: "Project Year", name: year, widget: number, default: 2025 }
-      - { label: "Platform", name: platform, widget: select, options: [Meta, Google, TikTok, LINE, Multi-Channel] }
-      - { label: "Campaign Label", name: label, widget: string }
+      - { label: "Platform", name: platform, widget: string }
       - { label: "Headline Result", name: result, widget: string }
       - { label: "Full Case Study Story", name: body, widget: markdown }
       - { label: "Cover Image URL", name: cover_image, widget: string }
-      - { label: "Featured?", name: featured, widget: boolean, default: false }
       - { label: "Published?", name: published, widget: boolean, default: true }
 
   - name: blog
