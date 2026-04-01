@@ -4,12 +4,9 @@ backend:
   branch: main
   base_url: https://basil-cms-oauth.basilmetrics-account.workers.dev
   auth_endpoint: /api/auth
-
 media_folder: public/uploads
 public_folder: /uploads
-
 collections:
-
   - name: portfolio
     label: Portfolio
     label_singular: Case Study
@@ -24,7 +21,6 @@ collections:
       - { label: "Full Case Study Story", name: body, widget: markdown }
       - { label: "Cover Image URL", name: cover_image, widget: string }
       - { label: "Published?", name: published, widget: boolean, default: true }
-
   - name: blog
     label: Blog
     label_singular: Post
@@ -37,7 +33,6 @@ collections:
       - { label: "Category", name: category, widget: string }
       - { label: "Body", name: body, widget: markdown }
       - { label: "Featured?", name: featured, widget: boolean, default: false }
-
   - name: updates
     label: Growth Journal
     label_singular: Update
@@ -51,20 +46,19 @@ collections:
       - { label: "Headline", name: headline, widget: string }
       - { label: "Body", name: body, widget: text }
       - { label: "Published?", name: published, widget: boolean, default: true }
-
   - name: homepage
     label: Homepage
     files:
       - name: settings
         label: Homepage Settings
-        file: content/homepage/settings.md
+        file: src/content/homepage/settings.json
         fields:
-          - { label: "Hero Headline Line 1", name: hero_line1, widget: string }
-          - { label: "Hero Headline Line 2", name: hero_line2, widget: string }
-          - { label: "Hero Subtext", name: hero_subtext, widget: text }
-          - { label: "Stat 1 Label", name: stat1_label, widget: string }
-          - { label: "Stat 1 Value", name: stat1_value, widget: string }
-          - { label: "Stat 2 Label", name: stat2_label, widget: string }
-          - { label: "Stat 2 Value", name: stat2_value, widget: string }
-          - { label: "Stat 3 Label", name: stat3_label, widget: string }
-          - { label: "Stat 3 Value", name: stat3_value, widget: string }
+          - { label: "Hero Headline Line 1", name: hero_line1, widget: string, default: "Attract. Engage." }
+          - { label: "Hero Headline Line 2", name: hero_line2, widget: string, default: "Grow Your F&B Brand." }
+          - { label: "Hero Subtext", name: hero_subtext, widget: text, default: "We combine brand strategy, creative production, and paid media into campaigns that move real numbers for Bangkok's food and F&B brands." }
+          - { label: "Stat 1 Label", name: stat1_label, widget: string, default: "Cost Per Click" }
+          - { label: "Stat 1 Value", name: stat1_value, widget: string, default: "฿0.62" }
+          - { label: "Stat 2 Label", name: stat2_label, widget: string, default: "Follower Growth" }
+          - { label: "Stat 2 Value", name: stat2_value, widget: string, default: "+400" }
+          - { label: "Stat 3 Label", name: stat3_label, widget: string, default: "Avg CTR" }
+          - { label: "Stat 3 Value", name: stat3_value, widget: string, default: "3.82%" }
