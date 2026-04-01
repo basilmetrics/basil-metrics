@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = [
+  {
+    title: 'How a Delivery-First F&B Brand Scaled to 1M TikTok Views in 45 Days',
+    date: '2025-03-15',
+    category: 'Ads',
+    slug: 'delivery-brand-tiktok-scale',
+    img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80',
+    mins: 6,
+  },
+  {
+    title: 'The ROAS Formula: Why Most Bangkok F&B Brands Waste Their Ad Budget',
+    date: '2025-02-22',
+    category: 'Marketing',
+    slug: 'roas-formula-fb-brands',
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    mins: 5,
+  },
+  {
+    title: 'Building a Food Brand Identity That Scales: A Bangkok Framework',
+    date: '2025-01-10',
+    category: 'Branding',
+    slug: 'food-brand-identity-framework',
+    img: 'https://images.unsplash.com/photo-1493770348161-369560ae357d?w=800&q=80',
+    mins: 7,
+  },
+];
+---
+
+<BaseLayout
+  title="Blog — Basil Metrics"
+  description="Marketing insights, campaign breakdowns, and brand strategy for Bangkok food founders."
+>
+<div style="background:#F6FBF0;min-height:100vh;">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 2rem 7rem;">
+
+    <div style="border-bottom:1px solid rgba(38,53,25,0.08);padding-bottom:2.5rem;margin-bottom:3rem;" class="fade-up">
+      <span class="section-label">Insights</span>
+      <h1 style="font-size:clamp(2rem,4vw,3.25rem);">The Blog</h1>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,53,25,0.08);" class="blog-grid">
+      {posts.map(p => {
+        const d = new Date(p.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+        return (
+          <div class="fade-up" style="background:#FFFFFF;">
+            <div style="overflow:hidden;aspect-ratio:16/9;background:#EEF3E8;">
+              <img
+                src={p.img} alt={p.title}
+                style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;display:block;"
+                onmouseover="this.style.transform='scale(1.04)'"
+                onmouseout="this.style.transform='scale(1)'"
+                loading="lazy"
+              />
+            </div>
+            <div style="padding:1.5rem;">
+              <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;flex-wrap:wrap;">
+                <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(130,151,110,0.12);color:#82976E;border-radius:99px;padding:0.18rem 0.65rem;font-weight:500;">{p.category}</span>
+                <span style="font-family:'Sora',sans-serif;font-size:0.7rem;color:#82976E;">{d} · {p.mins} min</span>
+              </div>
+              <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:#263519;line-height:1.4;margin-bottom:1rem;">{p.title}</h2>
+              <a
+                href={`/blog/${p.slug}`}
+                style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#263519;text-decoration:none;border-bottom:1px solid rgba(38,53,25,0.2);padding-bottom:1px;"
+              >Read →</a>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</div>
+</BaseLayout>
+
+<style>
+  @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr !important; } }
+</style>

@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'delivery-brand-meta' },
+      props: {
+        category: 'Delivery-First Brand', service: 'Ads', platform: 'Meta',
+        result: '+340% ROAS improvement through Meta campaign restructure',
+        img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
+        body: '<p>This is a placeholder case study. Add your content via the CMS at <code>/admin</code>.</p>',
+      },
+    },
+    {
+      params: { slug: 'cafe-group-branding' },
+      props: {
+        category: 'Multi-Location Café Group', service: 'Branding', platform: 'Brand',
+        result: 'Full visual identity rolled out across 4 Bangkok locations',
+        img: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1200&q=80',
+        body: '<p>Placeholder case study — add content via /admin CMS.</p>',
+      },
+    },
+    {
+      params: { slug: 'dine-in-tiktok' },
+      props: {
+        category: 'Dine-In Restaurant', service: 'Both', platform: 'TikTok',
+        result: '820K organic reach and 3× reservation enquiry growth in 45 days',
+        img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80',
+        body: '<p>Placeholder case study — add content via /admin CMS.</p>',
+      },
+    },
+    {
+      params: { slug: 'beverage-google' },
+      props: {
+        category: 'Specialty Beverage Brand', service: 'Ads', platform: 'Google',
+        result: 'Cost-per-acquisition reduced 68% within the first 60 days',
+        img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80',
+        body: '<p>Placeholder case study — add content via /admin CMS.</p>',
+      },
+    },
+  ];
+}
+
+const { category, service, platform, result, img, body } = Astro.props;
+---
+
+<BaseLayout
+  title={`${category} — Portfolio — Basil Metrics`}
+  description={result}
+  ogImage={img}
+>
+<div style="background:#F6FBF0;min-height:100vh;">
+  <div style="max-width:1000px;margin:0 auto;padding:4rem 2rem 7rem;">
+
+    <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;display:inline-block;margin-bottom:2.5rem;">← Portfolio</a>
+
+    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+      <span style="font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">{category}</span>
+      <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.12);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{platform}</span>
+      <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(130,151,110,0.1);color:#82976E;border-radius:99px;padding:0.18rem 0.65rem;">{service}</span>
+    </div>
+
+    <h1 style="font-size:clamp(1.75rem,3.5vw,2.75rem);color:#263519;line-height:1.12;margin-bottom:2.5rem;">{result}</h1>
+
+    <div style="margin-bottom:3rem;overflow:hidden;border:1px solid rgba(38,53,25,0.08);">
+      <img src={img} alt={category} style="width:100%;object-fit:cover;display:block;" loading="eager" />
+    </div>
+
+    <div class="prose" set:html={body} />
+
+    <div style="margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(38,53,25,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;">← All Work</a>
+      <a href="/contact" class="btn-lime" style="font-size:0.82rem;padding:0.7rem 1.5rem;">Start a Similar Campaign</a>
+    </div>
+
+  </div>
+</div>
+</BaseLayout>

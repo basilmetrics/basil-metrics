@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const notes = [
+  { date: 'Mar 2025', body: 'Launched TikTok Shop campaign management as a standalone service for Bangkok F&B brands.' },
+  { date: 'Feb 2025', body: 'Updated CPA tracking to 7-day click / 1-day view attribution across all Meta campaigns.' },
+  { date: 'Jan 2025', body: 'Introduced Brand Audit Package for pre-launch food startups. Starting at ฿18,000.' },
+  { date: 'Dec 2024', body: 'Migrated all client reporting to live dashboards. PDF reports discontinued.' },
+  { date: 'Nov 2024', body: 'Added Google Ads as a fully managed service. Now running campaigns across Meta, TikTok, and Google.' },
+  { date: 'Sep 2024', body: 'Opened intake for Q4 campaigns. Limited availability — 3 new clients per quarter.' },
+];
+---
+
+<BaseLayout
+  title="Updates — Basil Metrics"
+  description="Service updates, new offerings, and changes at Basil Metrics."
+>
+<div style="background:#F6FBF0;min-height:100vh;">
+  <div style="max-width:800px;margin:0 auto;padding:4rem 2rem 7rem;">
+
+    <div style="border-bottom:1px solid rgba(38,53,25,0.08);padding-bottom:2.5rem;margin-bottom:3rem;" class="fade-up">
+      <span class="section-label">Changelog</span>
+      <h1 style="font-size:clamp(2rem,4vw,3.25rem);">Growth Journal</h1>
+    </div>
+
+    <div>
+      {notes.map((n, i) => (
+        <div
+          class="fade-up"
+          style={`display:grid;grid-template-columns:110px 1fr;gap:2.5rem;padding:1.75rem 0;${i < notes.length - 1 ? 'border-bottom:1px solid rgba(38,53,25,0.06);' : ''}`}
+        >
+          <span style="font-family:'Cascadia Mono','Courier New',monospace;font-size:0.76rem;color:#82976E;padding-top:0.15rem;white-space:nowrap;opacity:0.8;">{n.date}</span>
+          <p style="font-family:'Sora',sans-serif;font-size:0.95rem;color:#263519;line-height:1.72;">{n.body}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>
+</BaseLayout>

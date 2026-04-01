@@ -1,0 +1,71 @@
+---
+const year = new Date().getFullYear();
+const links = [
+  { href: '/portfolio',   label: 'Portfolio' },
+  { href: '/blog',        label: 'Blog' },
+  { href: '/patch-notes', label: 'Updates' },
+  { href: '/contact',     label: 'Contact' },
+];
+---
+
+<footer style="background:#263519;color:#F6FBF0;">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 2rem 2rem;">
+    <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;margin-bottom:3rem;" class="grid-2">
+
+      <!-- Brand -->
+      <div>
+        <img
+          src="/logo.svg"
+          alt="Basil Metrics"
+          style="height:28px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);"
+          onerror="this.style.display='none';document.getElementById('ft-logo').style.display='block';"
+        />
+        <span id="ft-logo" style="display:none;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;color:#F6FBF0;">
+          Basil<span style="color:#89F337;">Metrics</span>
+        </span>
+        <p style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#82976E;line-height:1.7;max-width:280px;margin-top:0.5rem;">
+          Performance marketing for Bangkok's most ambitious food and F&B brands. Strategy, creative, and paid media — built to convert.
+        </p>
+      </div>
+
+      <!-- Nav -->
+      <div>
+        <p class="section-label" style="color:rgba(130,151,110,0.6);">Navigation</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          {links.map(link => (
+            <a
+              href={link.href}
+              style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#82976E;text-decoration:none;transition:color 0.15s;"
+              onmouseover="this.style.color='#F6FBF0'"
+              onmouseout="this.style.color='#82976E'"
+            >{link.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <p class="section-label" style="color:rgba(130,151,110,0.6);">Get started</p>
+          <p style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#82976E;line-height:1.6;margin-bottom:1.5rem;">
+            Ready to grow your brand? Tell us about your goals and we'll take it from there.
+          </p>
+        </div>
+        <a href="/contact" class="btn-lime" style="text-align:center;font-size:0.82rem;">
+          Start a Campaign →
+        </a>
+      </div>
+    </div>
+
+    <hr class="divider" style="border-color:rgba(246,251,240,0.1);" />
+
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;flex-wrap:wrap;gap:0.5rem;">
+      <p style="font-family:'Sora',sans-serif;font-size:0.75rem;color:rgba(130,151,110,0.5);">
+        © {year} Basil Metrics — Bangkok, Thailand
+      </p>
+      <p style="font-family:'Sora',sans-serif;font-size:0.75rem;color:rgba(130,151,110,0.4);">
+        Accepting new clients
+      </p>
+    </div>
+  </div>
+</footer>

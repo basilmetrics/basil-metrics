@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ── Services ──────────────────────────────────────
+const services = [
+  {
+    n: '01',
+    name: 'Brand Architecture',
+    desc: 'Visual identity systems designed to scale — from single outlet to multi-location franchise.',
+  },
+  {
+    n: '02',
+    name: 'Performance Ads',
+    desc: 'Meta, Google, and TikTok campaigns structured for measurable, attributable return.',
+  },
+  {
+    n: '03',
+    name: 'Creative Direction',
+    desc: 'Photography, video, and copy that earns attention before spending a single baht of budget.',
+  },
+  {
+    n: '04',
+    name: 'Growth Analytics',
+    desc: 'Clear reporting on ROAS, CPA, and LTV. Real numbers, acted on fast.',
+  },
+];
+
+// ── Results — generic F&B category types, no brand names ──
+const results = [
+  {
+    category: 'Delivery-First Brand',
+    platform: 'Meta',
+    before: 'ROAS 1.1×',
+    after: 'ROAS 4.8×',
+    note: '60-day campaign',
+  },
+  {
+    category: 'Dine-In Restaurant',
+    platform: 'TikTok',
+    before: '14K reach',
+    after: '820K reach',
+    note: '45-day campaign',
+  },
+  {
+    category: 'Specialty Café',
+    platform: 'Google',
+    before: '฿230 CPA',
+    after: '฿72 CPA',
+    note: '68% reduction',
+  },
+];
+
+// ── Ticker — service terms only ──
+const tickerItems = [
+  'Performance Ads',
+  'Brand Strategy',
+  'Meta Campaigns',
+  'TikTok Creative',
+  'Google Ads',
+  'ROAS Optimisation',
+  'Creative Direction',
+  'F&B Marketing',
+  'Conversion Tracking',
+  'Delivery Brands',
+  'Dine-In Strategy',
+  'Campaign Analytics',
+];
+---
+
+<BaseLayout
+  title="Basil Metrics — Performance Marketing for Bangkok F&B Brands"
+  description="Strategy, creative, and paid media for Bangkok's most ambitious food and F&B brands. Campaigns built to convert."
+>
+
+<div style="background:#F6FBF0;">
+
+  <!-- ═══ HERO ═══════════════════════════════════════════ -->
+  <section style="background:#F6FBF0;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;border-bottom:1px solid rgba(38,53,25,0.08);">
+    <div style="max-width:1200px;margin:0 auto;width:100%;">
+
+      <span class="section-label" style="margin-bottom:1.5rem;">Bangkok, Thailand — F&B Performance Marketing</span>
+
+      <h1 style="font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:#263519;margin-bottom:1.5rem;max-width:900px;">
+        Campaigns That<br />
+        <em style="font-style:normal;color:#89F337;">Convert.</em><br />
+        Data That Proves It.
+      </h1>
+
+      <p style="font-family:'Sora',sans-serif;font-size:1.05rem;color:#82976E;max-width:480px;line-height:1.72;margin-bottom:3rem;font-weight:400;">
+        We combine brand strategy, creative production, and paid media into campaigns that move real numbers for Bangkok's food and F&B brands.
+      </p>
+
+      <!-- Stat counters -->
+      <div style="display:grid;grid-template-columns:repeat(3,auto);max-width:460px;gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);margin-bottom:2.75rem;" class="hero-stats">
+        <div style="background:#F6FBF0;padding:1.25rem 1.5rem;">
+          <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.35rem;">Avg ROAS</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-roas">4.2×</p>
+        </div>
+        <div style="background:#F6FBF0;padding:1.25rem 1.5rem;">
+          <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.35rem;">Peak Reach</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-reach">820K</p>
+        </div>
+        <div style="background:#F6FBF0;padding:1.25rem 1.5rem;">
+          <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.35rem;">Campaigns</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-camp">47</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="/contact" class="btn-lime">Start a Campaign</a>
+        <a href="/portfolio" class="btn-ghost">View Case Studies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TICKER — subtle sage on cream ═══════════════════ -->
+  <div class="ticker-outer" aria-hidden="true">
+    <div class="ticker-inner">
+      {[...tickerItems, ...tickerItems].map(item => (
+        <span class="ticker-item">
+          <span class="ticker-dot">◆</span>{item}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- ═══ SERVICES ══════════════════════════════════════════ -->
+  <section style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+    <div class="fade-up" style="margin-bottom:2.5rem;">
+      <span class="section-label">What We Do</span>
+      <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);color:#263519;">Services</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);" class="grid-2 services-grid">
+      {services.map((s, i) => (
+        <div
+          class="fade-up"
+          style={`background:#FFFFFF;padding:2.5rem;transition:background 0.18s;`}
+          style:delay={`${i * 80}ms`}
+          onmouseover="this.style.background='#F6FBF0'"
+          onmouseout="this.style.background='#FFFFFF'"
+        >
+          <p style="font-family:'Sora',sans-serif;font-size:0.58rem;color:#82976E;font-weight:600;letter-spacing:0.1em;margin-bottom:1.1rem;">{s.n}</p>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:700;color:#263519;margin-bottom:0.65rem;">{s.name}</h3>
+          <p style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.68;">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══ RESULTS ═══════════════════════════════════════════ -->
+  <section style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+    <div class="fade-up" style="margin-bottom:2.5rem;">
+      <span class="section-label">Proof of Work</span>
+      <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);color:#263519;">Results</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);" class="grid-3 results-grid">
+      {results.map((r, i) => (
+        <div class="fade-up" style="background:#FFFFFF;padding:2.25rem;">
+          <!-- Category + Platform -->
+          <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+            <span style="font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">{r.category}</span>
+            <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(130,151,110,0.12);color:#82976E;border-radius:99px;padding:0.18rem 0.65rem;font-weight:500;">{r.platform}</span>
+          </div>
+          <!-- Before / After -->
+          <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.85rem;">
+            <div style="flex:1;padding:0.85rem;border:1px solid rgba(38,53,25,0.08);">
+              <p style="font-family:'Sora',sans-serif;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.3rem;">Before</p>
+              <p style="font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:700;color:#82976E;">{r.before}</p>
+            </div>
+            <span style="color:#82976E;font-size:0.85rem;opacity:0.5;">→</span>
+            <div style="flex:1;padding:0.85rem;border:1px solid rgba(137,243,54,0.4);background:rgba(137,243,54,0.05);">
+              <p style="font-family:'Sora',sans-serif;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:#89F337;margin-bottom:0.3rem;">After</p>
+              <p style="font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:800;color:#263519;">{r.after}</p>
+            </div>
+          </div>
+          <p style="font-family:'Sora',sans-serif;font-size:0.72rem;color:#82976E;opacity:0.6;">{r.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══ CTA — dark forest ════════════════════════════════ -->
+  <section style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem 7rem;">
+    <div class="fade-up" style="background:#263519;padding:4rem 3.5rem;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;" class="grid-2">
+        <div>
+          <span class="section-label" style="color:rgba(130,151,110,0.6);">Ready to launch</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.75rem);color:#F6FBF0;margin-bottom:1rem;max-width:480px;line-height:1.1;">
+            Your Next Campaign Starts With One Conversation.
+          </h2>
+          <p style="font-family:'Sora',sans-serif;font-size:0.9rem;color:#82976E;line-height:1.7;max-width:420px;">
+            Tell us your brand, your goals, your budget. We'll map out a campaign that actually converts — no bloated proposals, no ghosting.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;min-width:180px;">
+          <a href="/contact" class="btn-lime" style="text-align:center;">
+            Start a Campaign →
+          </a>
+          <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.78rem;color:#82976E;text-align:center;text-decoration:underline;text-underline-offset:3px;">
+            View case studies
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Stat counter animation
+  const statsBox = document.querySelector('.hero-stats');
+  if (statsBox) {
+    let done = false;
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !done) {
+        done = true;
+        function count(id: string, end: number, dec: number, suf: string) {
+          const el = document.getElementById(id);
+          if (!el) return;
+          const t0 = performance.now();
+          const tick = (t: number) => {
+            const p = Math.min((t - t0) / 1800, 1);
+            const v = (1 - Math.pow(1 - p, 3)) * end;
+            el.textContent = (dec ? v.toFixed(dec) : Math.floor(v)) + suf;
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+        count('s-roas',  4.2, 1, '×');
+        count('s-reach', 820, 0, 'K');
+        count('s-camp',  47,  0, '');
+      }
+    }, { threshold: 0.3 }).observe(statsBox);
+  }
+</script>
+
+</BaseLayout>

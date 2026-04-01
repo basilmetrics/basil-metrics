@@ -1,0 +1,48 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/basil-metrics
+  branch: main
+
+media_folder: public/uploads
+public_folder: /uploads
+site_url: https://basilmetrics.com
+
+collections:
+  - name: blog
+    label: Blog Posts
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title,           name: title,           widget: string }
+      - { label: Date,            name: date,            widget: datetime, format: YYYY-MM-DD }
+      - { label: Category,        name: category,        widget: select, options: [Marketing, Branding, Ads, SEO] }
+      - { label: Read Time (min), name: mins,            widget: number, default: 5 }
+      - { label: Body,            name: body,            widget: markdown }
+      - { label: SEO Title,       name: seo_title,       widget: string,   required: false }
+      - { label: SEO Description, name: seo_description, widget: text,     required: false }
+      - { label: Cover Image URL, name: og_image,        widget: string,   required: false, hint: "Paste a Cloudinary image URL" }
+
+  - name: portfolio
+    label: Portfolio Entries
+    folder: content/portfolio
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Category (e.g. Delivery-First Brand), name: category,    widget: string }
+      - { label: Service Type, name: service_type, widget: select, options: [Branding, Ads, Both] }
+      - { label: Platform,     name: platform,     widget: select, options: [Meta, Google, TikTok, Brand, Multi-Channel] }
+      - { label: Cover Image URL,  name: cover_image,    widget: string, hint: "Cloudinary URL" }
+      - { label: Result Headline,  name: result,         widget: string }
+      - { label: Body,             name: body,           widget: markdown }
+      - { label: PDF URL,          name: pdf_url,        widget: string, required: false }
+      - { label: Video URL,        name: video_url,      widget: string, required: false }
+
+  - name: patch_notes
+    label: Growth Journal
+    folder: content/patch-notes
+    create: true
+    slug: "{{date}}-update"
+    fields:
+      - { label: Date,   name: date, widget: datetime, format: YYYY-MM-DD }
+      - { label: Update, name: body, widget: text }

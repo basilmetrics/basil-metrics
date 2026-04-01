@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const entries = [
+  {
+    category: 'Delivery-First Brand',
+    service: 'Ads',
+    platform: 'Meta',
+    result: '+340% ROAS improvement through Meta campaign restructure and creative refresh',
+    img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
+    slug: 'delivery-brand-meta',
+  },
+  {
+    category: 'Multi-Location Café Group',
+    service: 'Branding',
+    platform: 'Brand',
+    result: 'Full visual identity system rolled out consistently across 4 Bangkok locations',
+    img: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80',
+    slug: 'cafe-group-branding',
+  },
+  {
+    category: 'Dine-In Restaurant',
+    service: 'Both',
+    platform: 'TikTok',
+    result: '820K organic reach and 3× increase in reservation enquiries over 45 days',
+    img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80',
+    slug: 'dine-in-tiktok',
+  },
+  {
+    category: 'Specialty Beverage Brand',
+    service: 'Ads',
+    platform: 'Google',
+    result: 'Cost-per-acquisition reduced by 68% within the first 60 days of campaign management',
+    img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80',
+    slug: 'beverage-google',
+  },
+];
+---
+
+<BaseLayout
+  title="Portfolio — Basil Metrics"
+  description="Campaign results and brand case studies for Bangkok food and F&B founders."
+>
+<div style="background:#F6FBF0;min-height:100vh;">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 2rem 7rem;">
+
+    <!-- Header -->
+    <div style="border-bottom:1px solid rgba(38,53,25,0.08);padding-bottom:2.5rem;margin-bottom:3rem;" class="fade-up">
+      <span class="section-label">Our Work</span>
+      <h1 style="font-size:clamp(2rem,4vw,3.25rem);">Proof of Work</h1>
+    </div>
+
+    <!-- Filter tabs -->
+    <div style="display:flex;border-bottom:1px solid rgba(38,53,25,0.08);margin-bottom:3rem;" id="filter-tabs">
+      {['All','Branding','Ads'].map((t, i) => (
+        <button
+          data-filter={t}
+          class="filter-tab"
+          style={`font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:500;padding:0.75rem 1.25rem;background:none;border:none;cursor:pointer;margin-bottom:-1px;transition:all 0.18s;
+            border-bottom:2px solid ${i === 0 ? '#263519' : 'transparent'};
+            color:${i === 0 ? '#263519' : '#82976E'};`}
+        >{t}</button>
+      ))}
+    </div>
+
+    <!-- Grid -->
+    <div
+      style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(38,53,25,0.08);"
+      class="port-grid"
+      id="port-grid"
+    >
+      {entries.map((e, i) => (
+        <div
+          class="port-item fade-up"
+          data-svc={e.service}
+          style="background:#FFFFFF;"
+        >
+          <!-- Image -->
+          <div style="overflow:hidden;aspect-ratio:16/9;background:#EEF3E8;">
+            <img
+              src={e.img}
+              alt={e.category}
+              style="width:100%;height:100%;object-fit:cover;transition:transform 0.55s ease;display:block;"
+              onmouseover="this.style.transform='scale(1.04)'"
+              onmouseout="this.style.transform='scale(1)'"
+              loading="lazy"
+            />
+          </div>
+          <!-- Content -->
+          <div style="padding:1.75rem;">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;flex-wrap:wrap;">
+              <span style="font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;font-weight:600;">{e.category}</span>
+              <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.12);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{e.platform}</span>
+            </div>
+            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:#263519;line-height:1.35;margin-bottom:1.25rem;">{e.result}</h3>
+            <a
+              href={`/portfolio/${e.slug}`}
+              style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#263519;text-decoration:none;border-bottom:1px solid rgba(38,53,25,0.2);padding-bottom:1px;transition:border-color 0.15s;"
+              onmouseover="this.style.borderColor='#263519'"
+              onmouseout="this.style.borderColor='rgba(38,53,25,0.2)'"
+            >View Case Study →</a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>
+</BaseLayout>
+
+<style>
+  @media (max-width: 768px) { .port-grid { grid-template-columns: 1fr !important; } }
+</style>
+
+<script>
+  const tabs  = document.querySelectorAll<HTMLButtonElement>('.filter-tab');
+  const items = document.querySelectorAll<HTMLElement>('.port-item');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const f = tab.dataset.filter ?? 'All';
+      tabs.forEach(t => { t.style.borderBottomColor = 'transparent'; t.style.color = '#82976E'; });
+      tab.style.borderBottomColor = '#263519';
+      tab.style.color = '#263519';
+      items.forEach(item => {
+        const s = item.dataset.svc ?? '';
+        item.style.display = (f === 'All' || s === f || s === 'Both') ? '' : 'none';
+      });
+    });
+  });
+</script>
