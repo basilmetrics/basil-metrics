@@ -5,6 +5,7 @@ backend:
 media_folder: public/uploads
 public_folder: /uploads
 site_url: https://basilmetrics.com
+base_url: https://rad-muffin-ea6243.netlify.app
 
 collections:
 
