@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: YOUR_GITHUB_USERNAME/basil-metrics
+  repo: basilmetrics/basil-metrics
   branch: main
 
 media_folder: public/uploads
@@ -8,41 +8,127 @@ public_folder: /uploads
 site_url: https://basilmetrics.com
 
 collections:
-  - name: blog
-    label: Blog Posts
-    folder: content/blog
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: Title,           name: title,           widget: string }
-      - { label: Date,            name: date,            widget: datetime, format: YYYY-MM-DD }
-      - { label: Category,        name: category,        widget: select, options: [Marketing, Branding, Ads, SEO] }
-      - { label: Read Time (min), name: mins,            widget: number, default: 5 }
-      - { label: Body,            name: body,            widget: markdown }
-      - { label: SEO Title,       name: seo_title,       widget: string,   required: false }
-      - { label: SEO Description, name: seo_description, widget: text,     required: false }
-      - { label: Cover Image URL, name: og_image,        widget: string,   required: false, hint: "Paste a Cloudinary image URL" }
 
+  # ─────────────────────────────────────────────
+  # PORTFOLIO — Full "Forever" Schema
+  # ─────────────────────────────────────────────
   - name: portfolio
-    label: Portfolio Entries
+    label: Portfolio
+    label_singular: Case Study
     folder: content/portfolio
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{slug}}"
+    preview_path: "/portfolio/{{slug}}"
     fields:
-      - { label: Category (e.g. Delivery-First Brand), name: category,    widget: string }
-      - { label: Service Type, name: service_type, widget: select, options: [Branding, Ads, Both] }
-      - { label: Platform,     name: platform,     widget: select, options: [Meta, Google, TikTok, Brand, Multi-Channel] }
-      - { label: Cover Image URL,  name: cover_image,    widget: string, hint: "Cloudinary URL" }
-      - { label: Result Headline,  name: result,         widget: string }
-      - { label: Body,             name: body,           widget: markdown }
-      - { label: PDF URL,          name: pdf_url,        widget: string, required: false }
-      - { label: Video URL,        name: video_url,      widget: string, required: false }
 
-  - name: patch_notes
-    label: Growth Journal
-    folder: content/patch-notes
+      # 1. Core Identity
+      - { label: "Client Name", name: client_name, widget: string, hint: "e.g. Dessert Brand Bangkok" }
+      - { label: "Client Logo URL (Cloudinary)", name: client_logo, widget: string, required: false, hint: "portfolio/logos/filename.png" }
+      - { label: "Client Category", name: category, widget: string, hint: "e.g. Dessert & F&B Brand" }
+      - { label: "Project Year", name: year, widget: number, default: 2025 }
+      - label: "Platform"
+        name: platform
+        widget: select
+        options: [Meta, Google, TikTok, LINE, Multi-Channel, Grab & LINE MAN]
+      - label: "Services Provided"
+        name: services
+        widget: select
+        multiple: true
+        options:
+          - Media Buying
+          - Content Creation
+          - Brand Strategy
+          - TikTok Shop Management
+          - Food Delivery Ads
+          - Automated Booking
+          - Full-Stack Campaign Management
+          - Visual Content
+      - { label: "Campaign Label", name: label, widget: string, hint: "e.g. Beating the Feed" }
+
+      # 2. The Narrative
+      - { label: "Headline Result (one sentence)", name: result, widget: string }
+      - { label: "Full Case Study Story", name: body, widget: markdown }
+      - { label: "Client Testimonial / Quote", name: testimonial, widget: text, required: false }
+
+      # 3. The Data
+      - label: "Key Metrics"
+        name: metrics
+        widget: list
+        summary: "{{fields.metric_name}}: {{fields.metric_value}}"
+        fields:
+          - { label: "Metric Name", name: metric_name, widget: string, hint: "e.g. CTR, CPC, ROAS, Followers Gained" }
+          - { label: "Metric Value", name: metric_value, widget: string, hint: "e.g. 3.82%, ฿0.62, 4.5x" }
+      - { label: "Before Metric", name: before_metric, widget: string, required: false, hint: "e.g. ROAS 1.1x" }
+      - { label: "After Metric", name: after_metric, widget: string, required: false, hint: "e.g. ROAS 4.8x" }
+      - { label: "Industry Benchmark", name: benchmark, widget: text, required: false, hint: "e.g. Industry avg CPC ~฿118 (WordStream)" }
+      - { label: "Benchmark Source URL", name: benchmark_url, widget: string, required: false }
+
+      # 4. Media & Live Assets
+      - { label: "Cover Image URL (Cloudinary)", name: cover_image, widget: string, hint: "portfolio/covers/filename.jpg" }
+      - label: "Gallery / Screenshot URLs"
+        name: gallery
+        widget: list
+        required: false
+        field: { label: "Image URL", name: url, widget: string }
+      - { label: "Live Project URL", name: live_url, widget: string, required: false }
+      - { label: "Embed Code (iframe or script)", name: embed_code, widget: text, required: false }
+      - label: "Embed Platform"
+        name: embed_platform
+        widget: select
+        required: false
+        options: [TikTok, Instagram, YouTube, Facebook, Google Data Studio, Other]
+      - { label: "PDF Report URL (Cloudinary)", name: pdf_url, widget: string, required: false, hint: "portfolio/pdfs/filename.pdf" }
+
+      # 5. System Admin
+      - { label: "Featured in Proposals?", name: featured, widget: boolean, default: false, hint: "Toggle on to include in proposal exports" }
+      - { label: "Published?", name: published, widget: boolean, default: true }
+
+  # ─────────────────────────────────────────────
+  # BLOG
+  # ─────────────────────────────────────────────
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: content/blog
     create: true
-    slug: "{{date}}-update"
+    slug: "{{year}}-{{month}}-{{slug}}"
+    preview_path: "/blog/{{slug}}"
     fields:
-      - { label: Date,   name: date, widget: datetime, format: YYYY-MM-DD }
-      - { label: Update, name: body, widget: text }
+      - { label: "Title", name: title, widget: string }
+      - { label: "Publish Date", name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - label: "Category"
+        name: category
+        widget: select
+        options: [Marketing, Branding, Ads, TikTok, Meta, Google, Strategy, SEO, Industry News]
+      - { label: "Read Time (minutes)", name: mins, widget: number, default: 5 }
+      - { label: "Cover Image URL (Cloudinary)", name: cover_image, widget: string, required: false, hint: "blog/covers/filename.jpg" }
+      - { label: "Body", name: body, widget: markdown }
+      - { label: "SEO Title", name: seo_title, widget: string, required: false }
+      - { label: "SEO Description", name: seo_description, widget: text, required: false, hint: "Aim for 150 characters" }
+      - { label: "Featured?", name: featured, widget: boolean, default: false }
+
+  # ─────────────────────────────────────────────
+  # GROWTH JOURNAL / CHANGELOG
+  # ─────────────────────────────────────────────
+  - name: updates
+    label: Growth Journal
+    label_singular: Update
+    folder: content/updates
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - { label: "Date Label", name: date_label, widget: string, hint: "e.g. Early 2026, March 2025, Q1 2026" }
+      - { label: "Sort Date (for ordering)", name: date, widget: datetime, format: "YYYY-MM-DD" }
+      - label: "Update Type"
+        name: type
+        widget: select
+        options:
+          - New Service
+          - Campaign Result
+          - Platform Update
+          - Pricing Change
+          - Team Update
+          - Milestone
+      - { label: "Headline", name: headline, widget: string, hint: "e.g. A Full-Service Team" }
+      - { label: "Body", name: body, widget: text, hint: "2-4 sentences. Keep it human and direct." }
+      - { label: "Published?", name: published, widget: boolean, default: true }

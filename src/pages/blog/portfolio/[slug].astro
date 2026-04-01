@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  // Load from CMS content files
+  let cmsPaths: any[] = [];
+  try {
+    const files = await Astro.glob('../../../content/portfolio/*.md');
+    cmsPaths = files.map((f: any) => ({
+      params: { slug: f.file.split('/').pop()?.replace(/^\d{4}-/, '').replace('.md', '') ?? '' },
+      props: { ...f.frontmatter, body: f.compiledContent?.() ?? f.rawContent?.() ?? '' },
+    }));
+  } catch (e) {}
+
+  // Hardcoded real case studies (always present)
+  const hardcoded = [
+    {
+      params: { slug: 'meta-fb-high-volume' },
+      props: {
+        client_name: 'Dessert & F&B Brand',
+        category: 'Dessert & F&B Brand',
+        platform: 'Meta',
+        label: 'Beating the Feed: High-Volume Meta Traffic',
+        result: '14,399 direct visits at just ฿0.62 per click — 3.82% CTR',
+        cover_image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=1200&q=80',
+        metrics: [
+          { metric_name: 'Cost Per Click', metric_value: '฿0.62' },
+          { metric_name: 'Click-Through Rate', metric_value: '3.82%' },
+          { metric_name: 'Total Visits', metric_value: '14,399' },
+          { metric_name: 'Total Ad Spend', metric_value: '฿8,935' },
+        ],
+        before_metric: 'Standard market rate ~฿110 per lead',
+        after_metric: '฿0.62 per click achieved',
+        benchmark: 'WordStream: avg Meta cost per lead for Restaurant & Food = $3.16 USD (~฿110)',
+        benchmark_url: 'https://www.wordstream.com/blog/ws/2021/09/15/facebook-ads-benchmarks',
+        body: '<h2>The Challenge</h2><p>In a saturated F&B market, every baht of ad spend needs to work harder than the last. Our client needed to drive high-volume, qualified traffic directly to their profile and LINE channel without burning through budget on low-intent audiences.</p><h2>The Approach</h2><p>We built a tightly structured Meta campaign targeting Bangkok audiences with demonstrated interest in desserts and premium F&B. Creative was built around high-contrast visual hooks designed to stop the scroll, with clear CTAs driving directly to LINE and profile visits.</p><h2>The Result</h2><p>From approximately ฿8,935 in total ad spend, the campaign generated 14,399 direct profile and LINE visits — a 3.82% Click-Through Rate with a cost of just ฿0.62 per click.</p>',
+        featured: true,
+      },
+    },
+    {
+      params: { slug: 'tiktok-viral-sprint' },
+      props: {
+        client_name: 'Dessert & F&B Brand',
+        category: 'Dessert & F&B Brand',
+        platform: 'TikTok',
+        label: 'The Viral Sprint: Rapid TikTok Audience Growth',
+        result: '+400 targeted followers in under 18 hours — 547 new followers per day',
+        cover_image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80',
+        metrics: [
+          { metric_name: 'Followers Gained', metric_value: '+400' },
+          { metric_name: 'Time Taken', metric_value: '<18 hours' },
+          { metric_name: 'Daily Velocity', metric_value: '547/day' },
+          { metric_name: 'Account Total Reached', metric_value: '94.6K' },
+        ],
+        before_metric: 'Industry avg: 2–3% monthly growth',
+        after_metric: '547 new followers per day achieved',
+        benchmark: 'Rival IQ TikTok Benchmark Report: avg brand accounts grow 2–3% monthly',
+        benchmark_url: 'https://www.rivaliq.com/blog/tiktok-benchmark-report/',
+        body: '<h2>The Challenge</h2><p>The client needed to accelerate their TikTok presence rapidly — not through slow organic growth, but through a strategic sprint that would create immediate momentum toward the 100K milestone.</p><h2>The Approach</h2><p>We engineered a high-velocity follower acquisition sprint using targeted content strategy, optimised posting windows, and audience engagement mechanics specific to the Thai F&B TikTok ecosystem.</p><h2>The Result</h2><p>400 new, targeted followers acquired in under 18 hours — 547 per day — pushing the account to 94.6K with clear trajectory toward 100K.</p>',
+        featured: true,
+      },
+    },
+    {
+      params: { slug: 'google-retail-search' },
+      props: {
+        client_name: 'Premium Retail Brand',
+        category: 'Premium Retail Brand',
+        platform: 'Google',
+        label: 'Capturing the Buyer: High-Intent Google Search',
+        result: '~1,000 high-intent clicks at ฿4.75 CPC — 4.30% CTR',
+        cover_image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
+        metrics: [
+          { metric_name: 'Cost Per Click', metric_value: '฿4.75' },
+          { metric_name: 'Click-Through Rate', metric_value: '4.30%' },
+          { metric_name: 'Qualified Clicks', metric_value: '~1,000' },
+          { metric_name: 'Traffic Quality', metric_value: 'Bottom-of-funnel' },
+        ],
+        before_metric: 'Industry avg CPC for retail: ~฿118',
+        after_metric: '฿4.75 CPC achieved',
+        benchmark: 'WordStream: avg Google CPC for Apparel/Fashion & Jewelry = $3.39 USD (~฿118)',
+        benchmark_url: 'https://www.wordstream.com/blog/ws/2016/02/29/google-adwords-industry-benchmarks',
+        body: '<h2>The Challenge</h2><p>A premium retail brand needed to capture bottom-of-funnel, ready-to-buy traffic for a specific product line — people actively searching and ready to purchase.</p><h2>The Approach</h2><p>We built a tightly structured Google Search campaign targeting high-intent, product-specific keywords. Match types, negative keywords, and bid strategies were layered carefully to eliminate wasted spend and concentrate budget on buyers at the decision stage.</p><h2>The Result</h2><p>Nearly 1,000 highly qualified clicks at ฿4.75 CPC with a 4.30% CTR — massively undercutting the ฿118 industry average.</p>',
+        featured: true,
+      },
+    },
+  ];
+
+  // Merge CMS entries with hardcoded, CMS takes priority by slug
+  const cmsSlug = new Set(cmsPaths.map(p => p.params.slug));
+  const merged = [...cmsPaths, ...hardcoded.filter(h => !cmsSlug.has(h.params.slug))];
+  return merged;
+}
+
+const {
+  client_name, category, platform, label, result,
+  cover_image, metrics, before_metric, after_metric,
+  benchmark, benchmark_url, body, testimonial,
+  gallery, live_url, embed_code, embed_platform, pdf_url,
+  featured,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={`${label ?? result} — Portfolio — Basil Metrics`}
+  description={result}
+  ogImage={cover_image}
+  readingProgress={true}
+>
+<div style="background:#F6FBF0;min-height:100vh;">
+  <div style="max-width:960px;margin:0 auto;padding:4rem 2rem 7rem;">
+
+    <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;display:inline-block;margin-bottom:2.5rem;">← All Work</a>
+
+    <!-- Meta row -->
+    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;flex-wrap:wrap;">
+      <span style="font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">{category ?? client_name}</span>
+      <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{platform}</span>
+      {featured && <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(38,53,25,0.07);color:#82976E;border-radius:99px;padding:0.18rem 0.65rem;">Featured</span>}
+    </div>
+
+    {label && <p style="font-family:'Sora',sans-serif;font-size:0.7rem;color:#82976E;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;">{label}</p>}
+    <h1 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;color:#263519;line-height:1.12;letter-spacing:-0.02em;margin-bottom:2.5rem;">{result}</h1>
+
+    <!-- Cover image -->
+    {cover_image && (
+      <div style="margin-bottom:2.5rem;overflow:hidden;border:1px solid rgba(38,53,25,0.08);">
+        <img src={cover_image} alt={result} style="width:100%;object-fit:cover;display:block;" loading="eager" />
+      </div>
+    )}
+
+    <!-- Key metrics grid -->
+    {metrics && metrics.length > 0 && (
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);margin-bottom:2.5rem;">
+        {metrics.map((m: any) => (
+          <div style="background:#FFFFFF;padding:1.25rem 1.5rem;">
+            <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.35rem;">{m.metric_name}</p>
+            <p style="font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:800;color:#263519;line-height:1;">{m.metric_value}</p>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <!-- Before / After -->
+    {(before_metric || after_metric) && (
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:2.5rem;">
+        {before_metric && (
+          <div style="flex:1;padding:1rem;border:1px solid rgba(38,53,25,0.08);background:#FFFFFF;">
+            <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.3rem;">Before</p>
+            <p style="font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:600;color:#82976E;">{before_metric}</p>
+          </div>
+        )}
+        <span style="color:#82976E;font-size:1.25rem;">→</span>
+        {after_metric && (
+          <div style="flex:1;padding:1rem;border:1px solid rgba(137,243,54,0.4);background:rgba(137,243,54,0.05);">
+            <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#89F337;margin-bottom:0.3rem;">After</p>
+            <p style="font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:700;color:#263519;">{after_metric}</p>
+          </div>
+        )}
+      </div>
+    )}
+
+    <!-- Body -->
+    {body && <div class="prose" set:html={body} style="margin-bottom:2.5rem;" />}
+
+    <!-- Testimonial -->
+    {testimonial && (
+      <div style="margin-bottom:2.5rem;padding:1.5rem 2rem;border-left:2px solid #89F337;background:#FFFFFF;">
+        <p style="font-family:'Sora',sans-serif;font-size:0.95rem;color:#263519;line-height:1.7;font-style:italic;">"{testimonial}"</p>
+        <p style="font-family:'Sora',sans-serif;font-size:0.75rem;color:#82976E;margin-top:0.75rem;">— {client_name}</p>
+      </div>
+    )}
+
+    <!-- Gallery -->
+    {gallery && gallery.length > 0 && (
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(38,53,25,0.08);margin-bottom:2.5rem;">
+        {gallery.map((url: string) => (
+          <div style="overflow:hidden;aspect-ratio:16/9;background:#EEF3E8;">
+            <img src={url} alt="Campaign screenshot" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    )}
+
+    <!-- Embed -->
+    {embed_code && (
+      <div style="margin-bottom:2.5rem;">
+        <p style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#82976E;margin-bottom:0.75rem;">{embed_platform ?? 'Embed'}</p>
+        <div set:html={embed_code} />
+      </div>
+    )}
+
+    <!-- Benchmark -->
+    {benchmark && (
+      <div style="margin-bottom:2.5rem;padding:1.25rem 1.5rem;background:rgba(38,53,25,0.03);border:1px solid rgba(38,53,25,0.08);border-left:2px solid #89F337;">
+        <p style="font-family:'Sora',sans-serif;font-size:0.78rem;color:#82976E;line-height:1.6;">
+          <strong style="color:#263519;">Industry benchmark:</strong> {benchmark}.
+          {benchmark_url && <a href={benchmark_url} target="_blank" rel="noopener noreferrer" style="color:#263519;text-decoration:underline;text-underline-offset:3px;margin-left:0.25rem;">View source →</a>}
+        </p>
+      </div>
+    )}
+
+    <!-- Links -->
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;">
+      {pdf_url && <a href={pdf_url} target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.6rem 1.25rem;">↓ Download PDF Report</a>}
+      {live_url && <a href={live_url} target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.6rem 1.25rem;">View Live Project ↗</a>}
+    </div>
+
+    <div style="padding-top:2rem;border-top:1px solid rgba(38,53,25,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;">← All Work</a>
+      <a href="/contact" class="btn-lime" style="font-size:0.82rem;padding:0.7rem 1.5rem;">Start a Similar Campaign</a>
+    </div>
+
+  </div>
+</div>
+</BaseLayout>
