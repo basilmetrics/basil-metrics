@@ -54,3 +54,4 @@ collections:
       - { label: "Headline", name: headline, widget: string }
       - { label: "Body", name: body, widget: text }
       - { label: "Published?", name: published, widget: boolean, default: true }
+ 
