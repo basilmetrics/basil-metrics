@@ -1,3 +1,4 @@
+cat > public/admin/index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +9,6 @@
   <style>body{margin:0;background:#F6FBF0;}</style>
 </head>
 <body>
-  <script>
-    // Override the site ID before Decap CMS loads
-    window.netlifyIdentity = window.netlifyIdentity || {};
-  </script>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
@@ -27,3 +24,4 @@
   </script>
 </body>
 </html>
+EOF
