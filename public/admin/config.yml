@@ -51,3 +51,20 @@ collections:
       - { label: "Headline", name: headline, widget: string }
       - { label: "Body", name: body, widget: text }
       - { label: "Published?", name: published, widget: boolean, default: true }
+
+  - name: homepage
+    label: Homepage
+    files:
+      - name: settings
+        label: Homepage Settings
+        file: content/homepage/settings.md
+        fields:
+          - { label: "Hero Headline Line 1", name: hero_line1, widget: string }
+          - { label: "Hero Headline Line 2", name: hero_line2, widget: string }
+          - { label: "Hero Subtext", name: hero_subtext, widget: text }
+          - { label: "Stat 1 Label", name: stat1_label, widget: string }
+          - { label: "Stat 1 Value", name: stat1_value, widget: string }
+          - { label: "Stat 2 Label", name: stat2_label, widget: string }
+          - { label: "Stat 2 Value", name: stat2_value, widget: string }
+          - { label: "Stat 3 Label", name: stat3_label, widget: string }
+          - { label: "Stat 3 Value", name: stat3_value, widget: string }
