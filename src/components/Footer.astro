@@ -14,18 +14,16 @@ const links = [
 
       <!-- Brand -->
       <div>
-        <img
-          src="/logo.svg"
-          alt="Basil Metrics"
-          style="height:28px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);"
-          onerror="this.style.display='none';document.getElementById('ft-logo').style.display='block';"
-        />
-        <span id="ft-logo" style="display:none;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;color:#F6FBF0;">
-          Basil<span style="color:#89F337;">Metrics</span>
-        </span>
+        <img src="/logo.svg" alt="Basil Metrics" style="height:28px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);" onerror="this.style.display='none';document.getElementById('ft-logo').style.display='block';" />
+        <span id="ft-logo" style="display:none;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;color:#F6FBF0;">Basil<span style="color:#89F337;">Metrics</span></span>
         <p style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#82976E;line-height:1.7;max-width:280px;margin-top:0.5rem;">
           Performance marketing for Bangkok's most ambitious food and F&B brands. Strategy, creative, and paid media — built to convert.
         </p>
+        <div style="display:flex;gap:1rem;margin-top:1.25rem;">
+          <a href="https://www.instagram.com/basilmetrics?igsh=MWF0endwbmZ2MXR4dw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display:flex;align-items:center;color:#82976E;transition:color 0.15s;" onmouseover="this.style.color='#F6FBF0'" onmouseout="this.style.color='#82976E'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
       </div>
 
       <!-- Nav -->
@@ -33,12 +31,7 @@ const links = [
         <p class="section-label" style="color:rgba(130,151,110,0.6);">Navigation</p>
         <div style="display:flex;flex-direction:column;gap:0.6rem;">
           {links.map(link => (
-            <a
-              href={link.href}
-              style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#82976E;text-decoration:none;transition:color 0.15s;"
-              onmouseover="this.style.color='#F6FBF0'"
-              onmouseout="this.style.color='#82976E'"
-            >{link.label}</a>
+            <a href={link.href} style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#82976E;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#F6FBF0'" onmouseout="this.style.color='#82976E'">{link.label}</a>
           ))}
         </div>
       </div>
@@ -51,9 +44,7 @@ const links = [
             Ready to grow your brand? Tell us about your goals and we'll take it from there.
           </p>
         </div>
-        <a href="/contact" class="btn-lime" style="text-align:center;font-size:0.82rem;">
-          Start a Campaign →
-        </a>
+        <a href="/contact" class="btn-lime" style="text-align:center;font-size:0.82rem;">Start a Campaign →</a>
       </div>
     </div>
 
@@ -63,9 +54,13 @@ const links = [
       <p style="font-family:'Sora',sans-serif;font-size:0.75rem;color:rgba(130,151,110,0.5);">
         © {year} Basil Metrics — Bangkok, Thailand
       </p>
-      <p style="font-family:'Sora',sans-serif;font-size:0.75rem;color:rgba(130,151,110,0.4);">
-        Accepting new clients
-      </p>
+      <div style="display:flex;align-items:center;gap:1.25rem;">
+        <a href="https://www.instagram.com/basilmetrics?igsh=MWF0endwbmZ2MXR4dw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.4rem;font-family:'Sora',sans-serif;font-size:0.75rem;color:rgba(130,151,110,0.5);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#F6FBF0'" onmouseout="this.style.color='rgba(130,151,110,0.5)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @basilmetrics
+        </a>
+        <p style="font-family:'Sora',sans-serif;font-size:0.75rem;color:rgba(130,151,110,0.4);">Accepting new clients</p>
+      </div>
     </div>
   </div>
 </footer>
