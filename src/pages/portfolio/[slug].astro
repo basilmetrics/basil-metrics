@@ -4,72 +4,117 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 export function getStaticPaths() {
   return [
     {
-      params: { slug: 'delivery-brand-meta' },
+      params: { slug: 'meta-fb-high-volume' },
       props: {
-        category: 'Delivery-First Brand', service: 'Ads', platform: 'Meta',
-        result: '+340% ROAS improvement through Meta campaign restructure',
-        img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
-        body: '<p>This is a placeholder case study. Add your content via the CMS at <code>/admin</code>.</p>',
+        category: 'Dessert & F&B Brand',
+        platform: 'Meta',
+        label: 'Beating the Feed: High-Volume Meta Traffic',
+        result: '14,399 direct visits at just ฿0.62 per click',
+        img: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=1200&q=80',
+        body: `<h2>The Challenge</h2>
+<p>In a saturated F&B market, every baht of ad spend needs to work harder than the last. Our client — a dessert and F&B brand — needed to drive high-volume, qualified traffic directly to their profile and LINE channel without burning through budget on low-intent audiences.</p>
+
+<h2>The Approach</h2>
+<p>We built a tightly structured Meta campaign targeting Bangkok audiences with demonstrated interest in desserts and premium F&B. Creative was built around high-contrast visual hooks designed to stop the scroll, with clear CTAs driving directly to LINE and profile visits.</p>
+<p>Audience segmentation was layered across interest, behavioral, and lookalike pools — tested systematically to identify the lowest-cost, highest-intent combinations before scaling.</p>
+
+<h2>The Result</h2>
+<p>From approximately ฿8,935 in total ad spend, the campaign generated 14,399 direct profile and LINE visits — a 3.82% Click-Through Rate with a cost of just ฿0.62 per click.</p>
+
+<h2>Why This Matters</h2>
+<p>According to WordStream's Conversion Rate Benchmarks, the average Meta Ads Cost Per Lead for the Restaurant & Food industry is $3.16 USD — roughly ฿110. By delivering qualified clicks at ฿0.62, we achieved high-volume engagement at approximately 6% of the standard market rate.</p>`,
+        benchmarkSource: 'WordStream Meta Ads Benchmarks for Restaurant & Food industry',
+        benchmarkUrl: 'https://www.wordstream.com/blog/ws/2021/09/15/facebook-ads-benchmarks',
       },
     },
     {
-      params: { slug: 'cafe-group-branding' },
+      params: { slug: 'tiktok-viral-sprint' },
       props: {
-        category: 'Multi-Location Café Group', service: 'Branding', platform: 'Brand',
-        result: 'Full visual identity rolled out across 4 Bangkok locations',
-        img: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1200&q=80',
-        body: '<p>Placeholder case study — add content via /admin CMS.</p>',
+        category: 'Dessert & F&B Brand',
+        platform: 'TikTok',
+        label: 'The Viral Sprint: Rapid TikTok Audience Growth',
+        result: '+400 targeted followers in under 18 hours — 547 new followers per day',
+        img: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80',
+        body: `<h2>The Challenge</h2>
+<p>The client needed to accelerate their TikTok presence rapidly — not through slow organic growth, but through a strategic sprint that would create immediate momentum and push them toward the critical 100K milestone.</p>
+
+<h2>The Approach</h2>
+<p>We engineered a high-velocity follower acquisition sprint using a combination of targeted content strategy, optimised posting windows, and audience engagement mechanics specific to the Thai F&B TikTok ecosystem.</p>
+<p>Every element — hook structure, caption format, hashtag architecture, and posting time — was calibrated for maximum velocity within the TikTok algorithm's amplification windows.</p>
+
+<h2>The Result</h2>
+<p>400 new, targeted followers acquired in under 18 hours. This translates to 547 new followers per day — immediately pushing the account to 94.6K and creating clear trajectory toward 100K.</p>
+
+<h2>Why This Matters</h2>
+<p>According to the Rival IQ TikTok Benchmark Report, average brand accounts see a monthly follower growth rate of roughly 2–3%. Rather than settling for slow monthly organic gains, this sprint delivered immediate, measurable daily momentum that radically outperforms standard brand growth timelines.</p>`,
+        benchmarkSource: 'Rival IQ TikTok Benchmark Report',
+        benchmarkUrl: 'https://www.rivaliq.com/blog/tiktok-benchmark-report/',
       },
     },
     {
-      params: { slug: 'dine-in-tiktok' },
+      params: { slug: 'google-retail-search' },
       props: {
-        category: 'Dine-In Restaurant', service: 'Both', platform: 'TikTok',
-        result: '820K organic reach and 3× reservation enquiry growth in 45 days',
-        img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80',
-        body: '<p>Placeholder case study — add content via /admin CMS.</p>',
-      },
-    },
-    {
-      params: { slug: 'beverage-google' },
-      props: {
-        category: 'Specialty Beverage Brand', service: 'Ads', platform: 'Google',
-        result: 'Cost-per-acquisition reduced 68% within the first 60 days',
-        img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80',
-        body: '<p>Placeholder case study — add content via /admin CMS.</p>',
+        category: 'Premium Retail Brand',
+        platform: 'Google',
+        label: 'Capturing the Buyer: High-Intent Google Search',
+        result: '~1,000 high-intent clicks at ฿4.75 CPC — 4.30% CTR',
+        img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
+        body: `<h2>The Challenge</h2>
+<p>A premium retail brand needed to capture bottom-of-funnel, ready-to-buy traffic for a specific product line — people actively searching and ready to purchase, not just browsing.</p>
+
+<h2>The Approach</h2>
+<p>We built a tightly structured Google Search campaign targeting high-intent, product-specific keywords. Match types, negative keywords, and bid strategies were layered carefully to eliminate wasted spend on low-intent searches and concentrate budget on buyers at the decision stage.</p>
+<p>Ad copy was written to match search intent precisely, improving Quality Score and driving down cost-per-click while increasing relevance to the searcher.</p>
+
+<h2>The Result</h2>
+<p>Nearly 1,000 highly qualified, bottom-of-funnel clicks captured at a Cost Per Click of ฿4.75 — with a 4.30% Click-Through Rate demonstrating strong ad-to-intent alignment.</p>
+
+<h2>Why This Matters</h2>
+<p>According to WordStream's Google Ads Benchmarks Report, the average CPC for the Apparel, Fashion & Jewelry industry is $3.39 USD — roughly ฿118. We captured highly targeted retail search attention at ฿4.75 per click, massively undercutting the standard market rate and maximising the efficiency of every baht spent.</p>`,
+        benchmarkSource: 'WordStream Google Ads Benchmarks for Apparel/Fashion & Jewelry',
+        benchmarkUrl: 'https://www.wordstream.com/blog/ws/2016/02/29/google-adwords-industry-benchmarks',
       },
     },
   ];
 }
 
-const { category, service, platform, result, img, body } = Astro.props;
+const { category, platform, label, result, img, body, benchmarkSource, benchmarkUrl } = Astro.props;
 ---
 
 <BaseLayout
-  title={`${category} — Portfolio — Basil Metrics`}
+  title={`${label} — Portfolio — Basil Metrics`}
   description={result}
   ogImage={img}
+  readingProgress={true}
 >
 <div style="background:#F6FBF0;min-height:100vh;">
-  <div style="max-width:1000px;margin:0 auto;padding:4rem 2rem 7rem;">
+  <div style="max-width:900px;margin:0 auto;padding:4rem 2rem 7rem;">
 
-    <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;display:inline-block;margin-bottom:2.5rem;">← Portfolio</a>
+    <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;display:inline-block;margin-bottom:2.5rem;">← All Work</a>
 
-    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;flex-wrap:wrap;">
       <span style="font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">{category}</span>
-      <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.12);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{platform}</span>
-      <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(130,151,110,0.1);color:#82976E;border-radius:99px;padding:0.18rem 0.65rem;">{service}</span>
+      <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{platform}</span>
     </div>
 
-    <h1 style="font-size:clamp(1.75rem,3.5vw,2.75rem);color:#263519;line-height:1.12;margin-bottom:2.5rem;">{result}</h1>
+    <p style="font-family:'Sora',sans-serif;font-size:0.7rem;color:#82976E;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;">{label}</p>
+    <h1 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;color:#263519;line-height:1.12;letter-spacing:-0.02em;margin-bottom:2.5rem;">{result}</h1>
 
     <div style="margin-bottom:3rem;overflow:hidden;border:1px solid rgba(38,53,25,0.08);">
-      <img src={img} alt={category} style="width:100%;object-fit:cover;display:block;" loading="eager" />
+      <img src={img} alt={label} style="width:100%;object-fit:cover;display:block;" loading="eager" />
     </div>
 
     <div class="prose" set:html={body} />
 
-    <div style="margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(38,53,25,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+    <!-- Benchmark citation -->
+    <div style="margin-top:2.5rem;padding:1.25rem 1.5rem;background:rgba(38,53,25,0.03);border:1px solid rgba(38,53,25,0.08);border-left:2px solid #89F337;">
+      <p style="font-family:'Sora',sans-serif;font-size:0.78rem;color:#82976E;line-height:1.6;">
+        <strong style="color:#263519;">Benchmark source:</strong> {benchmarkSource}.
+        <a href={benchmarkUrl} target="_blank" rel="noopener noreferrer" style="color:#263519;text-decoration:underline;text-underline-offset:3px;margin-left:0.25rem;">View source →</a>
+      </p>
+    </div>
+
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(38,53,25,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
       <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;">← All Work</a>
       <a href="/contact" class="btn-lime" style="font-size:0.82rem;padding:0.7rem 1.5rem;">Start a Similar Campaign</a>
     </div>
