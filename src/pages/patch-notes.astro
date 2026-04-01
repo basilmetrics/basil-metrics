@@ -1,37 +1,52 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Load from CMS content files if they exist, otherwise use hardcoded entries
-let updates: any[] = [];
-try {
-  const files = await Astro.glob('../../content/updates/*.md');
-  updates = files
-    .map((f: any) => ({ ...f.frontmatter }))
-    .filter((u: any) => u.published !== false)
-    .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-} catch (e) {
-  updates = [];
-}
-
-// Fallback to real entries if glob fails
-if (updates.length === 0) {
-  updates = [
-    { date_label: 'Early 2026', date: '2026-02-01', type: 'New Service', headline: 'TikTok Shop & Automated Booking', body: 'Officially expanded our service stack to include TikTok Shop management and automated booking system integration. While our roots run deep in F&B and retail, we are currently expanding our portfolio and taking on new types of clients who share our ambitious, growth-focused mindset.' },
-    { date_label: 'Early 2026', date: '2026-01-01', type: 'Team Update', headline: 'A Full-Service Team', body: 'Expanded into a highly focused team of five. This allows us to fully support our partners across every digital touchpoint — branding consultation, visual content creation, full-stack campaign management, and targeted food delivery ads on Grab and LINE MAN.' },
-    { date_label: 'Late 2025', date: '2025-09-01', type: 'Platform Update', headline: 'Embracing AI', body: 'Integrated advanced AI tools into our daily workflows. We believe in continuous learning, and adapting to this technology allows us to work smarter, maintain our deep attention to detail, and provide even more efficient support to the brands we care about.' },
-    { date_label: 'Late 2023', date: '2023-10-01', type: 'Milestone', headline: 'Officially Open', body: 'Began onboarding new F&B and retail partners. After years of testing and scaling our own brand from the ground up, we felt ready to step out and share our hands-on strategies with other ambitious founders who share our dedication.' },
-    { date_label: 'Mid 2023', date: '2023-06-01', type: 'Milestone', headline: 'The Expansion', body: 'Expanded our services beyond our immediate network to partner with small, ambitious brands. We wanted to take the hands-on strategies we learned from our own growth and help other passionate F&B and retail founders scale their businesses.' },
-    { date_label: 'Early 2020', date: '2020-01-01', type: 'Milestone', headline: 'The Foundation', body: 'Spearheaded full-stack marketing for a local startup, scaling it into Bangkok\'s largest bakery brand. This intensive, ground-up growth experience forged our signature approach: combining high-level scaling strategies with sincere, full-time attention to detail.' },
-  ];
-}
+const updates = [
+  {
+    date_label: 'Early 2026',
+    type: 'Team Update',
+    headline: 'A Full-Service Team',
+    body: 'Expanded into a highly focused team of five. This allows us to fully support our partners across every digital touchpoint — branding consultation, visual content creation, full-stack campaign management, and targeted food delivery ads on Grab and LINE MAN.',
+  },
+  {
+    date_label: 'Early 2026',
+    type: 'New Service',
+    headline: 'TikTok Shop & Automated Booking',
+    body: 'Officially expanded our service stack to include TikTok Shop management and automated booking system integration. While our roots run deep in F&B and retail, we are currently expanding our portfolio and taking on new types of clients who share our ambitious, growth-focused mindset.',
+  },
+  {
+    date_label: 'Late 2025',
+    type: 'Platform Update',
+    headline: 'Embracing AI',
+    body: 'Integrated advanced AI tools into our daily workflows. We believe in continuous learning, and adapting to this technology allows us to work smarter, maintain our deep attention to detail, and provide even more efficient support to the brands we care about.',
+  },
+  {
+    date_label: 'Late 2023',
+    type: 'Milestone',
+    headline: 'Officially Open',
+    body: 'Began onboarding new F&B and retail partners. After years of testing and scaling our own brand from the ground up, we felt ready to step out and share our hands-on strategies with other ambitious founders who share our dedication.',
+  },
+  {
+    date_label: 'Mid 2023',
+    type: 'Milestone',
+    headline: 'The Expansion',
+    body: 'Expanded our services beyond our immediate network to partner with small, ambitious brands. We wanted to take the hands-on strategies we learned from our own growth and help other passionate F&B and retail founders scale their businesses.',
+  },
+  {
+    date_label: 'Early 2020',
+    type: 'Milestone',
+    headline: 'The Foundation',
+    body: "Spearheaded full-stack marketing for a local startup, scaling it into Bangkok's largest bakery brand. This intensive, ground-up growth experience forged our signature approach: combining high-level scaling strategies with sincere, full-time attention to detail.",
+  },
+];
 
 const typeColors: Record<string, string> = {
-  'New Service':      'background:rgba(137,243,54,0.12);color:#263519;',
-  'Campaign Result':  'background:rgba(38,53,25,0.08);color:#263519;',
-  'Platform Update':  'background:rgba(130,151,110,0.15);color:#263519;',
-  'Pricing Change':   'background:rgba(38,53,25,0.08);color:#263519;',
-  'Team Update':      'background:rgba(130,151,110,0.15);color:#263519;',
-  'Milestone':        'background:rgba(38,53,25,0.06);color:#82976E;',
+  'New Service':     'background:rgba(137,243,54,0.15);color:#263519;',
+  'Campaign Result': 'background:rgba(38,53,25,0.08);color:#263519;',
+  'Platform Update': 'background:rgba(130,151,110,0.15);color:#263519;',
+  'Pricing Change':  'background:rgba(38,53,25,0.08);color:#263519;',
+  'Team Update':     'background:rgba(130,151,110,0.15);color:#263519;',
+  'Milestone':       'background:rgba(38,53,25,0.06);color:#82976E;',
 };
 ---
 
@@ -42,31 +57,26 @@ const typeColors: Record<string, string> = {
 <div style="background:#F6FBF0;min-height:100vh;">
   <div style="max-width:860px;margin:0 auto;padding:4rem 2rem 7rem;">
 
-    <!-- Header -->
-    <div style="border-bottom:1px solid rgba(38,53,25,0.08);padding-bottom:2.5rem;margin-bottom:3.5rem;" class="fade-up">
+    <div style="border-bottom:1px solid rgba(38,53,25,0.08);padding-bottom:2.5rem;margin-bottom:3.5rem;">
       <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.6rem;">Our Story</span>
       <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.25rem);font-weight:800;color:#263519;letter-spacing:-0.02em;margin-bottom:0.85rem;">Growth Journal</h1>
       <p style="font-family:'Sora',sans-serif;font-size:0.95rem;color:#82976E;line-height:1.7;max-width:520px;">
-        The real story of how Basil Metrics was built — from scaling Bangkok's largest bakery brand to a full-service performance marketing team. Updated as we grow.
+        The real story of how Basil Metrics was built — from scaling Bangkok's largest bakery brand to a full-service performance marketing team.
       </p>
     </div>
 
-    <!-- Entries -->
     <div>
       {updates.map((u, i) => (
         <div
           class="fade-up"
           style={`display:grid;grid-template-columns:160px 1fr;gap:3rem;padding:2rem 0;${i < updates.length - 1 ? 'border-bottom:1px solid rgba(38,53,25,0.06);' : ''}`}
         >
-          <!-- Left: date + type badge -->
           <div style="padding-top:0.2rem;">
             <p style="font-family:'Cascadia Mono','Courier New',monospace;font-size:0.76rem;color:#82976E;margin-bottom:0.6rem;white-space:nowrap;">{u.date_label}</p>
             <span style={`font-family:'Sora',sans-serif;font-size:0.58rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:99px;padding:0.2rem 0.65rem;display:inline-block;${typeColors[u.type] ?? typeColors['Milestone']}`}>
               {u.type}
             </span>
           </div>
-
-          <!-- Right: headline + body -->
           <div>
             <h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#263519;margin-bottom:0.6rem;letter-spacing:-0.01em;">{u.headline}</h3>
             <p style="font-family:'Sora',sans-serif;font-size:0.9rem;color:#82976E;line-height:1.75;">{u.body}</p>
@@ -75,19 +85,16 @@ const typeColors: Record<string, string> = {
       ))}
     </div>
 
-    <!-- Footer note -->
-    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(38,53,25,0.07);">
-      <p style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;font-style:italic;">
-        This journal is updated as Basil Metrics grows. New entries are added through our CMS.
-      </p>
-    </div>
-
   </div>
 </div>
 </BaseLayout>
 
 <style>
   @media (max-width: 640px) {
-    .fade-up > div { grid-template-columns: 1fr !important; gap: 0.5rem !important; }
+    div[style*="grid-template-columns:160px"] {
+      grid-template-columns: 1fr !important;
+      gap: 0.5rem !important;
+    }
   }
 </style>
+```
