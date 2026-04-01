@@ -1,0 +1,42 @@
+{
+  "$ref": "#/definitions/homepage",
+  "definitions": {
+    "homepage": {
+      "type": "object",
+      "properties": {
+        "hero_line1": {
+          "type": "string"
+        },
+        "hero_line2": {
+          "type": "string"
+        },
+        "hero_subtext": {
+          "type": "string"
+        },
+        "stat1_label": {
+          "type": "string"
+        },
+        "stat1_value": {
+          "type": "string"
+        },
+        "stat2_label": {
+          "type": "string"
+        },
+        "stat2_value": {
+          "type": "string"
+        },
+        "stat3_label": {
+          "type": "string"
+        },
+        "stat3_value": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
