@@ -20,24 +20,12 @@ collections:
       - { label: "Client Logo URL", name: client_logo, widget: string, required: false }
       - { label: "Client Category", name: category, widget: string }
       - { label: "Project Year", name: year, widget: number, default: 2025 }
-      - { label: "Platform", name: platform, widget: select, options: [Meta, Google, TikTok, LINE, Multi-Channel, "Grab & LINE MAN"] }
-      - { label: "Services Provided", name: services, widget: select, multiple: true, options: [Media Buying, Content Creation, Brand Strategy, TikTok Shop Management, Food Delivery Ads, Automated Booking, Full-Stack Campaign Management, Visual Content] }
+      - { label: "Platform", name: platform, widget: select, options: [Meta, Google, TikTok, LINE, Multi-Channel] }
       - { label: "Campaign Label", name: label, widget: string }
       - { label: "Headline Result", name: result, widget: string }
       - { label: "Full Case Study Story", name: body, widget: markdown }
-      - { label: "Client Testimonial", name: testimonial, widget: text, required: false }
-      - { label: "Key Metrics", name: metrics, widget: list, required: false, fields: [{label: "Metric Name", name: metric_name, widget: string}, {label: "Metric Value", name: metric_value, widget: string}] }
-      - { label: "Before Metric", name: before_metric, widget: string, required: false }
-      - { label: "After Metric", name: after_metric, widget: string, required: false }
-      - { label: "Industry Benchmark", name: benchmark, widget: text, required: false }
-      - { label: "Benchmark Source URL", name: benchmark_url, widget: string, required: false }
       - { label: "Cover Image URL", name: cover_image, widget: string }
-      - { label: "Gallery URLs", name: gallery, widget: list, required: false, field: {label: "Image URL", name: url, widget: string} }
-      - { label: "Live Project URL", name: live_url, widget: string, required: false }
-      - { label: "Embed Code", name: embed_code, widget: text, required: false }
-      - { label: "Embed Platform", name: embed_platform, widget: select, required: false, options: [TikTok, Instagram, YouTube, Facebook, Other] }
-      - { label: "PDF Report URL", name: pdf_url, widget: string, required: false }
-      - { label: "Featured in Proposals?", name: featured, widget: boolean, default: false }
+      - { label: "Featured?", name: featured, widget: boolean, default: false }
       - { label: "Published?", name: published, widget: boolean, default: true }
 
   - name: blog
@@ -49,12 +37,8 @@ collections:
     fields:
       - { label: "Title", name: title, widget: string }
       - { label: "Publish Date", name: date, widget: datetime, format: "YYYY-MM-DD" }
-      - { label: "Category", name: category, widget: select, options: [Marketing, Branding, Ads, TikTok, Meta, Google, Strategy, SEO, Industry News] }
-      - { label: "Read Time (min)", name: mins, widget: number, default: 5 }
-      - { label: "Cover Image URL", name: cover_image, widget: string, required: false }
+      - { label: "Category", name: category, widget: string }
       - { label: "Body", name: body, widget: markdown }
-      - { label: "SEO Title", name: seo_title, widget: string, required: false }
-      - { label: "SEO Description", name: seo_description, widget: text, required: false }
       - { label: "Featured?", name: featured, widget: boolean, default: false }
 
   - name: updates
@@ -64,10 +48,9 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{slug}}"
     fields:
-      - { label: "Date Label", name: date_label, widget: string, hint: "e.g. Early 2026" }
+      - { label: "Date Label", name: date_label, widget: string }
       - { label: "Sort Date", name: date, widget: datetime, format: "YYYY-MM-DD" }
       - { label: "Update Type", name: type, widget: select, options: [New Service, Campaign Result, Platform Update, Pricing Change, Team Update, Milestone] }
       - { label: "Headline", name: headline, widget: string }
       - { label: "Body", name: body, widget: text }
       - { label: "Published?", name: published, widget: boolean, default: true }
-```
