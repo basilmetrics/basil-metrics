@@ -1,6 +1,9 @@
 ---
+import { getEntry } from "astro:content";
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const hp = await getEntry("homepage", "settings");
+const { hero_line1, hero_line2, hero_subtext, stat1_label, stat1_value, stat2_label, stat2_value, stat3_label, stat3_value } = hp.data;
 const services = [
   { n: '01', name: 'Brand Architecture', desc: 'Visual identity systems designed to scale — from single outlet to multi-location franchise.' },
   { n: '02', name: 'Performance Ads', desc: 'Meta, Google, and TikTok campaigns structured for measurable, attributable return.' },
@@ -54,9 +57,9 @@ const tickerItems = [
     <div style="max-width:1200px;margin:0 auto;width:100%;">
       <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1.5rem;">Bangkok, Thailand — F&B Performance Marketing</span>
       <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:#263519;margin-bottom:1.5rem;max-width:900px;">
-        Campaigns That<br />
+        {hero_line1}<br />
         <em style="font-style:normal;color:#89F337;">Convert.</em><br />
-        Data That Proves It.
+        {hero_line2}
       </h1>
       <p style="font-family:'Sora',sans-serif;font-size:1.05rem;color:#82976E;max-width:480px;line-height:1.72;margin-bottom:3rem;font-weight:400;">
         We combine brand strategy, creative production, and paid media into campaigns that move real numbers for Bangkok's food and F&B brands.
@@ -66,15 +69,15 @@ const tickerItems = [
       <div style="display:grid;grid-template-columns:repeat(3,auto);max-width:520px;gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);margin-bottom:2.75rem;" class="hero-stats">
         <div style="background:#F6FBF0;padding:1.25rem 1.5rem;">
           <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.35rem;">Cost Per Click</p>
-          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-cpc">0.62฿</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-cpc">{stat1_value}</p>
         </div>
         <div style="background:#F6FBF0;padding:1.25rem 1.5rem;">
           <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.35rem;">Follower Growth</p>
-          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-follow">547/day</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-follow">{stat2_value}</p>
         </div>
         <div style="background:#F6FBF0;padding:1.25rem 1.5rem;">
           <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;margin-bottom:0.35rem;">Avg CTR</p>
-          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-ctr">4.06%</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;" id="s-ctr">{stat3_value}</p>
         </div>
       </div>
 
