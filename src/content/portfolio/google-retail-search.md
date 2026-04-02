@@ -1,10 +1,10 @@
 ---
-client_name: Premium Retail Brand
+client_name: CURATED AND CO. BANGKOK
 category: Premium Retail Brand
 platform: Google
 service: Ads
 result: ~1,000 high-intent clicks at ฿4.75 CPC — 4.30% CTR on Google Search
-cover_image: https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80
+cover_image: https://res.cloudinary.com/dk6qpakzw/image/upload/v1775115970/Untitled_design_iggsqe.jpg
 published: true
 ---
 When managing the paid search architecture for this premium retail brand, the primary objective was capturing bottom-of-funnel, high-intent buyers for a specific high-value product line. We needed to ensure we were getting in front of customers exactly when they were actively searching and ready to purchase.
