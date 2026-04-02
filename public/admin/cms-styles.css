@@ -1,33 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;800&display=swap');
 
-:root {
-  --primary: #263519;
-  --accent: #89F337;
-  --sage: #82976E;
-  --cream: #F6FBF0;
-}
+* { font-family: 'Sora', sans-serif !important; }
 
-body { font-family: 'Sora', sans-serif !important; }
-
-[class*="AppHeader"] {
+/* Header */
+header, [class*="Header"] {
   background: #263519 !important;
+  border-bottom: 2px solid #89F337 !important;
 }
 
-[class*="AppHeaderContent"] h1,
-[class*="AppHeaderContent"] span {
-  color: #F6FBF0 !important;
+/* Sidebar */
+aside, [class*="Sidebar"], [class*="sidebar"] {
+  background: #F6FBF0 !important;
+  border-right: 1px solid rgba(38,53,25,0.12) !important;
 }
 
-[class*="CollectionTopNewButton"],
-[class*="button"][class*="primary"] {
+/* Sidebar title */
+aside h2, [class*="Collections"] {
+  color: #263519 !important;
+  font-weight: 800 !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+/* Sidebar links */
+aside a, [class*="NavLink"] {
+  color: #82976E !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+  padding: 0.4rem 0.75rem !important;
+}
+
+aside a:hover {
+  background: rgba(38,53,25,0.06) !important;
+  color: #263519 !important;
+}
+
+aside a[class*="active"], aside a[class*="Active"] {
+  background: rgba(137,243,54,0.15) !important;
+  color: #263519 !important;
+  border-left: 2px solid #89F337 !important;
+}
+
+/* Main content area */
+main, [class*="Main"], [role="main"] {
+  background: #ffffff !important;
+}
+
+/* Page background */
+body, #root, [class*="App"] {
+  background: #F6FBF0 !important;
+}
+
+/* Collection header */
+[class*="CollectionHeader"], h1 {
+  font-family: 'Sora', sans-serif !important;
+  font-weight: 800 !important;
+  color: #263519 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Entry list items */
+[class*="ListCard"], [class*="EntryCard"] {
+  border: 1px solid rgba(38,53,25,0.08) !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  margin-bottom: 0.5rem !important;
+  transition: all 0.15s !important;
+}
+
+[class*="ListCard"]:hover, [class*="EntryCard"]:hover {
+  border-color: #89F337 !important;
+  background: #F6FBF0 !important;
+}
+
+/* All buttons */
+button {
+  font-family: 'Sora', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+/* Primary buttons */
+button[class*="primary"], [class*="NewEntryButton"] {
   background: #89F337 !important;
   color: #263519 !important;
-  font-weight: 700 !important;
   border: none !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
 }
 
-[class*="sidebar"],
-[class*="Sidebar"] {
+/* Published badge */
+[class*="Published"], [class*="published"] {
+  background: rgba(137,243,54,0.2) !important;
+  color: #263519 !important;
+  border-radius: 99px !important;
+}
+
+/* Form labels */
+label, [class*="FieldLabel"] {
+  color: #263519 !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+/* Form inputs */
+input[type="text"], textarea, [class*="TextInput"] {
+  border: 1px solid rgba(38,53,25,0.15) !important;
+  border-radius: 6px !important;
+  font-family: 'Sora', sans-serif !important;
+  color: #263519 !important;
+  background: #ffffff !important;
+}
+
+input[type="text"]:focus, textarea:focus {
+  border-color: #89F337 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(137,243,54,0.15) !important;
+}
+
+/* Search input */
+input[type="search"] {
+  border: 1px solid rgba(38,53,25,0.15) !important;
+  border-radius: 6px !important;
+  background: #ffffff !important;
+}
+
+/* Toolbar/top bar inside editor */
+[class*="ToolbarContainer"], [class*="EditorToolbar"] {
   background: #F6FBF0 !important;
-  border-right: 1px solid rgba(38,53,25,0.1) !important;
+  border-bottom: 1px solid rgba(38,53,25,0.1) !important;
+}
+
+/* Delete button */
+button[class*="Delete"], button[class*="delete"] {
+  background: transparent !important;
+  color: #82976E !important;
+  border: 1px solid rgba(38,53,25,0.15) !important;
 }
