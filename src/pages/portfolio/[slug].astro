@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const cmsEntries = await getCollection('portfolio');
@@ -60,12 +60,6 @@ export async function getStaticPaths() {
 
 const { isCMS, entry, category, platform, label, result, img, body, benchmarkSource, benchmarkUrl } = Astro.props;
 const { Content } = isCMS && entry ? await entry.render() : { Content: null };
-
-let CmsContent: any = null;
-if (isCMS && entry) {
-  const { Content } = await entry.render();
-  CmsContent = Content;
-}
 ---
 
 <BaseLayout
@@ -90,7 +84,9 @@ if (isCMS && entry) {
             <img src={entry.data.cover_image} alt={entry.data.client_name} style="width:100%;object-fit:cover;display:block;" loading="eager" />
           </div>
         )}
-        <div class="prose" <Content /> />
+        <div class="prose">
+          <Content />
+        </div>
       </>
     ) : (
       <>
