@@ -1,3 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52">
-  <text x="0" y="42" font-family="Sora,sans-serif" font-size="48" font-weight="800" fill="#263519">Basil<tspan fill="#89F337">Metrics</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 48">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;display=swap');</style>
+  </defs>
+  <text x="0" y="38" font-family="Sora,Arial Black,sans-serif" font-size="44" font-weight="800" fill="#263519" letter-spacing="-1">Basil<tspan fill="#89F337">Metrics</tspan></text>
 </svg>

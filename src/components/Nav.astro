@@ -11,8 +11,8 @@ const path = Astro.url.pathname;
 <nav style="position:fixed;top:0;left:0;right:0;z-index:50;background:#F6FBF0;border-bottom:1px solid rgba(38,53,25,0.1);height:56px;display:flex;align-items:center;">
   <div style="max-width:1200px;margin:0 auto;padding:0 1.25rem;width:100%;display:flex;align-items:center;justify-content:space-between;">
     <a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;flex-shrink:0;">
-      <img src="/logo.svg" alt="Basil Metrics" style="height:24px;width:auto;" onerror="this.style.display='none';document.getElementById('nav-logo-text').style.display='block';" />
-      <span id="nav-logo-text" style="display:none;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;color:#263519;letter-spacing:-0.02em;">Basil<span style="color:#89F337;">Metrics</span></span>
+      
+      <span id="nav-logo-text" style="display:block;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;color:#263519;letter-spacing:-0.02em;">Basil<span style="color:#89F337;">Metrics</span></span>
     </a>
     <div style="display:flex;align-items:center;gap:1.5rem;" class="desk-nav">
       {links.map(link => (
