@@ -54,8 +54,7 @@ const tickerItems = [
 <div style="background:#F6FBF0;position:relative;z-index:1;">
 <div class="bg-fixed-text" aria-hidden="true">
   Scale with us<br/>
-  <span class="bm-line"><span class="bm-basil">Basil</span><span class="bm-metrics">Metrics</span></span>
-  <br/>Delivering Anecdotes
+  <span class="bm-line"><span class="bm-basil">Basil</span><span class="bm-metrics">Metrics</span></span><span class="bm-tagline">Delivering Anecdotes</span>
 </div>
 
 
@@ -397,7 +396,7 @@ const tickerItems = [
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-style: italic;
-    line-height: 1.1;
+    line-height: 0.95;
     letter-spacing: 0.01em;
     color: rgba(38,53,25,0.14);
     font-size: clamp(2.5rem, 6vw, 6rem);
@@ -414,6 +413,16 @@ const tickerItems = [
   }
   .bg-fixed-text .bm-basil { color: rgba(38,53,25,0.14); }
   .bg-fixed-text .bm-metrics { color: rgba(38,53,25,0.14); }
+  .bg-fixed-text .bm-tagline {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.38em;
+    color: rgba(38,53,25,0.14);
+    letter-spacing: 0.05em;
+    margin-top: -0.1em;
+  }
   @keyframes bgTextFadeIn {
     to { opacity: 1; }
   }
