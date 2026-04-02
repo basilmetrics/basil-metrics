@@ -170,7 +170,9 @@ const tickerItems = [
 
 <style>
   @media (max-width: 768px) {
-    .hero-stats    { grid-template-columns: 1fr !important; }
+    .hero-stats    { grid-template-columns: repeat(3,1fr) !important; }
+    .hero-stats > div { padding: 0.75rem 0.4rem !important; }
+    .hero-stats #s-cpc, .hero-stats #s-follow, .hero-stats #s-ctr { font-size: 1.1rem !important; }
     .services-grid { grid-template-columns: 1fr !important; }
     .results-grid  { grid-template-columns: 1fr !important; }
     .cta-inner     { grid-template-columns: 1fr !important; }
