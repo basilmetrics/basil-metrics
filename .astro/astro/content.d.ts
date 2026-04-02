@@ -163,14 +163,29 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
-"portfolio": Record<string, {
-  id: string;
-  slug: string;
+"portfolio": {
+"google-retail-search.md": {
+	id: "google-retail-search.md";
+  slug: "google-retail-search";
   body: string;
   collection: "portfolio";
-  data: InferEntrySchema<"portfolio">;
-  render(): Render[".md"];
-}>;
+  data: InferEntrySchema<"portfolio">
+} & { render(): Render[".md"] };
+"meta-fb-high-volume.md": {
+	id: "meta-fb-high-volume.md";
+  slug: "meta-fb-high-volume";
+  body: string;
+  collection: "portfolio";
+  data: InferEntrySchema<"portfolio">
+} & { render(): Render[".md"] };
+"tiktok-viral-sprint.md": {
+	id: "tiktok-viral-sprint.md";
+  slug: "tiktok-viral-sprint";
+  body: string;
+  collection: "portfolio";
+  data: InferEntrySchema<"portfolio">
+} & { render(): Render[".md"] };
+};
 "updates": Record<string, {
   id: string;
   slug: string;

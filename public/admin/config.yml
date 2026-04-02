@@ -10,7 +10,7 @@ collections:
   - name: portfolio
     label: Portfolio
     label_singular: Case Study
-    folder: content/portfolio
+    folder: src/content/portfolio
     create: true
     slug: "{{year}}-{{slug}}"
     fields:
