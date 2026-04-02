@@ -169,10 +169,27 @@ const tickerItems = [
 </div>
 
 <style>
-  @media (max-width: 768px) {
-    .hero-stats    { grid-template-columns: repeat(3,1fr) !important; }
-    .hero-stats > div { padding: 0.75rem 0.4rem !important; }
-    .hero-stats #s-cpc, .hero-stats #s-follow, .hero-stats #s-ctr { font-size: 1.1rem !important; }
+  @media@media (max-width: 768px) {
+    .hero-stats {
+      display: flex !important;
+      flex-direction: column !important;
+      background: #FFFFFF !important;
+      border: 1px solid rgba(38,53,25,0.08) !important;
+      overflow: hidden;
+    }
+    .hero-stats > div {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 1rem 1.25rem !important;
+      border-bottom: 1px solid rgba(38,53,25,0.08) !important;
+      background: #FFFFFF !important;
+    }
+    .hero-stats > div:last-child { border-bottom: none !important; }
+    .hero-stats #s-cpc,
+    .hero-stats #s-follow,
+    .hero-stats #s-ctr { font-size: 1.75rem !important; }
+    .hero-stats .stat-arrow { color: #89F337; font-weight: 700; }
     .services-grid { grid-template-columns: 1fr !important; }
     .results-grid  { grid-template-columns: 1fr !important; }
     .cta-inner     { grid-template-columns: 1fr !important; }
