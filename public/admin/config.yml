@@ -12,21 +12,28 @@ collections:
     label_singular: Case Study
     folder: src/content/portfolio
     create: true
-    slug: "{{year}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - { label: "Client Name", name: client_name, widget: string }
       - { label: "Client Category", name: category, widget: string }
-      - { label: "Platform", name: platform, widget: string }
+      - label: "Platform"
+        name: platform
+        widget: select
+        options: [Meta, TikTok, Google, Branding, LINE, YouTube, Other]
+      - label: "Service Type"
+        name: service
+        widget: select
+        options: [Ads, Branding, Both]
       - { label: "Headline Result", name: result, widget: string }
       - { label: "Full Case Study Story", name: body, widget: markdown }
-      - { label: "Cover Image URL", name: cover_image, widget: string }
+      - { label: "Cover Image URL", name: cover_image, widget: string, required: false }
       - { label: "Published?", name: published, widget: boolean, default: true }
   - name: blog
     label: Blog
     label_singular: Post
-    folder: content/blog
+    folder: src/content/blog
     create: true
-    slug: "{{year}}-{{month}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - { label: "Title", name: title, widget: string }
       - { label: "Publish Date", name: date, widget: datetime, format: "YYYY-MM-DD" }
@@ -42,7 +49,10 @@ collections:
     fields:
       - { label: "Date Label", name: date_label, widget: string }
       - { label: "Sort Date", name: date, widget: datetime, format: "YYYY-MM-DD" }
-      - { label: "Update Type", name: type, widget: select, options: [New Service, Campaign Result, Platform Update, Pricing Change, Team Update, Milestone] }
+      - label: "Update Type"
+        name: type
+        widget: select
+        options: [New Service, Campaign Result, Platform Update, Pricing Change, Team Update, Milestone]
       - { label: "Headline", name: headline, widget: string }
       - { label: "Body", name: body, widget: text }
       - { label: "Published?", name: published, widget: boolean, default: true }
@@ -53,12 +63,12 @@ collections:
         label: Homepage Settings
         file: src/content/homepage/settings.json
         fields:
-          - { label: "Hero Headline Line 1", name: hero_line1, widget: string, default: "Attract. Engage." }
-          - { label: "Hero Headline Line 2", name: hero_line2, widget: string, default: "Grow Your F&B Brand." }
-          - { label: "Hero Subtext", name: hero_subtext, widget: text, default: "We combine brand strategy, creative production, and paid media into campaigns that move real numbers for Bangkok's food and F&B brands." }
-          - { label: "Stat 1 Label", name: stat1_label, widget: string, default: "Cost Per Click" }
-          - { label: "Stat 1 Value", name: stat1_value, widget: string, default: "฿0.62" }
-          - { label: "Stat 2 Label", name: stat2_label, widget: string, default: "Follower Growth" }
-          - { label: "Stat 2 Value", name: stat2_value, widget: string, default: "+400" }
-          - { label: "Stat 3 Label", name: stat3_label, widget: string, default: "Avg CTR" }
-          - { label: "Stat 3 Value", name: stat3_value, widget: string, default: "3.82%" }
+          - { label: "Hero Headline Line 1", name: hero_line1, widget: string }
+          - { label: "Hero Headline Line 2", name: hero_line2, widget: string }
+          - { label: "Hero Subtext", name: hero_subtext, widget: text }
+          - { label: "Stat 1 Label", name: stat1_label, widget: string }
+          - { label: "Stat 1 Value", name: stat1_value, widget: string }
+          - { label: "Stat 2 Label", name: stat2_label, widget: string }
+          - { label: "Stat 2 Value", name: stat2_value, widget: string }
+          - { label: "Stat 3 Label", name: stat3_label, widget: string }
+          - { label: "Stat 3 Value", name: stat3_value, widget: string }

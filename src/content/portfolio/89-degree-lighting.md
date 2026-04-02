@@ -2,6 +2,7 @@
 client_name: 89 Degree Lighting
 category: Electrical & LED Lighting Provider
 platform: Branding
+service: Branding
 result: Designed a "Smart, Modern, and Energetic" brand identity to position
   them as the ultimate "lighting companion" for designers, electricians, and
   homeowners

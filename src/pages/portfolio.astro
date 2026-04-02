@@ -2,59 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const cmsEntries = await getCollection('portfolio');
-
-const hardcoded = [
-  {
-    category: 'Dessert & F&B Brand',
-    service: 'Ads',
-    platform: 'Meta',
-    label: 'Beating the Feed',
-    result: '14,399 direct visits at just ฿0.62 per click — 3.82% CTR on Meta',
-    detail: 'Generated 14,399 direct profile and LINE visits from ~฿8,935 in ad spend. Industry average cost per lead for F&B is ~฿110. We delivered at ฿0.62.',
-    img: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=800&q=80',
-    slug: 'meta-fb-high-volume',
-    isCMS: false,
-  },
-  {
-    category: 'Dessert & F&B Brand',
-    service: 'Ads',
-    platform: 'TikTok',
-    label: 'The Viral Sprint',
-    result: '+400 targeted followers in under 18 hours — 547 new followers per day',
-    detail: 'Engineered a high-velocity follower acquisition sprint, pushing the account to 94.6K and setting a clear trajectory to crack 100K.',
-    img: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80',
-    slug: 'tiktok-viral-sprint',
-    isCMS: false,
-  },
-  {
-    category: 'Premium Retail Brand',
-    service: 'Ads',
-    platform: 'Google',
-    label: 'Capturing the Buyer',
-    result: '~1,000 high-intent clicks at ฿4.75 CPC — 4.30% CTR on Google Search',
-    detail: 'Captured bottom-of-funnel, ready-to-buy traffic for a specific product line. Industry average CPC for retail/fashion is ~฿118. We delivered at ฿4.75.',
-    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
-    slug: 'google-retail-search',
-    isCMS: false,
-  },
-];
-
-const cmsFormatted = cmsEntries
-  .filter(e => e.data.published)
+const allEntries = await getCollection('portfolio');
+const entries = allEntries
+  .filter(e => e.data.published !== false)
   .map(e => ({
     category: e.data.category || '',
-    service: 'Branding',
+    service: e.data.service || 'Ads',
     platform: e.data.platform || '',
     label: e.data.client_name || '',
     result: e.data.result || '',
-    detail: '',
     img: e.data.cover_image || 'https://images.unsplash.com/photo-1493770348161-369560ae357d?w=800&q=80',
     slug: e.slug,
-    isCMS: true,
   }));
-
-const entries = [...hardcoded, ...cmsFormatted];
 ---
 
 <BaseLayout
@@ -92,8 +51,7 @@ const entries = [...hardcoded, ...cmsFormatted];
               <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{e.platform}</span>
             </div>
             <p style="font-family:'Sora',sans-serif;font-size:0.7rem;color:#82976E;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem;">{e.label}</p>
-            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:#263519;line-height:1.35;margin-bottom:0.85rem;">{e.result}</h3>
-            {e.detail && <p style="font-family:'Sora',sans-serif;font-size:0.82rem;color:#82976E;line-height:1.65;margin-bottom:1.25rem;">{e.detail}</p>}
+            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:#263519;line-height:1.35;margin-bottom:1.25rem;">{e.result}</h3>
             <a href={`/portfolio/${e.slug}`} style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#263519;text-decoration:none;border-bottom:1px solid rgba(38,53,25,0.2);padding-bottom:1px;">View Full Case Study →</a>
           </div>
         </div>
@@ -116,6 +74,7 @@ const entries = [...hardcoded, ...cmsFormatted];
 
 <style>
   @media (max-width: 768px) { .port-grid { grid-template-columns: 1fr !important; } }
+  @media (max-width: 1024px) { .port-grid { grid-template-columns: repeat(2,1fr) !important; } }
 </style>
 
 <script>
