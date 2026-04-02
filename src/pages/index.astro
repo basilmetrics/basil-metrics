@@ -51,15 +51,21 @@ const tickerItems = [
   description="Meta, TikTok & Google ads for Bangkok restaurants & F&B brands. ฿0.62 cost per click. Real ROAS. Book a free strategy call today."
 >
 
-<div style="background:#F6FBF0;">
+<div style="background:#F6FBF0;position:relative;z-index:1;">
+<div class="bg-fixed-text" aria-hidden="true">
+  Scale with us<br/>
+  BASIL METRICS<br/>
+  Delivering Anecdotes
+</div>
+
 
   <!-- HERO -->
-  <section style="background:#F6FBF0;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;border-bottom:1px solid rgba(38,53,25,0.08);position:relative;overflow:hidden;">
+  <section style="position:relative;z-index:1;background:#F6FBF0;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;border-bottom:1px solid rgba(38,53,25,0.08);position:relative;overflow:hidden;">
     <div style="max-width:1200px;margin:0 auto;width:100%;">
       <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1.5rem;position:relative;z-index:1;">Bangkok, Thailand — F&B Performance Marketing</span>
-        <div class="ghost-number" style="font-size:clamp(5rem,14vw,12rem);top:5%;right:2%;animation:floatA 9s ease-in-out infinite;">฿0.62</div>
-        <div class="ghost-number" style="font-size:clamp(4rem,10vw,9rem);bottom:15%;right:15%;animation:floatB 12s ease-in-out infinite;">3.82%</div>
-        <div class="ghost-number" style="font-size:clamp(3rem,8vw,7rem);top:40%;left:55%;animation:floatC 10s ease-in-out infinite;">+400</div>
+        <div 
+        <div 
+        <div 
       <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:#263519;margin-bottom:1.5rem;max-width:900px;position:relative;z-index:1;" id="hero-h1">
         {hero_line1}<br />
         <em style="font-style:normal;color:#89F337;">Convert.</em><br />
@@ -93,7 +99,7 @@ const tickerItems = [
   </section>
 
   <!-- TICKER -->
-  <div class="ticker-outer" aria-hidden="true">
+  <div class="ticker-outer" style="position:relative;z-index:1;" aria-hidden="true">
     <div class="ticker-inner">
       {[...tickerItems, ...tickerItems].map(item => (
         <span class="ticker-item"><span class="ticker-dot">◆</span>{item}</span>
@@ -102,7 +108,8 @@ const tickerItems = [
   </div>
 
   <!-- SERVICES -->
-  <section style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+  <section style="position:relative;z-index:1;background:#F6FBF0;max-width:100%;padding:5.5rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+  <div style="max-width:1200px;margin:0 auto;">
     <div class="fade-up" style="margin-bottom:2.5rem;">
       <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.6rem;">What We Do</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;">Services</h2>
@@ -374,6 +381,28 @@ const tickerItems = [
   }
   .how-work-line.line-in {
     height: 100%;
+  }
+
+
+  .bg-fixed-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: rgba(38,53,25,0.045);
+    font-size: clamp(3.5rem, 9vw, 9rem);
+  }
+  @media (max-width: 768px) {
+    .bg-fixed-text { display: none; }
   }
 
 </style>
