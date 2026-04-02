@@ -59,6 +59,7 @@ export async function getStaticPaths() {
 }
 
 const { isCMS, entry, category, platform, label, result, img, body, benchmarkSource, benchmarkUrl } = Astro.props;
+const { Content } = isCMS && entry ? await entry.render() : { Content: null };
 
 let CmsContent: any = null;
 if (isCMS && entry) {
