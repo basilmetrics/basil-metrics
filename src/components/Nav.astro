@@ -9,16 +9,12 @@ const path = Astro.url.pathname;
 ---
 
 <nav style="position:fixed;top:0;left:0;right:0;z-index:50;background:#F6FBF0;border-bottom:1px solid rgba(38,53,25,0.1);height:56px;display:flex;align-items:center;">
-  <div style="max-width:1200px;margin:0 auto;padding:0 2rem;width:100%;display:flex;align-items:center;justify-content:space-between;">
-
-    <!-- Logo -->
-    <a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;">
-      <img src="/logo.svg" style="display:none" alt="Basil Metrics" style="height:30px;width:auto;" onerror="this.style.display='none';document.getElementById('nav-logo-text').style.display='block';" />
+  <div style="max-width:1200px;margin:0 auto;padding:0 1.25rem;width:100%;display:flex;align-items:center;justify-content:space-between;">
+    <a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;flex-shrink:0;">
+      <img src="/logo.svg" alt="Basil Metrics" style="height:24px;width:auto;" onerror="this.style.display='none';document.getElementById('nav-logo-text').style.display='block';" />
       <span id="nav-logo-text" style="display:none;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;color:#263519;letter-spacing:-0.02em;">Basil<span style="color:#89F337;">Metrics</span></span>
     </a>
-
-    <!-- Desktop links -->
-    <div style="display:flex;align-items:center;gap:2rem;" class="desk-nav">
+    <div style="display:flex;align-items:center;gap:1.5rem;" class="desk-nav">
       {links.map(link => (
         <a href={link.href} style={`font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:500;text-decoration:none;transition:color 0.15s;color:${path.startsWith(link.href) ? '#263519' : '#82976E'};${path.startsWith(link.href) ? 'border-bottom:2px solid #89F337;padding-bottom:2px;' : ''}`}>{link.label}</a>
       ))}
@@ -27,8 +23,6 @@ const path = Astro.url.pathname;
       </a>
       <a href="/contact" class="btn-lime" style="padding:0.5rem 1.2rem;font-size:0.8rem;">Start a Campaign</a>
     </div>
-
-    <!-- Mobile hamburger -->
     <button id="ham" aria-label="Open menu" style="display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none;cursor:pointer;">
       <span style="width:22px;height:1.5px;background:#263519;display:block;transition:transform 0.25s,opacity 0.25s;" id="hb1"></span>
       <span style="width:22px;height:1.5px;background:#263519;display:block;transition:transform 0.25s,opacity 0.25s;" id="hb2"></span>
@@ -37,17 +31,16 @@ const path = Astro.url.pathname;
   </div>
 </nav>
 
-<!-- Mobile menu overlay -->
-<div id="mob-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:#F6FBF0;flex-direction:column;justify-content:center;padding:2rem 2.5rem;">
+<div id="mob-overlay" style="display:none;position:fixed;inset:0;z-index:40;background:#263519;flex-direction:column;justify-content:center;padding:2rem 2.5rem;">
   {links.map(link => (
-    <a href={link.href} style="font-family:'Sora',sans-serif;font-weight:700;font-size:2.25rem;color:#263519;text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(38,53,25,0.07);display:block;">{link.label}</a>
+    <a href={link.href} style="font-family:'Sora',sans-serif;font-weight:700;font-size:2.25rem;color:#F6FBF0;text-decoration:none;padding:0.9rem 0;border-bottom:1px solid rgba(246,251,240,0.1);display:block;">{link.label}</a>
   ))}
   <div style="margin-top:2rem;display:flex;flex-direction:column;gap:1rem;">
     <a href="https://www.instagram.com/basilmetrics?igsh=MWF0endwbmZ2MXR4dw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.5rem;font-family:'Sora',sans-serif;font-size:0.9rem;color:#82976E;text-decoration:none;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       @basilmetrics
     </a>
-    <a href="/contact" class="btn-lime">Start a Campaign</a>
+    <a href="/contact" class="btn-lime" style="text-align:center;">Start a Campaign</a>
   </div>
 </div>
 
@@ -69,5 +62,13 @@ const path = Astro.url.pathname;
     if (overlay) overlay.style.display = open ? 'flex' : 'none';
     if (hb1) hb1.style.transform = open ? 'rotate(45deg) translate(4px,4px)' : '';
     if (hb2) hb2.style.transform = open ? 'rotate(-45deg) translate(4px,-4px)' : '';
+  });
+  document.querySelectorAll('#mob-overlay a').forEach(a => {
+    a.addEventListener('click', () => {
+      open = false;
+      if (overlay) overlay.style.display = 'none';
+      if (hb1) hb1.style.transform = '';
+      if (hb2) hb2.style.transform = '';
+    });
   });
 </script>

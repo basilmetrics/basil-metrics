@@ -1,73 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-
 <BaseLayout
   title="Contact — Basil Metrics"
   description="Start a campaign with Basil Metrics. Bangkok performance marketing for F&B brands."
 >
 <div style="background:#F6FBF0;min-height:100vh;">
-  <div style="max-width:1200px;margin:0 auto;padding:4rem 2rem 7rem;">
-
-    <div style="border-bottom:1px solid rgba(38,53,25,0.08);padding-bottom:2.5rem;margin-bottom:3.5rem;" class="fade-up">
+  <div style="max-width:1200px;margin:0 auto;padding:4rem 1.25rem 7rem;">
+    <div style="border-bottom:1px solid rgba(38,53,25,0.08);padding-bottom:2.5rem;margin-bottom:3rem;" class="fade-up">
       <span class="section-label">Get in Touch</span>
-      <h1 style="font-size:clamp(2rem,4vw,3.25rem);">Start a Campaign</h1>
+      <h1 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,4vw,3.25rem);font-weight:800;color:#263519;letter-spacing:-0.02em;margin:0.5rem 0 0;">Start a Campaign</h1>
     </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;" class="contact-grid">
-
-      <!-- ── Form ── -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;" class="contact-grid">
       <form id="contact-form" action="https://formspree.io/f/mnjozndj" method="POST">
-
         {[
           { label: 'Your Name',  name: 'name',    type: 'text',  ph: 'e.g. Nong Apinya' },
           { label: 'Company',    name: 'company',  type: 'text',  ph: 'e.g. Your Brand Name' },
           { label: 'Email',      name: 'email',    type: 'email', ph: 'you@yourbrand.com' },
         ].map(f => (
-          <div style="margin-bottom:1.5rem;">
+          <div style="margin-bottom:1.25rem;">
             <label class="form-label">{f.label}</label>
-            <input
-              type={f.type} name={f.name} required placeholder={f.ph}
-              class="form-input"
+            <input type={f.type} name={f.name} required placeholder={f.ph} class="form-input"
               onfocus="this.style.borderColor='#89F337';this.style.boxShadow='0 0 0 3px rgba(137,243,54,0.15)'"
-              onblur="this.style.borderColor='rgba(38,53,25,0.14)';this.style.boxShadow='none'"
-            />
+              onblur="this.style.borderColor='rgba(38,53,25,0.14)';this.style.boxShadow='none'" />
           </div>
         ))}
-
-        <div style="margin-bottom:1.5rem;">
+        <div style="margin-bottom:1.25rem;">
           <label class="form-label">Service Interest</label>
-          <select
-            name="service" required class="form-input"
-            style="cursor:pointer;"
+          <select name="service" required class="form-input" style="cursor:pointer;"
             onfocus="this.style.borderColor='#89F337'"
-            onblur="this.style.borderColor='rgba(38,53,25,0.14)'"
-          >
+            onblur="this.style.borderColor='rgba(38,53,25,0.14)'">
             <option value="" disabled selected>Select a service...</option>
             <option value="Branding">Brand Identity</option>
             <option value="Ads">Performance Ads</option>
             <option value="Both">Brand Identity + Ads</option>
           </select>
         </div>
-
-        <div style="margin-bottom:2rem;">
+        <div style="margin-bottom:1.75rem;">
           <label class="form-label">Message</label>
-          <textarea
-            name="message" required rows="5"
+          <textarea name="message" required rows="5"
             placeholder="Tell us about your brand, goals, and monthly budget..."
-            class="form-input"
-            style="resize:none;"
+            class="form-input" style="resize:none;"
             onfocus="this.style.borderColor='#89F337';this.style.boxShadow='0 0 0 3px rgba(137,243,54,0.15)'"
-            onblur="this.style.borderColor='rgba(38,53,25,0.14)';this.style.boxShadow='none'"
-          ></textarea>
+            onblur="this.style.borderColor='rgba(38,53,25,0.14)';this.style.boxShadow='none'"></textarea>
         </div>
-
-        <button
-          type="submit" id="submit-btn"
-          class="btn-lime"
-          style="width:100%;text-align:center;font-size:0.9rem;border:none;cursor:pointer;"
-        >Send Brief →</button>
-
+        <button type="submit" id="submit-btn" class="btn-lime"
+          style="width:100%;text-align:center;font-size:0.9rem;border:none;cursor:pointer;">
+          Send Brief →
+        </button>
         <div id="form-success" style="display:none;margin-top:1rem;padding:1rem;border:1px solid rgba(137,243,54,0.35);background:rgba(137,243,54,0.07);">
           <p style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#263519;">Message sent — we'll be in touch within 24 hours.</p>
         </div>
@@ -75,27 +55,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#cc0000;">Something went wrong. Please try again.</p>
         </div>
       </form>
-
-      <!-- ── Sidebar ── -->
       <div style="display:flex;flex-direction:column;gap:1.25rem;">
-
         <div class="card" style="padding:1.75rem;">
-          <p class="section-label">What to Expect</p>
-          <div style="display:flex;flex-direction:column;gap:0.75rem;">
-            {[
-              ['01', 'We review your brief within 24 hours.'],
-              ['02', '30-minute strategy call — no hard sell.'],
-              ['03', 'Custom proposal with transparent pricing.'],
-              ['04', 'Campaign live within 2 weeks of sign-off.'],
-            ].map(([n, text]) => (
-              <div style="display:flex;gap:0.85rem;align-items:flex-start;">
-                <span style="font-family:'Sora',sans-serif;font-size:0.68rem;color:#89F337;font-weight:700;min-width:20px;padding-top:1px;">{n}.</span>
-                <p style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#263519;line-height:1.55;">{text}</p>
-              </div>
-            ))}
-          </div>
+          <p class="section-label">Response Time</p>
+          <p style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#82976E;line-height:1.65;">We respond to all briefs within 24 hours. For urgent requests, message us directly on LINE.</p>
         </div>
-
         <div class="card" style="padding:1.75rem;">
           <p class="section-label">We Work With</p>
           <div style="display:flex;flex-direction:column;gap:0.55rem;">
@@ -111,7 +75,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             ))}
           </div>
         </div>
-
         <div class="card" style="padding:1.75rem;">
           <p class="section-label">Location</p>
           <p style="font-family:'Sora',sans-serif;font-size:0.85rem;color:#82976E;line-height:1.65;">
@@ -119,26 +82,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Remote-first. Working with clients across Southeast Asia.
           </p>
         </div>
-
       </div>
     </div>
   </div>
 </div>
-</BaseLayout>
 
 <style>
   @media (max-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr !important; }
+    .contact-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
   }
 </style>
 
 <script>
   const form    = document.getElementById('contact-form') as HTMLFormElement;
-  const btn     = document.getElementById('submit-btn')   as HTMLButtonElement;
+  const btn     = document.getElementById('submit-btn') as HTMLButtonElement;
   const success = document.getElementById('form-success');
   const error   = document.getElementById('form-error');
-
-  form?.addEventListener('submit', async e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     btn.disabled = true;
     btn.textContent = 'Sending...';
@@ -160,3 +120,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   });
 </script>
+</BaseLayout>
