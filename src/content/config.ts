@@ -30,9 +30,12 @@ const updates = defineCollection({
 const portfolio = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    cover: z.string().optional(),
+    client_name: z.string().optional(),
+    category: z.string().optional(),
+    platform: z.string().optional(),
+    result: z.string().optional(),
+    cover_image: z.string().optional(),
+    published: z.boolean().default(true),
   }),
 });
 
