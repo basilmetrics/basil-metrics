@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap');
+
+:root {
+  --primary: #263519;
+  --accent: #89F337;
+  --sage: #82976E;
+  --cream: #F6FBF0;
+}
+
+body { font-family: 'Sora', sans-serif !important; }
+
+[class*="AppHeader"] {
+  background: #263519 !important;
+}
+
+[class*="AppHeaderContent"] h1,
+[class*="AppHeaderContent"] span {
+  color: #F6FBF0 !important;
+}
+
+[class*="CollectionTopNewButton"],
+[class*="button"][class*="primary"] {
+  background: #89F337 !important;
+  color: #263519 !important;
+  font-weight: 700 !important;
+  border: none !important;
+}
+
+[class*="sidebar"],
+[class*="Sidebar"] {
+  background: #F6FBF0 !important;
+  border-right: 1px solid rgba(38,53,25,0.1) !important;
+}
