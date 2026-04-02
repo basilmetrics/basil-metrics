@@ -42,7 +42,7 @@ const entries = allEntries
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,53,25,0.08);" class="port-grid" id="port-grid">
       {entries.map(e => (
-        <div class="port-item fade-up" data-svc={e.service} style="background:#FFFFFF;">
+        <div class="port-item fade-up card-lift" data-svc={e.service} style="background:#FFFFFF;">
           <div style="overflow:hidden;aspect-ratio:16/9;background:#EEF3E8;">
             <img src={e.img} alt={e.label} style="width:100%;height:100%;object-fit:cover;transition:transform 0.55s ease;display:block;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" />
           </div>
@@ -93,3 +93,19 @@ const entries = allEntries
     });
   });
 </script>
+
+<style>
+.card-lift {
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(38,53,25,0.10);
+}
+.card-lift img {
+  transition: transform 0.55s ease;
+}
+.card-lift:hover img {
+  transform: scale(1.05);
+}
+</style>
