@@ -476,8 +476,8 @@ const tickerItems = [
 <style>
 @media (max-width: 768px) {
   .hero-stats {
-    display: flex !important;
-    flex-direction: column !important;
+    display: grid !important;
+    grid-template-columns: repeat(3,1fr) !important;
     background: rgba(255,255,255,0.25) !important;
     backdrop-filter: blur(32px) !important;
     -webkit-backdrop-filter: blur(32px) !important;
@@ -491,26 +491,26 @@ const tickerItems = [
     flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: center !important;
-    padding: 0.9rem 1.25rem !important;
-    border-bottom: 1px solid rgba(255,255,255,0.4) !important;
+    padding: 0.75rem 0.5rem !important;
+    border-right: 1px solid rgba(255,255,255,0.4) !important;
+    border-bottom: none !important;
     background: transparent !important;
     gap: 0.2rem !important;
   }
-  .hero-stats > div:last-child { border-bottom: none !important; }
+  .hero-stats > div:last-child { border-right: none !important; }
   .hero-stats > div > p:last-child {
-    font-size: 1.75rem !important;
+    font-size: 1.1rem !important;
     line-height: 1 !important;
     font-weight: 800 !important;
     color: #263519 !important;
     margin: 0 !important;
-    order: 2 !important;
   }
   .hero-stats > div > p:first-child {
-    font-size: 0.55rem !important;
-    letter-spacing: 0.1em !important;
+    font-size: 0.42rem !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
     color: #82976E !important;
     margin: 0 !important;
-    order: 1 !important;
   }
   .services-grid { grid-template-columns: 1fr !important; }
   .results-grid  { grid-template-columns: 1fr !important; }
