@@ -12,4 +12,4 @@ published: true
 
 We wanted to step away from the rigid, generic aesthetics you usually see in the hardware space. The goal was to make them look smart, modern, and energetic, while still feeling totally accessible to anyone walking into their store.
 
-To pull this off, we designed a complete visual system anchored by a bold, high-contrast color palette. We paired a vibrant, energetic yellow-green with a deep, professional blue to make the brand instantly recognizable. We also built out a highly versatile logo suite—including primary, secondary, and submark variations —ensuring their branding looks just as sharp on a tiny product label as it does on a massive storefront.
+To pull this off, we designed a complete visual system anchored by a bold, high-contrast color palette. We paired a vibrant, energetic yellow-green with a deep, professional blue to make the brand instantly recognizable. We also built out a highly versatile logo suite—including primary, secondary, and submark variations —ensuring their branding looks just as sharp on a tiny product label as it does on a massive storefront
