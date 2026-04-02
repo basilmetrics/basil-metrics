@@ -395,12 +395,12 @@ const tickerItems = [
     text-align: center;
     white-space: nowrap;
     font-family: 'Playfair Display', serif;
-    font-weight: 400;
+    font-weight: 700;
     font-style: italic;
-    line-height: 1.2;
+    line-height: 1.1;
     letter-spacing: 0.01em;
-    color: rgba(38,53,25,0.04);
-    font-size: clamp(2rem, 5vw, 5rem);
+    color: rgba(38,53,25,0.14);
+    font-size: clamp(2.5rem, 6vw, 6rem);
     opacity: 0;
     animation: bgTextFadeIn 2.5s ease 0.5s forwards;
   }
@@ -410,9 +410,10 @@ const tickerItems = [
     font-style: normal;
     letter-spacing: -0.03em;
     display: block;
+    color: rgba(38,53,25,0.14);
   }
-  .bg-fixed-text .bm-basil { color: rgba(38,53,25,0.06); }
-  .bg-fixed-text .bm-metrics { color: rgba(137,243,55,0.25); }
+  .bg-fixed-text .bm-basil { color: rgba(38,53,25,0.14); }
+  .bg-fixed-text .bm-metrics { color: rgba(38,53,25,0.14); }
   @keyframes bgTextFadeIn {
     to { opacity: 1; }
   }
