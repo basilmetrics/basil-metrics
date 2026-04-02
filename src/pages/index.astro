@@ -54,7 +54,7 @@ const tickerItems = [
 
   <!-- HERO -->
   <section style="background:#F6FBF0;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem;border-bottom:1px solid rgba(38,53,25,0.08);">
-    <div style="max-width:1200px;margin:0 auto;width:100%;">
+    <div style="max-width:1200px;margin:0 auto;width:100%;" class="hero-section-text">
       <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1.5rem;">Bangkok, Thailand — F&B Performance Marketing</span>
       <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:#263519;margin-bottom:1.5rem;max-width:900px;">
         {hero_line1}<br />
@@ -225,40 +225,54 @@ const tickerItems = [
   .hero-stats {
     display: flex !important;
     flex-direction: column !important;
-    background: rgba(137,243,55,0.12) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(137,243,55,0.3) !important;
-    box-shadow: inset 0 1.5px 0 rgba(255,255,255,0.8), inset 0 -1px 0 rgba(137,243,55,0.15), 0 4px 24px rgba(137,243,55,0.1) !important;
+    background: rgba(255,255,255,0.25) !important;
+    backdrop-filter: blur(32px) !important;
+    -webkit-backdrop-filter: blur(32px) !important;
+    border: 1px solid rgba(255,255,255,0.6) !important;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(38,53,25,0.06) !important;
     border-radius: 4px !important;
     overflow: hidden !important;
   }
   .hero-stats > div {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     align-items: center !important;
-    justify-content: space-between !important;
-    padding: 1rem 1.25rem !important;
-    border-bottom: 1px solid rgba(137,243,55,0.2) !important;
+    justify-content: center !important;
+    padding: 1.1rem 1.25rem !important;
+    border-bottom: 1px solid rgba(255,255,255,0.4) !important;
     background: transparent !important;
-    gap: 1rem !important;
+    text-align: center !important;
   }
-  .hero-stats > div:last-child { border-bottom: none !important; }
+  .hero-stats > div:last-child {
+    border-bottom: none !important;
+  }
   .hero-stats > div > p:last-child {
-    font-size: 1.75rem !important;
+    font-size: 2rem !important;
     line-height: 1 !important;
     font-weight: 800 !important;
-    order: -1 !important;
-    min-width: 80px !important;
     color: #263519 !important;
+    margin: 0 !important;
+    order: 2 !important;
   }
   .hero-stats > div > p:first-child {
     font-size: 0.55rem !important;
-    flex: 1 !important;
-    margin-bottom: 0 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
     color: #82976E !important;
+    margin-bottom: 0.35rem !important;
+    order: 1 !important;
   }
-  .hero-stats .stat-arrow { color: #89F337 !important; font-size: 1rem !important; font-weight: 700 !important; }
+  .hero-section-text {
+    text-align: center !important;
+  }
+  .hero-section-text h1 {
+    text-align: center !important;
+  }
+  .hero-section-text p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
   .services-grid { grid-template-columns: 1fr !important; }
   .results-grid  { grid-template-columns: 1fr !important; }
   .cta-inner     { grid-template-columns: 1fr !important; }
