@@ -181,16 +181,42 @@ const tickerItems = [
 
 <script>
   const statsBox = document.querySelector('.hero-stats');
-  if (statsBox) {
-    let done = false;
-    new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !done) {
-        done = true;
-        // These stats are fixed display values — no animation needed
-        // They are already set as real data in the HTML
-      }
-    }, { threshold: 0.3 }).observe(statsBox);
+  if (!statsBox) throw new Error();
+
+  const targets = [
+    { el: document.getElementById('s-cpc'),    from: 0, to: 0.62, prefix: '0e3f', suffix: '',  decimals: 2 },
+    { el: document.getElementById('s-follow'), from: 0, to: 400,  prefix: '+', suffix: '',  decimals: 0 },
+    { el: document.getElementById('s-ctr'),    from: 0, to: 3.82, prefix: '',  suffix: '%', decimals: 2 },
+  ];
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function runCount() {
+    const duration = 800;
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = easeOut(t);
+      targets.forEach(({ el, from, to, prefix, suffix, decimals }) => {
+        if (!el) return;
+        const val = from + (to - from) * ease;
+        el.textContent = prefix + val.toFixed(decimals) + suffix;
+      });
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
   }
+
+  function resetCount() {
+    targets.forEach(({ el, prefix, suffix, decimals }) => {
+      if (!el) return;
+      el.textContent = prefix + (0).toFixed(decimals) + suffix;
+    });
+  }
+
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { runCount(); } else { resetCount(); }
+  }, { threshold: 0.3 }).observe(statsBox);
 </script>
 
 </BaseLayout>
