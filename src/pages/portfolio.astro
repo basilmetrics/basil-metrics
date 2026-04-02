@@ -80,7 +80,7 @@ const entries = [...hardcoded, ...cmsFormatted];
       ))}
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(38,53,25,0.08);" class="port-grid" id="port-grid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,53,25,0.08);" class="port-grid" id="port-grid">
       {entries.map(e => (
         <div class="port-item fade-up" data-svc={e.service} style="background:#FFFFFF;">
           <div style="overflow:hidden;aspect-ratio:16/9;background:#EEF3E8;">

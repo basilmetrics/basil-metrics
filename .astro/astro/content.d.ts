@@ -164,6 +164,13 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "portfolio": {
+"89-degree-lighting.md": {
+	id: "89-degree-lighting.md";
+  slug: "89-degree-lighting";
+  body: string;
+  collection: "portfolio";
+  data: InferEntrySchema<"portfolio">
+} & { render(): Render[".md"] };
 "google-retail-search.md": {
 	id: "google-retail-search.md";
   slug: "google-retail-search";
