@@ -35,6 +35,7 @@ const portfolio = defineCollection({
     platform: z.string().optional(),
     result: z.string().optional(),
     cover_image: z.string().optional(),
+    service: z.string().optional(),
     published: z.boolean().default(true),
   }),
 });
