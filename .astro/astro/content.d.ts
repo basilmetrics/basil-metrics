@@ -140,14 +140,29 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"blog": Record<string, {
-  id: string;
-  slug: string;
+		"blog": {
+"delivery-brand-tiktok-scale.md": {
+	id: "delivery-brand-tiktok-scale.md";
+  slug: "delivery-brand-tiktok-scale";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">;
-  render(): Render[".md"];
-}>;
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"food-brand-identity-framework.md": {
+	id: "food-brand-identity-framework.md";
+  slug: "food-brand-identity-framework";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"roas-formula-fb-brands.md": {
+	id: "roas-formula-fb-brands.md";
+  slug: "roas-formula-fb-brands";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+};
 "portfolio": Record<string, {
   id: string;
   slug: string;
