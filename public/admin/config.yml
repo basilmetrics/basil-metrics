@@ -167,6 +167,3 @@ collections:
           - { label: "Slot 4 Link", name: mosaic_4_link, widget: string, required: false }
           - { label: "Slot 5 Image — Bottom Right", name: mosaic_5_image, widget: image, required: false }
           - { label: "Slot 5 Label", name: mosaic_5_label, widget: string, required: false }
-          - { label: "Slot 5 Link", name: mosaic_5_link, widget: string, required: false }
-          - { label: "Slot 5 Label", name: mosaic_5_label, widget: string, required: false }
-          - { label: "Slot 5 Link (optional)", name: mosaic_5_link, widget: string, required: false }
