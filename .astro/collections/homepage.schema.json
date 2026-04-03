@@ -31,6 +31,21 @@
         "stat3_value": {
           "type": "string"
         },
+        "portfolio_budget": {
+          "type": "string"
+        },
+        "portfolio_cpc": {
+          "type": "string"
+        },
+        "portfolio_ctr": {
+          "type": "string"
+        },
+        "portfolio_brands": {
+          "type": "string"
+        },
+        "portfolio_shoots": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }

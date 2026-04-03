@@ -53,13 +53,13 @@ const fullTitle = title.includes('Basil Metrics') ? title : `${title} — Basil 
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
-  <style>html,body{background:#F6FBF0!important;color:#263519!important;}</style>
+  <style>html,body{color:#263519;}</style>
   <ViewTransitions />
 </head>
-<body style="background:#F6FBF0;color:#263519;">
+<body style="color:#263519;">
   {readingProgress && <div id="read-prog" class="read-progress" style="width:0%"></div>}
   <Nav />
-  <main style="padding-top:56px;background:#F6FBF0;">
+  <main style="padding-top:56px;">
     <slot />
   </main>
   <Footer />
