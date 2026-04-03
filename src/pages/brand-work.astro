@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Brand Work — Identity, Photography & Creative Direction | Basil Metrics"
+  description="Brand identity, food photography, and creative direction for Bangkok F&B brands. We build brands worth remembering."
+>
+
+<div id="brand-curtain" aria-hidden="true" style="position:fixed;inset:0;background:#263519;z-index:9999;pointer-events:none;"></div>
+
+<!-- HERO — full bleed, immersive -->
+<section
+  id="brand-hero"
+  transition:name="pillar-brand"
+  style="background:#0e110b;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;"
+>
+  <!-- Large editorial background text -->
+  <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0;overflow:hidden;">
+    <span style="font-family:'Sora',sans-serif;font-size:clamp(8rem,22vw,20rem);font-weight:800;color:rgba(246,251,240,0.03);letter-spacing:-0.05em;white-space:nowrap;user-select:none;line-height:1;">BRAND</span>
+  </div>
+
+  <!-- Mosaic image grid background -->
+  <div id="mosaic-bg" style="position:absolute;inset:0;z-index:1;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;opacity:0;transition:opacity 1.2s ease;">
+    <div class="mosaic-cell" style="background:#1a2410;grid-column:1;grid-row:1/3;"></div>
+    <div class="mosaic-cell" style="background:#141a0d;grid-column:2;grid-row:1;"></div>
+    <div class="mosaic-cell" style="background:#1e2814;grid-column:3;grid-row:1;"></div>
+    <div class="mosaic-cell" style="background:#121709;grid-column:2;grid-row:2;"></div>
+    <div class="mosaic-cell" style="background:#192210;grid-column:3;grid-row:2;"></div>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,17,11,0.98) 0%,rgba(14,17,11,0.7) 40%,rgba(14,17,11,0.3) 100%);z-index:2;"></div>
+
+  <!-- Hero content -->
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px 80px;width:100%;position:relative;z-index:3;box-sizing:border-box;">
+
+    <a href="/" style="display:inline-flex;align-items:center;gap:8px;color:#82976E;font-family:'Sora',sans-serif;font-size:11px;font-weight:500;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;transition:color 0.2s;" onmouseover="this.style.color='#F6FBF0'" onmouseout="this.style.color='#82976E'">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to home
+    </a>
+
+    <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(246,251,240,0.2);padding:6px 14px;border-radius:2px;margin-bottom:32px;display:block;">
+      <span style="font-family:'Sora',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#F6FBF0;opacity:0.6;">Brand Work</span>
+    </div>
+
+    <h1 style="color:#F6FBF0;font-family:'Sora',sans-serif;font-size:clamp(3rem,7vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.035em;max-width:900px;margin:0 0 32px;">
+      Brands built to be<br/>
+      <em style="font-style:normal;color:#89F337;">remembered.</em>
+    </h1>
+
+    <p style="color:#C8DDB8;font-family:'Sora',sans-serif;font-size:clamp(1rem,1.8vw,1.2rem);line-height:1.7;max-width:480px;margin:0 0 48px;">
+      Identity systems, food photography, and creative direction for Bangkok's F&B brands. We build the visual language that makes people stop scrolling.
+    </p>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+      <a href="/contact" style="display:inline-flex;align-items:center;gap:8px;background:#F6FBF0;color:#263519;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;padding:15px 32px;border-radius:3px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='#89F337'" onmouseout="this.style.background='#F6FBF0'">
+        Start a project
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#work" style="display:inline-flex;align-items:center;gap:8px;color:#F6FBF0;font-family:'Sora',sans-serif;font-size:14px;font-weight:500;padding:15px 24px;text-decoration:none;border:1px solid rgba(246,251,240,0.2);border-radius:3px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(246,251,240,0.6)'" onmouseout="this.style.borderColor='rgba(246,251,240,0.2)'">
+        See our work ↓
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute;right:48px;bottom:48px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;">
+    <span style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#82976E;writing-mode:vertical-rl;">Scroll</span>
+    <div style="width:1px;height:48px;background:linear-gradient(to bottom,#82976E,transparent);"></div>
+  </div>
+</section>
+
+<!-- DISCIPLINES -->
+<section style="background:#F6FBF0;padding:5rem 0;border-bottom:1px solid rgba(38,53,25,0.07);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;box-sizing:border-box;">
+    <div class="fade-up" style="margin-bottom:3rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.5rem;">What We Build</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;margin:0;">Three disciplines. One coherent brand.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);" class="disc-grid">
+
+      <div class="fade-up discipline-card" style="background:#fff;padding:3rem 2.5rem;position:relative;overflow:hidden;cursor:default;">
+        <div style="font-family:'Sora',sans-serif;font-size:clamp(4rem,8vw,6rem);font-weight:800;color:rgba(38,53,25,0.04);position:absolute;top:-10px;right:16px;line-height:1;pointer-events:none;user-select:none;">01</div>
+        <div style="width:48px;height:48px;background:#263519;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#89F337" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:800;color:#263519;margin:0 0 12px;letter-spacing:-0.02em;">Identity</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#445538;line-height:1.7;margin:0;">Logo systems, colour palettes, typography, brand guidelines. The visual DNA that scales from a single shopfront to a franchise.</p>
+      </div>
+
+      <div class="fade-up discipline-card" style="background:#fff;padding:3rem 2.5rem;position:relative;overflow:hidden;cursor:default;">
+        <div style="font-family:'Sora',sans-serif;font-size:clamp(4rem,8vw,6rem);font-weight:800;color:rgba(38,53,25,0.04);position:absolute;top:-10px;right:16px;line-height:1;pointer-events:none;user-select:none;">02</div>
+        <div style="width:48px;height:48px;background:#263519;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#89F337" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:800;color:#263519;margin:0 0 12px;letter-spacing:-0.02em;">Photography</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#445538;line-height:1.7;margin:0;">Food, venue, and lifestyle photography that captures your brand's actual personality — not just the food on a plate.</p>
+      </div>
+
+      <div class="fade-up discipline-card" style="background:#fff;padding:3rem 2.5rem;position:relative;overflow:hidden;cursor:default;">
+        <div style="font-family:'Sora',sans-serif;font-size:clamp(4rem,8vw,6rem);font-weight:800;color:rgba(38,53,25,0.04);position:absolute;top:-10px;right:16px;line-height:1;pointer-events:none;user-select:none;">03</div>
+        <div style="width:48px;height:48px;background:#263519;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#89F337" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:800;color:#263519;margin:0 0 12px;letter-spacing:-0.02em;">Creative Direction</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#445538;line-height:1.7;margin:0;">Art direction, campaign concepting, content strategy. The thinking behind why everything looks and feels the way it does.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORK MOSAIC -->
+<section id="work" style="background:#0e110b;padding:5rem 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;box-sizing:border-box;">
+    <div class="fade-up" style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.5rem;">Selected Work</span>
+        <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#F6FBF0;letter-spacing:-0.02em;margin:0;">Built to be seen.</h2>
+      </div>
+      <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;text-decoration:none;border-bottom:1px solid rgba(130,151,110,0.4);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='#F6FBF0';this.style.borderColor='#F6FBF0'" onmouseout="this.style.color='#82976E';this.style.borderColor='rgba(130,151,110,0.4)'">View full portfolio →</a>
+    </div>
+
+    <!-- Mosaic grid — Sauce style -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto;gap:3px;" class="mosaic-grid">
+
+      <!-- Large left card -->
+      <div class="fade-up mosaic-card" style="grid-column:1;grid-row:1/3;background:#1a2410;aspect-ratio:auto;min-height:480px;position:relative;overflow:hidden;cursor:pointer;">
+        <div class="mosaic-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,17,11,0.95) 0%,rgba(14,17,11,0.2) 60%,transparent 100%);z-index:1;transition:opacity 0.4s;"></div>
+        <div class="mosaic-img" style="position:absolute;inset:0;background:#1e2c14;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;z-index:2;">
+          <span style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#89F337;font-weight:600;display:block;margin-bottom:8px;">Identity</span>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1.3rem;font-weight:800;color:#F6FBF0;margin:0 0 6px;letter-spacing:-0.02em;line-height:1.2;">Brand Name<br/>Goes Here</h3>
+          <p style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;margin:0;transition:color 0.3s;">F&B · Bangkok</p>
+        </div>
+      </div>
+
+      <!-- Top right -->
+      <div class="fade-up mosaic-card" style="grid-column:2;grid-row:1;background:#141a0d;min-height:230px;position:relative;overflow:hidden;cursor:pointer;">
+        <div class="mosaic-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,17,11,0.95) 0%,transparent 70%);z-index:1;transition:opacity 0.4s;"></div>
+        <div class="mosaic-img" style="position:absolute;inset:0;background:#1a2410;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;z-index:2;">
+          <span style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#89F337;font-weight:600;display:block;margin-bottom:6px;">Photography</span>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:800;color:#F6FBF0;margin:0;letter-spacing:-0.02em;">Brand Name</h3>
+        </div>
+      </div>
+
+      <!-- Far right top -->
+      <div class="fade-up mosaic-card" style="grid-column:3;grid-row:1;background:#1e2814;min-height:230px;position:relative;overflow:hidden;cursor:pointer;">
+        <div class="mosaic-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,17,11,0.95) 0%,transparent 70%);z-index:1;transition:opacity 0.4s;"></div>
+        <div class="mosaic-img" style="position:absolute;inset:0;background:#243019;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;z-index:2;">
+          <span style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#89F337;font-weight:600;display:block;margin-bottom:6px;">Creative Direction</span>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:800;color:#F6FBF0;margin:0;letter-spacing:-0.02em;">Brand Name</h3>
+        </div>
+      </div>
+
+      <!-- Bottom middle -->
+      <div class="fade-up mosaic-card" style="grid-column:2;grid-row:2;background:#121709;min-height:230px;position:relative;overflow:hidden;cursor:pointer;">
+        <div class="mosaic-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,17,11,0.95) 0%,transparent 70%);z-index:1;transition:opacity 0.4s;"></div>
+        <div class="mosaic-img" style="position:absolute;inset:0;background:#18200f;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;z-index:2;">
+          <span style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#89F337;font-weight:600;display:block;margin-bottom:6px;">Identity</span>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:800;color:#F6FBF0;margin:0;letter-spacing:-0.02em;">Brand Name</h3>
+        </div>
+      </div>
+
+      <!-- Bottom right -->
+      <div class="fade-up mosaic-card" style="grid-column:3;grid-row:2;background:#192210;min-height:230px;position:relative;overflow:hidden;cursor:pointer;">
+        <div class="mosaic-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,17,11,0.95) 0%,transparent 70%);z-index:1;transition:opacity 0.4s;"></div>
+        <div class="mosaic-img" style="position:absolute;inset:0;background:#1e2a12;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;z-index:2;">
+          <span style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:#89F337;font-weight:600;display:block;margin-bottom:6px;">Photography</span>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:800;color:#F6FBF0;margin:0;letter-spacing:-0.02em;">Brand Name</h3>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="font-family:'Sora',sans-serif;font-size:12px;color:#4a6a3a;text-align:center;margin:1.5rem 0 0;letter-spacing:0.06em;">
+      ↑ Replace placeholders with your brand images via CMS at /admin
+    </p>
+  </div>
+</section>
+
+<!-- EDITORIAL PULL -->
+<section style="background:#263519;padding:6rem 0;position:relative;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-80px;top:50%;transform:translateY(-50%);font-family:'Sora',sans-serif;font-size:clamp(10rem,25vw,22rem);font-weight:800;color:rgba(137,243,55,0.04);line-height:1;pointer-events:none;user-select:none;letter-spacing:-0.05em;">WORK</div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;" class="pull-grid">
+      <div class="fade-up">
+        <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1rem;">Why It Matters</span>
+        <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:800;color:#F6FBF0;letter-spacing:-0.03em;line-height:1.1;margin:0 0 1.5rem;">
+          Good ads need a<br/>
+          <span style="color:#89F337;">great brand behind them.</span>
+        </h2>
+        <p style="font-family:'Sora',sans-serif;font-size:15px;color:#C8DDB8;line-height:1.75;margin:0 0 1.25rem;">We've run hundreds of campaigns. The ones that perform best aren't the ones with the biggest budgets — they're the ones where the brand looks like it means something.</p>
+        <p style="font-family:'Sora',sans-serif;font-size:15px;color:#A8BFA0;line-height:1.75;margin:0 0 2.5rem;">When your identity is sharp, your photography is on-brand, and your creative direction is consistent — every baht of ad spend goes further.</p>
+        <a href="/contact" style="display:inline-flex;align-items:center;gap:8px;color:#89F337;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(137,243,55,0.4);padding-bottom:3px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#89F337'" onmouseout="this.style.borderColor='rgba(137,243,55,0.4)'">
+          Talk to us about your brand →
+        </a>
+      </div>
+      <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(137,243,55,0.1);">
+        <div style="padding:2rem;background:#1a2210;">
+          <div style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:8px;">5</div>
+          <div style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;line-height:1.5;">person team.<br/>In-house everything.</div>
+        </div>
+        <div style="padding:2rem;background:#1a2210;border-left:1px solid rgba(137,243,55,0.1);">
+          <div style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:8px;">1</div>
+          <div style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;line-height:1.5;">briefing to first<br/>concepts.</div>
+        </div>
+        <div style="padding:2rem;background:#1a2210;border-top:1px solid rgba(137,243,55,0.1);">
+          <div style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:8px;">F&B</div>
+          <div style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;line-height:1.5;">only. We know<br/>this world.</div>
+        </div>
+        <div style="padding:2rem;background:#1a2210;border-top:1px solid rgba(137,243,55,0.1);border-left:1px solid rgba(137,243,55,0.1);">
+          <div style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:8px;">BKK</div>
+          <div style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;line-height:1.5;">based. Built for<br/>this market.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:#F6FBF0;padding:5rem 0;border-bottom:1px solid rgba(38,53,25,0.07);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;box-sizing:border-box;">
+    <div class="fade-up" style="margin-bottom:2.5rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.5rem;">How It Works</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;margin:0;">From brief to brand.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);" class="process-grid">
+      <div class="fade-up" style="background:#fff;padding:2.5rem 2rem;"><div style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:1rem;">01</div><h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 10px;">Discovery</h3><p style="font-family:'Sora',sans-serif;font-size:13px;color:#445538;line-height:1.7;margin:0;">We learn your brand, your customers, your competitors. What makes you worth remembering?</p></div>
+      <div class="fade-up" style="background:#fff;padding:2.5rem 2rem;"><div style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:1rem;">02</div><h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 10px;">Concept</h3><p style="font-family:'Sora',sans-serif;font-size:13px;color:#445538;line-height:1.7;margin:0;">We develop visual directions. Multiple routes, each with a clear rationale and mood.</p></div>
+      <div class="fade-up" style="background:#fff;padding:2.5rem 2rem;"><div style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:1rem;">03</div><h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 10px;">Refine</h3><p style="font-family:'Sora',sans-serif;font-size:13px;color:#445538;line-height:1.7;margin:0;">We sharpen the chosen direction together. Two rounds of revisions, no scope creep.</p></div>
+      <div class="fade-up" style="background:#fff;padding:2.5rem 2rem;"><div style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:1rem;">04</div><h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 10px;">Deliver</h3><p style="font-family:'Sora',sans-serif;font-size:13px;color:#445538;line-height:1.7;margin:0;">Final files, brand guidelines, and a handoff pack that your team can actually use.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#0e110b;padding:6rem 0;position:relative;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+    <span style="font-family:'Sora',sans-serif;font-size:clamp(6rem,18vw,16rem);font-weight:800;color:rgba(137,243,55,0.03);line-height:1;user-select:none;letter-spacing:-0.05em;">LET'S GO</span>
+  </div>
+  <div style="max-width:720px;margin:0 auto;padding:0 48px;box-sizing:border-box;text-align:center;position:relative;z-index:1;">
+    <div class="fade-up">
+      <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1rem;">Ready to build something?</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:#F6FBF0;letter-spacing:-0.03em;line-height:1.05;margin:0 0 1.5rem;">Let's build your<br/><span style="color:#89F337;">brand.</span></h2>
+      <p style="font-family:'Sora',sans-serif;font-size:15px;color:#C8DDB8;line-height:1.7;max-width:440px;margin:0 auto 2.5rem;">Tell us about your restaurant, your vision, and what you want people to feel when they see your brand.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="/contact" style="display:inline-flex;align-items:center;gap:8px;background:#89F337;color:#263519;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;padding:16px 36px;border-radius:3px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.boxShadow='0 0 32px rgba(137,243,55,0.4)'" onmouseout="this.style.boxShadow='none'">
+          Start a project
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#263519" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/portfolio" style="display:inline-flex;align-items:center;gap:8px;color:#F6FBF0;font-family:'Sora',sans-serif;font-size:14px;font-weight:500;padding:16px 24px;text-decoration:none;border:1px solid rgba(246,251,240,0.2);border-radius:3px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(246,251,240,0.6)'" onmouseout="this.style.borderColor='rgba(246,251,240,0.2)'">View full portfolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes curtain-up { from{transform:translateY(0)} to{transform:translateY(-100%)} }
+  #brand-curtain.out { animation: curtain-up 0.65s cubic-bezier(0.76,0,0.24,1) forwards; }
+
+  .discipline-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .discipline-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(38,53,25,0.12); }
+
+  .mosaic-card:hover .mosaic-img { transform: scale(1.06); }
+  .mosaic-card:hover .mosaic-overlay { opacity: 0.7; }
+
+  @media (max-width:768px) {
+    .disc-grid    { grid-template-columns: 1fr !important; }
+    .mosaic-grid  { grid-template-columns: 1fr 1fr !important; grid-template-rows: auto !important; }
+    .mosaic-grid > div { grid-column: auto !important; grid-row: auto !important; min-height: 180px !important; }
+    .pull-grid    { grid-template-columns: 1fr !important; gap: 3rem !important; }
+    .process-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (prefers-reduced-motion: reduce) { #brand-curtain { display: none; } }
+</style>
+
+<script>
+  const curtain = document.getElementById('brand-curtain');
+  if (curtain) requestAnimationFrame(() => setTimeout(() => curtain.classList.add('out'), 60));
+
+  // Fade in mosaic bg
+  const mosaicBg = document.getElementById('mosaic-bg');
+  if (mosaicBg) setTimeout(() => { mosaicBg.style.opacity = '1'; }, 400);
+</script>
+
+</BaseLayout>
