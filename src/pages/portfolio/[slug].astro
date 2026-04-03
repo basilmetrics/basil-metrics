@@ -4,17 +4,23 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const cmsEntries = await getCollection('portfolio');
-  
+
   const hardcoded = [
     {
       params: { slug: 'meta-fb-high-volume' },
       props: {
         isCMS: false,
         category: 'Dessert & F&B Brand',
+        service: 'Ads',
         platform: 'Meta',
-        label: 'Beating the Feed: High-Volume Meta Traffic',
-        result: '14,399 direct visits at just ฿0.62 per click',
+        label: 'Beating the Feed',
+        result: '14,399 direct visits at just ฿0.62 per click — 3.82% CTR on Meta',
         img: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=1200&q=80',
+        images: [],
+        video_url: '',
+        stat1_value: '฿0.62', stat1_label: 'Cost per click',
+        stat2_value: '14,399', stat2_label: 'Profile & LINE visits',
+        stat3_value: '3.82%', stat3_label: 'Click-through rate',
         body: `<h2>The Challenge</h2><p>In a saturated F&B market, every baht of ad spend needs to work harder than the last. Our client needed to drive high-volume, qualified traffic directly to their profile and LINE channel without burning through budget on low-intent audiences.</p><h2>The Approach</h2><p>We built a tightly structured Meta campaign targeting Bangkok audiences with demonstrated interest in desserts and premium F&B. Creative was built around high-contrast visual hooks designed to stop the scroll, with clear CTAs driving directly to LINE and profile visits.</p><h2>The Result</h2><p>From approximately ฿8,935 in total ad spend, the campaign generated 14,399 direct profile and LINE visits — a 3.82% Click-Through Rate with a cost of just ฿0.62 per click.</p><h2>Why This Matters</h2><p>According to WordStream, the average Meta Ads Cost Per Lead for F&B is ~฿110. We delivered at ฿0.62 — approximately 6% of the standard market rate.</p>`,
         benchmarkSource: 'WordStream Meta Ads Benchmarks for Restaurant & Food industry',
         benchmarkUrl: 'https://www.wordstream.com/blog/ws/2021/09/15/facebook-ads-benchmarks',
@@ -25,10 +31,16 @@ export async function getStaticPaths() {
       props: {
         isCMS: false,
         category: 'Dessert & F&B Brand',
+        service: 'Ads',
         platform: 'TikTok',
-        label: 'The Viral Sprint: Rapid TikTok Audience Growth',
+        label: 'The Viral Sprint',
         result: '+400 targeted followers in under 18 hours — 547 new followers per day',
         img: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80',
+        images: [],
+        video_url: '',
+        stat1_value: '+400', stat1_label: 'Followers in 18 hrs',
+        stat2_value: '547', stat2_label: 'New followers / day',
+        stat3_value: '94.6K', stat3_label: 'Account total reached',
         body: `<h2>The Challenge</h2><p>The client needed to accelerate their TikTok presence rapidly — not through slow organic growth, but through a strategic sprint that would create immediate momentum toward the critical 100K milestone.</p><h2>The Approach</h2><p>We engineered a high-velocity follower acquisition sprint using targeted content strategy, optimised posting windows, and audience engagement mechanics specific to the Thai F&B TikTok ecosystem.</p><h2>The Result</h2><p>400 new followers acquired in under 18 hours — 547 new followers per day — pushing the account to 94.6K and creating clear trajectory toward 100K.</p><h2>Why This Matters</h2><p>According to Rival IQ, average brand accounts see 2–3% monthly follower growth. This sprint delivered immediate daily momentum that radically outperforms standard brand growth timelines.</p>`,
         benchmarkSource: 'Rival IQ TikTok Benchmark Report',
         benchmarkUrl: 'https://www.rivaliq.com/blog/tiktok-benchmark-report/',
@@ -39,10 +51,16 @@ export async function getStaticPaths() {
       props: {
         isCMS: false,
         category: 'Premium Retail Brand',
+        service: 'Ads',
         platform: 'Google',
-        label: 'Capturing the Buyer: High-Intent Google Search',
-        result: '~1,000 high-intent clicks at ฿4.75 CPC — 4.30% CTR',
+        label: 'Capturing the Buyer',
+        result: '~1,000 high-intent clicks at ฿4.75 CPC — 4.30% CTR on Google Search',
         img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
+        images: [],
+        video_url: '',
+        stat1_value: '฿4.75', stat1_label: 'Cost per click',
+        stat2_value: '~1,000', stat2_label: 'High-intent clicks',
+        stat3_value: '4.30%', stat3_label: 'Click-through rate',
         body: `<h2>The Challenge</h2><p>A premium retail brand needed to capture bottom-of-funnel, ready-to-buy traffic for a specific product line.</p><h2>The Approach</h2><p>We built a tightly structured Google Search campaign targeting high-intent, product-specific keywords. Match types, negative keywords, and bid strategies were layered carefully to eliminate wasted spend.</p><h2>The Result</h2><p>Nearly 1,000 highly qualified clicks at ฿4.75 CPC with a 4.30% Click-Through Rate.</p><h2>Why This Matters</h2><p>WordStream reports the average CPC for retail is ~฿118. We captured high-intent traffic at ฿4.75 — massively undercutting the standard market rate.</p>`,
         benchmarkSource: 'WordStream Google Ads Benchmarks for Apparel/Fashion & Jewelry',
         benchmarkUrl: 'https://www.wordstream.com/blog/ws/2016/02/29/google-adwords-industry-benchmarks',
@@ -58,62 +76,248 @@ export async function getStaticPaths() {
   return [...hardcoded, ...cmsRoutes];
 }
 
-const { isCMS, entry, category, platform, label, result, img, body, benchmarkSource, benchmarkUrl } = Astro.props;
+const { isCMS, entry, category, service, platform, label, result, img, images, video_url, body, benchmarkSource, benchmarkUrl, stat1_value, stat1_label, stat2_value, stat2_label, stat3_value, stat3_label } = Astro.props;
 const { Content } = isCMS && entry ? await entry.render() : { Content: null };
+
+const d = {
+  category:    isCMS ? entry?.data.category    : category,
+  service:     isCMS ? entry?.data.service      : service,
+  platform:    isCMS ? entry?.data.platform     : platform,
+  label:       isCMS ? entry?.data.client_name  : label,
+  result:      isCMS ? entry?.data.result       : result,
+  cover:       isCMS ? entry?.data.cover_image  : img,
+  images:      isCMS ? (entry?.data.images || []) : (images || []),
+  video_url:   isCMS ? entry?.data.video_url    : video_url,
+  stat1_value: isCMS ? entry?.data.stat1_value  : stat1_value,
+  stat1_label: isCMS ? entry?.data.stat1_label  : stat1_label,
+  stat2_value: isCMS ? entry?.data.stat2_value  : stat2_value,
+  stat2_label: isCMS ? entry?.data.stat2_label  : stat2_label,
+  stat3_value: isCMS ? entry?.data.stat3_value  : stat3_value,
+  stat3_label: isCMS ? entry?.data.stat3_label  : stat3_label,
+};
+
+const allMedia = [];
+if (d.video_url) allMedia.push({ type: 'video', src: d.video_url });
+if (d.cover)    allMedia.push({ type: 'image', src: d.cover });
+(d.images || []).forEach(src => allMedia.push({ type: 'image', src }));
 ---
 
 <BaseLayout
-  title={isCMS ? `${entry?.data.client_name} — Portfolio — Basil Metrics` : `${label} — Portfolio — Basil Metrics`}
-  description={isCMS ? entry?.data.result : result}
+  title={`${d.label || 'Case Study'} — ${d.result?.slice(0,60)} — Basil Metrics`}
+  description={d.result || ''}
 >
-<div style="background:#F6FBF0;min-height:100vh;">
-  <div style="max-width:900px;margin:0 auto;padding:4rem 1.25rem 7rem;">
 
-    <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;display:inline-block;margin-bottom:2.5rem;">← All Work</a>
+<!-- HERO — tight, content-first -->
+<section style="background:#263519;padding:80px 48px 56px;position:relative;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-10px;bottom:-20px;font-family:'Sora',sans-serif;font-size:clamp(6rem,14vw,12rem);font-weight:800;color:rgba(246,251,240,0.03);line-height:1;pointer-events:none;user-select:none;letter-spacing:-0.05em;">{d.platform || d.service}</div>
 
-    {isCMS && entry ? (
-      <>
-        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;flex-wrap:wrap;">
-          <span style="font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">{entry.data.category}</span>
-          <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{entry.data.platform}</span>
-        </div>
-        <p style="font-family:'Sora',sans-serif;font-size:0.7rem;color:#82976E;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;">{entry.data.client_name}</p>
-        <h1 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;color:#263519;line-height:1.12;letter-spacing:-0.02em;margin-bottom:2.5rem;">{entry.data.result}</h1>
-        {entry.data.cover_image && (
-          <div style="margin-bottom:3rem;overflow:hidden;border:1px solid rgba(38,53,25,0.08);">
-            <img src={entry.data.cover_image} alt={entry.data.client_name} style="width:100%;object-fit:cover;display:block;" loading="eager" />
-          </div>
-        )}
-        <div class="prose">
-          <Content />
-        </div>
-      </>
-    ) : (
-      <>
-        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;flex-wrap:wrap;">
-          <span style="font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">{category}</span>
-          <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{platform}</span>
-        </div>
-        <p style="font-family:'Sora',sans-serif;font-size:0.7rem;color:#82976E;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;">{label}</p>
-        <h1 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;color:#263519;line-height:1.12;letter-spacing:-0.02em;margin-bottom:2.5rem;">{result}</h1>
-        <div style="margin-bottom:3rem;overflow:hidden;border:1px solid rgba(38,53,25,0.08);">
-          <img src={img} alt={label} style="width:100%;object-fit:cover;display:block;" loading="eager" />
-        </div>
-        <div class="prose" set:html={body} />
-        <div style="margin-top:2.5rem;padding:1.25rem 1.5rem;background:rgba(38,53,25,0.03);border:1px solid rgba(38,53,25,0.08);border-left:2px solid #89F337;">
-          <p style="font-family:'Sora',sans-serif;font-size:0.78rem;color:#82976E;line-height:1.6;">
-            <strong style="color:#263519;">Benchmark source:</strong> {benchmarkSource}.
-            <a href={benchmarkUrl} target="_blank" rel="noopener noreferrer" style="color:#263519;text-decoration:underline;text-underline-offset:3px;margin-left:0.25rem;">View source →</a>
-          </p>
-        </div>
-      </>
-    )}
+  <div style="max-width:860px;margin:0 auto;position:relative;z-index:1;">
 
-    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(38,53,25,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
-      <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#82976E;text-decoration:none;">← All Work</a>
-      <a href="/contact" class="btn-lime" style="font-size:0.82rem;padding:0.7rem 1.5rem;">Start a Similar Campaign</a>
+    <!-- Back -->
+    <a href="/portfolio" style="display:inline-flex;align-items:center;gap:8px;color:#82976E;font-family:'Sora',sans-serif;font-size:11px;font-weight:500;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:32px;transition:color 0.2s;" onmouseover="this.style.color='#F6FBF0'" onmouseout="this.style.color='#82976E'">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All Work
+    </a>
+
+    <!-- Meta tags row -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+      {d.category && <span style="font-family:'Sora',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;font-weight:600;">{d.category}</span>}
+      {d.category && (d.platform || d.service) && <span style="color:#4a6a3a;font-size:10px;">·</span>}
+      {d.platform && <span style="font-family:'Sora',sans-serif;font-size:10px;background:rgba(137,243,54,0.15);color:#89F337;border-radius:99px;padding:3px 12px;font-weight:600;">{d.platform}</span>}
+      {d.service && <span style="font-family:'Sora',sans-serif;font-size:10px;background:rgba(246,251,240,0.08);color:#C8DDB8;border-radius:99px;padding:3px 12px;font-weight:500;">{d.service}</span>}
     </div>
 
+    <!-- Campaign name -->
+    {d.label && <p style="font-family:'Sora',sans-serif;font-size:11px;color:#82976E;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 12px;">{d.label}</p>}
+
+    <!-- Headline result -->
+    <h1 style="font-family:'Sora',sans-serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:800;color:#F6FBF0;line-height:1.1;letter-spacing:-0.025em;margin:0 0 40px;">{d.result}</h1>
+
+    <!-- Stats strip -->
+    {(d.stat1_value || d.stat2_value || d.stat3_value) && (
+      <div style="display:flex;gap:0;border:1px solid rgba(137,243,55,0.2);">
+        {d.stat1_value && (
+          <div style="flex:1;padding:18px 22px;border-right:1px solid rgba(137,243,55,0.15);">
+            <div style="font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#89F337;line-height:1;margin-bottom:5px;">{d.stat1_value}</div>
+            <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;letter-spacing:0.08em;text-transform:uppercase;">{d.stat1_label}</div>
+          </div>
+        )}
+        {d.stat2_value && (
+          <div style={`flex:1;padding:18px 22px;${d.stat3_value?'border-right:1px solid rgba(137,243,55,0.15);':''}`}>
+            <div style="font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#89F337;line-height:1;margin-bottom:5px;">{d.stat2_value}</div>
+            <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;letter-spacing:0.08em;text-transform:uppercase;">{d.stat2_label}</div>
+          </div>
+        )}
+        {d.stat3_value && (
+          <div style="flex:1;padding:18px 22px;">
+            <div style="font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:#89F337;line-height:1;margin-bottom:5px;">{d.stat3_value}</div>
+            <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;letter-spacing:0.08em;text-transform:uppercase;">{d.stat3_label}</div>
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- BODY -->
+<div style="background:#F6FBF0;">
+  <div style="max-width:860px;margin:0 auto;padding:64px 48px 80px;box-sizing:border-box;">
+
+    <!-- Cover image / media — full width, breathing room -->
+    {allMedia.length > 0 && (
+      <div style="margin-bottom:56px;">
+        <div style="overflow:hidden;background:#1a2210;position:relative;" id="cs-main-wrap">
+          {allMedia[0].type === 'video' ? (
+            <div style="aspect-ratio:16/9;">
+              <iframe id="cs-video" src={(() => {
+                let src = allMedia[0].src;
+                if (src.includes('youtube.com/watch')) src = src.replace('watch?v=','embed/');
+                else if (src.includes('youtu.be/')) src = src.replace('youtu.be/','www.youtube.com/embed/');
+                else if (src.includes('vimeo.com/')) src = src.replace('vimeo.com/','player.vimeo.com/video/');
+                return src;
+              })()} frameborder="0" allow="autoplay;fullscreen" allowfullscreen style="width:100%;height:100%;border:none;display:block;"></iframe>
+            </div>
+          ) : (
+            <img id="cs-img" src={allMedia[0].src} alt={d.label || ''} style="width:100%;display:block;max-height:560px;object-fit:cover;" loading="eager"/>
+          )}
+          {allMedia.length > 1 && (
+            <>
+              <button onclick="csNav(-1)" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);background:rgba(14,17,11,0.65);border:1px solid rgba(246,251,240,0.15);color:#F6FBF0;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:2;">‹</button>
+              <button onclick="csNav(1)"  style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(14,17,11,0.65);border:1px solid rgba(246,251,240,0.15);color:#F6FBF0;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:2;">›</button>
+              <div style="position:absolute;bottom:12px;right:14px;background:rgba(14,17,11,0.65);padding:3px 10px;border-radius:2px;">
+                <span id="cs-counter" style="font-family:'Sora',sans-serif;font-size:11px;color:#F6FBF0;">1 / {allMedia.length}</span>
+              </div>
+            </>
+          )}
+        </div>
+        {allMedia.length > 1 && (
+          <div style="display:flex;gap:6px;margin-top:6px;overflow-x:auto;" id="cs-thumbs">
+            {allMedia.map((m, i) => (
+              <div onclick={`csGoTo(${i})`} id={`cs-thumb-${i}`} style={`flex-shrink:0;height:64px;aspect-ratio:${m.type==='video'?'16/9':'4/3'};cursor:pointer;overflow:hidden;border:2px solid ${i===0?'#89F337':'transparent'};transition:border-color 0.18s;background:#1a2210;`}>
+                {m.type === 'video' ? (
+                  <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#89F337"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                ) : (
+                  <img src={m.src} alt={`Photo ${i+1}`} style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    )}
+
+    <!-- Editorial body content -->
+    <div class="prose">
+      {isCMS && Content ? <Content /> : <Fragment set:html={body || ''} />}
+    </div>
+
+    <!-- Benchmark footnote -->
+    {benchmarkSource && (
+      <div style="margin-top:3rem;padding:1rem 1.25rem;border-left:3px solid #89F337;background:rgba(38,53,25,0.04);">
+        <p style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;line-height:1.65;margin:0;">
+          <strong style="color:#263519;font-weight:600;">Benchmark:</strong> {benchmarkSource}.
+          <a href={benchmarkUrl} target="_blank" rel="noopener noreferrer" style="color:#263519;text-decoration:underline;text-underline-offset:3px;margin-left:4px;">View source →</a>
+        </p>
+      </div>
+    )}
+
+    <!-- Campaign footnote strip -->
+    <div style="margin-top:3rem;padding:1.25rem 0;border-top:1px solid rgba(38,53,25,0.1);border-bottom:1px solid rgba(38,53,25,0.1);display:flex;gap:2rem;flex-wrap:wrap;">
+      {d.category && (
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;margin-bottom:4px;">Category</div>
+          <div style="font-family:'Sora',sans-serif;font-size:13px;color:#263519;font-weight:600;">{d.category}</div>
+        </div>
+      )}
+      {d.platform && (
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;margin-bottom:4px;">Platform</div>
+          <div style="font-family:'Sora',sans-serif;font-size:13px;color:#263519;font-weight:600;">{d.platform}</div>
+        </div>
+      )}
+      {d.service && (
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;margin-bottom:4px;">Service</div>
+          <div style="font-family:'Sora',sans-serif;font-size:13px;color:#263519;font-weight:600;">{d.service}</div>
+        </div>
+      )}
+      {d.label && (
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;margin-bottom:4px;">Client</div>
+          <div style="font-family:'Sora',sans-serif;font-size:13px;color:#263519;font-weight:600;">{d.label}</div>
+        </div>
+      )}
+    </div>
+
+    <!-- Bottom nav -->
+    <div style="margin-top:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <a href="/portfolio" style="display:inline-flex;align-items:center;gap:8px;font-family:'Sora',sans-serif;font-size:13px;color:#82976E;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#263519'" onmouseout="this.style.color='#82976E'">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to all work
+      </a>
+      <a href="/contact" style="display:inline-flex;align-items:center;gap:8px;background:#263519;color:#F6FBF0;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;padding:14px 28px;border-radius:3px;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        Start a similar campaign →
+      </a>
+    </div>
   </div>
 </div>
+
+<style>
+  .prose { font-family:'Sora',sans-serif; color:#263519; }
+  .prose h2 {
+    font-size:1.25rem; font-weight:800; color:#263519;
+    margin:3rem 0 1rem; letter-spacing:-0.02em; line-height:1.2;
+    padding-bottom:10px; border-bottom:2px solid #89F337;
+    display:inline-block;
+  }
+  .prose p { font-size:15px; color:#445538; line-height:1.8; margin:0 0 1.5rem; }
+  .prose p:last-child { margin-bottom:0; }
+  .prose strong { color:#263519; font-weight:700; }
+  ::-webkit-scrollbar { height:4px; }
+  ::-webkit-scrollbar-thumb { background:rgba(38,53,25,0.15);border-radius:2px; }
+</style>
+
+<script define:vars={{ allMedia }}>
+  let idx = 0;
+
+  function renderMain() {
+    const m = allMedia[idx];
+    const img = document.getElementById('cs-img');
+    const vid = document.getElementById('cs-video');
+    const counter = document.getElementById('cs-counter');
+
+    if (m.type === 'video') {
+      if (img) img.style.display = 'none';
+      if (vid) {
+        vid.style.display = 'block';
+        let src = m.src;
+        if (src.includes('youtube.com/watch')) src = src.replace('watch?v=','embed/');
+        else if (src.includes('youtu.be/')) src = src.replace('youtu.be/','www.youtube.com/embed/');
+        else if (src.includes('vimeo.com/')) src = src.replace('vimeo.com/','player.vimeo.com/video/');
+        vid.src = src;
+      }
+    } else {
+      if (vid) { vid.style.display = 'none'; vid.src = ''; }
+      if (img) { img.style.display = 'block'; img.src = m.src; }
+    }
+
+    if (counter) counter.textContent = `${idx+1} / ${allMedia.length}`;
+
+    allMedia.forEach((_, i) => {
+      const t = document.getElementById(`cs-thumb-${i}`);
+      if (t) t.style.borderColor = i === idx ? '#89F337' : 'transparent';
+    });
+  }
+
+  window.csNav = d => { idx = (idx+d+allMedia.length)%allMedia.length; renderMain(); };
+  window.csGoTo = i => { idx = i; renderMain(); };
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') window.csNav(1);
+    if (e.key === 'ArrowLeft')  window.csNav(-1);
+  });
+</script>
+
 </BaseLayout>

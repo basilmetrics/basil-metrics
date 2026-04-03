@@ -212,6 +212,53 @@ declare module 'astro:content' {
   data: InferEntrySchema<"homepage">
 };
 };
+"services": {
+"a1-static-graphics": {
+	id: "a1-static-graphics";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+"a2-video-content": {
+	id: "a2-video-content";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+"a3-photo-production": {
+	id: "a3-photo-production";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+"a4-content-planning": {
+	id: "a4-content-planning";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+"b1-social-ads": {
+	id: "b1-social-ads";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+"b2-google-ads": {
+	id: "b2-google-ads";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+"b3-seo": {
+	id: "b3-seo";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+"b4-paid-pr": {
+	id: "b4-paid-pr";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+"c1-strategy-planning": {
+	id: "c1-strategy-planning";
+  collection: "services";
+  data: InferEntrySchema<"services">
+};
+};
 
 	};
 

@@ -1,0 +1,511 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const hp = await getEntry("homepage", "settings");
+const { hero_line1, hero_line2, hero_subtext, stat1_label, stat1_value, stat2_label, stat2_value, stat3_label, stat3_value } = hp.data;
+const services = [
+  { n: '01', name: 'Brand Architecture', desc: 'Visual identity systems designed to scale — from single outlet to multi-location franchise.' },
+  { n: '02', name: 'Performance Ads', desc: 'Meta, Google, and TikTok campaigns structured for measurable, attributable return.' },
+  { n: '03', name: 'Creative Direction', desc: 'Photography, video, and copy that earns attention before spending a single baht of budget.' },
+  { n: '04', name: 'Growth Analytics', desc: 'Clear reporting on ROAS, CPA, and LTV. Real numbers, acted on fast.' },
+];
+
+const results = [
+  {
+    category: 'Dessert & F&B Brand',
+    platform: 'Meta',
+    metric: '0.62 ฿ per click',
+    detail: '14,399 profile & LINE visits · 3.82% CTR · ฿8,935 total spend',
+    benchmark: 'Industry avg: ~฿110 cost per lead (WordStream)',
+    label: 'Beating the Feed',
+  },
+  {
+    category: 'Dessert & F&B Brand',
+    platform: 'TikTok',
+    metric: '+400 followers in 18 hrs',
+    detail: '547 new followers/day · account reached 94.6K · on track for 100K',
+    benchmark: 'Industry avg: 2–3% monthly growth (Rival IQ)',
+    label: 'The Viral Sprint',
+  },
+  {
+    category: 'Premium Retail Brand',
+    platform: 'Google',
+    metric: '4.75 ฿ per click',
+    detail: '~1,000 high-intent clicks · 4.30% CTR · bottom-of-funnel traffic',
+    benchmark: 'Industry avg: ~฿118 CPC for retail (WordStream)',
+    label: 'Capturing the Buyer',
+  },
+];
+
+const tickerItems = [
+  'Performance Ads', 'Brand Strategy', 'Meta Campaigns', 'TikTok Creative',
+  'Google Ads', 'ROAS Optimisation', 'Creative Direction', 'F&B Marketing',
+  'Conversion Tracking', 'Delivery Brands', 'Dine-In Strategy', 'Campaign Analytics',
+];
+---
+
+<BaseLayout
+  schema={{"@context":"https://schema.org","@graph":[{"@type":["MarketingAgency","LocalBusiness"],"@id":"https://basilmetrics.com/#organization","name":"Basil Metrics","url":"https://basilmetrics.com","logo":"https://basilmetrics.com/logo.svg","description":"Performance marketing agency specializing in Meta, TikTok and Google ads for F&B and retail brands in Bangkok, Thailand.","areaServed":{"@type":"City","name":"Bangkok"},"address":{"@type":"PostalAddress","addressLocality":"Bangkok","addressCountry":"TH"},"priceRange":"฿฿","knowsAbout":["Meta Ads","TikTok Marketing","Google Ads","F&B Marketing","ROAS Optimization","Brand Strategy","Performance Marketing","Content Creation"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much do Meta ads cost for Bangkok restaurants?","acceptedAnswer":{"@type":"Answer","text":"The industry average is ฿110 per lead. Basil Metrics campaigns average ฿0.62 per click — making every baht of ad spend work significantly harder for Bangkok F&B brands."}},{"@type":"Question","name":"Which platforms work best for F&B marketing in Bangkok?","acceptedAnswer":{"@type":"Answer","text":"Meta drives direct traffic and LINE conversions. TikTok drives discovery and viral growth. Google captures high-intent buyers ready to purchase. Basil Metrics runs all three."}},{"@type":"Question","name":"What is ROAS and why does it matter for Bangkok restaurants?","acceptedAnswer":{"@type":"Answer","text":"ROAS (Return on Ad Spend) measures revenue generated per baht spent on advertising. For Bangkok F&B brands, tracking ROAS across Meta, TikTok and Google is essential to scaling profitably."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://basilmetrics.com"}]}]}}
+  title="Bangkok F&B Performance Marketing Agency | Basil Metrics"
+  description="Meta, TikTok & Google ads for Bangkok restaurants & F&B brands. ฿0.62 cost per click. Real ROAS. Book a free strategy call today."
+>
+
+<div style="background:#F6FBF0;position:relative;z-index:1;">
+
+
+
+  <!-- HERO -->
+  <section style="position:relative;z-index:1;background:#F6FBF0;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:3rem 2rem 3rem;border-bottom:1px solid rgba(38,53,25,0.08);position:relative;overflow:hidden;">
+    <div style="max-width:1200px;margin:0 auto;width:100%;">
+      <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1.5rem;position:relative;z-index:1;">Bangkok, Thailand — F&B Performance Marketing</span>
+      <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:#263519;margin-bottom:1.5rem;max-width:900px;position:relative;z-index:1;" id="hero-h1">
+        {hero_line1}<br />
+        <em style="font-style:normal;color:#89F337;">Convert.</em><br />
+        {hero_line2}
+      </h1>
+      <p style="font-family:'Sora',sans-serif;font-size:1.05rem;color:#82976E;max-width:480px;line-height:1.8;margin-bottom:3rem;font-weight:400;letter-spacing:0.01em;word-spacing:0.05em;">
+        We combine brand strategy, creative production, and paid media into campaigns that move real numbers for Bangkok's food and F&B brands.
+      </p>
+
+      <!-- Stats -->
+      <div class="hero-stats" style="background:#FFFFFF;border:1px solid rgba(38,53,25,0.08);margin-bottom:2.75rem;max-width:560px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;border-bottom:1px solid rgba(38,53,25,0.08);">
+          <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;font-weight:600;margin:0;">Cost Per Click</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;margin:0;" id="s-cpc">{stat1_value}</p>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;border-bottom:1px solid rgba(38,53,25,0.08);">
+          <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;font-weight:600;margin:0;">Follower Growth</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;margin:0;" id="s-follow">{stat2_value}</p>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;">
+          <p style="font-family:'Sora',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;font-weight:600;margin:0;">Avg CTR</p>
+          <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1;margin:0;" id="s-ctr">{stat3_value}</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0.75rem;flex-direction:column;max-width:320px;width:100%;">
+        <a href="/contact" class="btn-lime">Start a Campaign</a>
+        <a href="/portfolio" class="btn-ghost" style="white-space:nowrap;">View Case Studies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-outer" style="position:relative;z-index:1;" aria-hidden="true">
+    <div class="ticker-inner">
+      {[...tickerItems, ...tickerItems].map(item => (
+        <span class="ticker-item"><span class="ticker-dot">◆</span>{item}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section style="position:relative;z-index:1;background:#F6FBF0;max-width:100%;padding:5.5rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="fade-up" style="margin-bottom:2.5rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.6rem;">What We Do</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;">Services</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);" class="services-grid">
+      {services.map(s => (
+        <div class="fade-up card-lift" style="background:#FFFFFF;padding:2.5rem;" onmouseover="this.style.background='#F6FBF0'" onmouseout="this.style.background='#FFFFFF'">
+          <p style="font-family:'Sora',sans-serif;font-size:0.58rem;color:#82976E;font-weight:600;letter-spacing:0.1em;margin-bottom:1.1rem;">{s.n}</p>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:700;color:#263519;margin-bottom:0.65rem;">{s.name}</h3>
+          <p style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.68;">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+    <div class="fade-up" style="margin-bottom:2.5rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.6rem;">Proof of Work</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;">Results</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);" class="results-grid">
+      {results.map(r => (
+        <div class="fade-up" style="background:#FFFFFF;padding:2.25rem;display:flex;flex-direction:column;justify-content:space-between;" class="card-lift">
+          <div>
+            <!-- Label + Platform -->
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+              <span style="font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">{r.category}</span>
+              <span style="font-family:'Sora',sans-serif;font-size:0.6rem;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:0.18rem 0.65rem;font-weight:600;">{r.platform}</span>
+            </div>
+            <!-- Campaign label -->
+            <p style="font-family:'Sora',sans-serif;font-size:0.7rem;color:#82976E;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem;">{r.label}</p>
+            <!-- Big metric -->
+            <p style="font-family:'Sora',sans-serif;font-size:1.75rem;font-weight:800;color:#263519;line-height:1.1;margin-bottom:0.75rem;">{r.metric}</p>
+            <!-- Detail -->
+            <p style="font-family:'Sora',sans-serif;font-size:0.8rem;color:#263519;line-height:1.6;margin-bottom:1rem;">{r.detail}</p>
+          </div>
+          <!-- Benchmark -->
+          <div style="border-top:1px solid rgba(38,53,25,0.07);padding-top:0.85rem;margin-top:0.5rem;">
+            <p style="font-family:'Sora',sans-serif;font-size:0.72rem;color:#82976E;line-height:1.55;font-style:italic;">{r.benchmark}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+
+  <!-- HOW WE WORK -->
+  <section style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+    <div class="fade-up" style="margin-bottom:2.5rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.6rem;">Our Process</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;">How We Work</h2>
+    </div>
+    <div style="border-top:1px solid rgba(38,53,25,0.08);" class="how-work-wrap"><div class="how-work-line" id="how-line"></div>
+      <div class="fade-up how-step">
+        <div style="font-family:'Sora',sans-serif;font-size:2.75rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:0.75rem;">01</div>
+        <div>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#263519;margin-bottom:0.5rem;">We look at what's really going on.</h3>
+          <p style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;">Before we spend a single baht of your money, we look at your current setup. We check your social feeds, your past ads, and how customers actually book a table to see what's working and what needs fixing.</p>
+        </div>
+      </div>
+      <div class="fade-up how-step">
+        <div style="font-family:'Sora',sans-serif;font-size:2.75rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:0.75rem;">02</div>
+        <div>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#263519;margin-bottom:0.5rem;">You pick exactly what you need.</h3>
+          <p style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;">No bloated agency retainers. We give you a clear menu of what we can do. If you just need us to run your ads, great. If you need us to shoot photos, make Reels, and handle the ads, we can do that too. You only pay for what actually helps you grow.</p>
+        </div>
+      </div>
+      <div class="fade-up how-step">
+        <div style="font-family:'Sora',sans-serif;font-size:2.75rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:0.75rem;">03</div>
+        <div>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#263519;margin-bottom:0.5rem;">We build and launch.</h3>
+          <p style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;">Our team of five takes over the heavy lifting. We create the content, set up your audiences, fix your LINE OA, and get your campaigns running so you can focus on running your restaurant.</p>
+        </div>
+      </div>
+      <div class="fade-up how-step" style="border-bottom:none;">
+        <div style="font-family:'Sora',sans-serif;font-size:2.75rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:0.75rem;">04</div>
+        <div>
+          <h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#263519;margin-bottom:0.5rem;">We keep the tables full.</h3>
+          <p style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;">A one-off viral video is fun, but it doesn't pay the rent. We watch your ad spend closely every week, making adjustments to ensure you are getting steady, predictable foot traffic month after month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+    <div class="fade-up" style="margin-bottom:2.5rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.6rem;">Got Questions</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;">Frequently Asked Questions</h2>
+    </div>
+    <div style="border-top:1px solid rgba(38,53,25,0.08);">
+      <details class="faq-item fade-up">
+        <summary style="font-family:'Sora',sans-serif;font-size:0.92rem;font-weight:600;color:#263519;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;">
+          Do you only work with big restaurant chains?
+          <span class="faq-plus" style="font-size:1.4rem;color:#89F337;font-weight:300;transition:transform 0.2s;min-width:20px;text-align:center;">+</span>
+        </summary>
+        <div style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;padding-bottom:1.25rem;">Not at all. While we do work with established hospitality groups, we really love partnering with independent founders — whether you're opening a specialty coffee shop, a neighborhood bakery, or a new tapas bar. We started out running a local bakery in 2020, so we know exactly what it's like to build something from the ground up.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary style="font-family:'Sora',sans-serif;font-size:0.92rem;font-weight:600;color:#263519;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;">
+          How much does it cost to work with you?
+          <span class="faq-plus" style="font-size:1.4rem;color:#89F337;font-weight:300;transition:transform 0.2s;min-width:20px;text-align:center;">+</span>
+        </summary>
+        <div style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;padding-bottom:1.25rem;">It depends entirely on what you need. We don't force anyone into massive monthly contracts for services they aren't using. Our projects start at 5,000 THB, and we build a custom price based strictly on the exact services you choose.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary style="font-family:'Sora',sans-serif;font-size:0.92rem;font-weight:600;color:#263519;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;">
+          Do you shoot photos and videos, or do you just run ads?
+          <span class="faq-plus" style="font-size:1.4rem;color:#89F337;font-weight:300;transition:transform 0.2s;min-width:20px;text-align:center;">+</span>
+        </summary>
+        <div style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;padding-bottom:1.25rem;">We do both. We're a dedicated team of five, which means we can shoot the photos and videos that capture the actual vibe of your venue, and then run the ads to make sure people actually see them.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary style="font-family:'Sora',sans-serif;font-size:0.92rem;font-weight:600;color:#263519;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;">
+          Where do you run the ads?
+          <span class="faq-plus" style="font-size:1.4rem;color:#89F337;font-weight:300;transition:transform 0.2s;min-width:20px;text-align:center;">+</span>
+        </summary>
+        <div style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;padding-bottom:1.25rem;">Wherever your customers are. Usually that means Instagram, Facebook, and TikTok. But we also set up Google Search ads for people actively looking for a place to eat, and run delivery campaigns right inside the Grab and LINE MAN apps.</div>
+      </details>
+      <details class="faq-item fade-up">
+        <summary style="font-family:'Sora',sans-serif;font-size:0.92rem;font-weight:600;color:#263519;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;">
+          How long does it take to see results?
+          <span class="faq-plus" style="font-size:1.4rem;color:#89F337;font-weight:300;transition:transform 0.2s;min-width:20px;text-align:center;">+</span>
+        </summary>
+        <div style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;padding-bottom:1.25rem;">If we're running a campaign to get more profile visits or followers, you'll see those numbers moving within the first few days. But honestly, our real goal is long-term stability. It usually takes us about 30 to 60 days of testing and tweaking to build a reliable system that brings in a steady flow of customers.</div>
+      </details>
+      <details class="faq-item fade-up" style="border-bottom:none;">
+        <summary style="font-family:'Sora',sans-serif;font-size:0.92rem;font-weight:600;color:#263519;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;">
+          Placeholder — your next question goes here
+          <span class="faq-plus" style="font-size:1.4rem;color:#89F337;font-weight:300;transition:transform 0.2s;min-width:20px;text-align:center;">+</span>
+        </summary>
+        <div style="font-family:'Sora',sans-serif;font-size:0.875rem;color:#82976E;line-height:1.7;padding-bottom:1.25rem;">Your answer goes here. Drop in via CMS or code when ready.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1200px;margin:0 auto;padding:5.5rem 2rem 7rem;">
+    <div class="fade-up" style="background:#263519;padding:4rem 3.5rem;" class="hero-grain">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;" class="cta-inner">
+        <div>
+          <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(130,151,110,0.6);font-weight:500;display:block;margin-bottom:0.75rem;">Ready to launch</span>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.6rem,3vw,2.75rem);font-weight:800;color:#F6FBF0;margin-bottom:1rem;max-width:480px;line-height:1.1;letter-spacing:-0.02em;">
+            Your Next Campaign Starts With One Conversation.
+          </h2>
+          <p style="font-family:'Sora',sans-serif;font-size:0.9rem;color:#82976E;line-height:1.7;max-width:420px;">
+            Tell us your brand, your goals, your budget. We'll map out a campaign that actually converts.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;min-width:180px;">
+          <a href="/contact" class="btn-lime" style="text-align:center;">Start a Campaign →</a>
+          <a href="/portfolio" style="font-family:'Sora',sans-serif;font-size:0.78rem;color:#82976E;text-align:center;text-decoration:underline;text-underline-offset:3px;">View case studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<style>
+  @media (max-width: 768px) {
+    /* hero-stats mobile handled below */
+    
+    
+    .services-grid { grid-template-columns: 1fr !important; }
+    .results-grid  { grid-template-columns: 1fr !important; }
+    .cta-inner     { grid-template-columns: 1fr !important; }
+  }
+
+  .how-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(38,53,25,0.07);
+    align-items: start;
+  }
+  .faq-item { border-bottom: 1px solid rgba(38,53,25,0.08); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  details[open] .faq-plus { transform: rotate(45deg); }
+  @media (max-width: 768px) {
+    .how-step { grid-template-columns: 60px 1fr; gap: 1rem; }
+  }
+
+
+  .card-lift {
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.18s !important;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 32px rgba(38,53,25,0.10) !important;
+  }
+  .section-heading {
+    position: relative;
+    display: inline-block;
+  }
+  .section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #89F337;
+    transition: width 0.6s ease;
+  }
+  .section-heading.underline-in::after {
+    width: 100%;
+  }
+  .hero-grain {
+    position: relative;
+  }
+  .hero-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 0;
+  }
+  .hero-grain > * { position: relative; z-index: 1; }
+
+
+  .hero-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: wordReveal 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes wordReveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .ghost-number {
+    position: absolute;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    color: rgba(38,53,25,0.045);
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    z-index: 0;
+  }
+  @keyframes floatA {
+    0%,100% { transform: translate(0,0); }
+    50% { transform: translate(12px,-18px); }
+  }
+  @keyframes floatB {
+    0%,100% { transform: translate(0,0); }
+    50% { transform: translate(-10px,14px); }
+  }
+  @keyframes floatC {
+    0%,100% { transform: translate(0,0); }
+    50% { transform: translate(8px,20px); }
+  }
+  .how-work-wrap {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .how-work-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: #89F337;
+    transition: height 1.2s cubic-bezier(0.22,1,0.36,1);
+  }
+  .how-work-line.line-in {
+    height: 100%;
+  }
+
+
+  /* removed */ .bg-fixed-text-old {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    color: rgba(38,53,25,0.04);
+    font-size: clamp(2rem, 5vw, 5rem);
+    opacity: 0;
+    animation: bgTextFadeIn 2.5s ease 0.5s forwards;
+  }
+  .bg-fixed-text .bm-line {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -0.03em;
+    display: block;
+  }
+  .bg-fixed-text .bm-basil { color: rgba(38,53,25,0.06); }
+  .bg-fixed-text .bm-metrics { color: rgba(137,243,55,0.25); }
+  @keyframes bgTextFadeIn {
+    to { opacity: 1; }
+  }
+  @media (max-width: 768px) {
+    /* removed */ .bg-fixed-text-old {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      font-size: clamp(1.5rem, 7vw, 2.5rem);
+      margin: 2rem auto 0;
+      white-space: normal;
+      width: 100%;
+      padding: 0 1rem;
+    }
+  }
+
+</style>
+
+<script>
+  const statsBox = document.querySelector('.hero-stats');
+  if (!statsBox) throw new Error();
+
+  const targets = [
+    { el: document.getElementById('s-cpc'),    from: 0, to: 0.62, prefix: '฿', suffix: '',  decimals: 2 },
+    { el: document.getElementById('s-follow'), from: 0, to: 400,  prefix: '+', suffix: '',  decimals: 0 },
+    { el: document.getElementById('s-ctr'),    from: 0, to: 3.82, prefix: '',  suffix: '%', decimals: 2 },
+  ];
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function runCount() {
+    const duration = 2000;
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = easeOut(t);
+      targets.forEach(({ el, from, to, prefix, suffix, decimals }) => {
+        if (!el) return;
+        const val = from + (to - from) * ease;
+        el.textContent = prefix + val.toFixed(decimals) + suffix;
+      });
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function resetCount() {
+    targets.forEach(({ el, prefix, suffix, decimals }) => {
+      if (!el) return;
+      el.textContent = prefix + (0).toFixed(decimals) + suffix;
+    });
+  }
+
+  runCount();
+</script>
+
+</BaseLayout>
+<style>
+@media (max-width: 768px) {
+  .hero-stats {
+    display: flex !important;
+    flex-direction: column !important;
+    max-width: 100% !important;
+    animation: statsSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) both !important;
+    animation-delay: 0.3s !important;
+  }
+  @keyframes statsSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-stats > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.9rem 1rem !important;
+    border-bottom: 1px solid rgba(38,53,25,0.08) !important;
+    border-right: none !important;
+    background: #FFFFFF !important;
+  }
+  .hero-stats > div:last-child { border-bottom: none !important; }
+  .hero-stats > div > p:first-child {
+    font-size: 0.5rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #82976E !important;
+    margin: 0 !important;
+    flex: 1 !important;
+  }
+  .hero-stats > div > p:last-child {
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    color: #263519 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+  }
+  .services-grid { grid-template-columns: 1fr !important; }
+  .results-grid  { grid-template-columns: 1fr !important; }
+  .cta-inner     { grid-template-columns: 1fr !important; }
+  .how-step      { grid-template-columns: 50px 1fr !important; gap: 1rem !important; }
+}
+</style>

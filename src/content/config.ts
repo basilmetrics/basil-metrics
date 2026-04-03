@@ -12,6 +12,11 @@ const homepage = defineCollection({
     stat2_value: z.string().optional(),
     stat3_label: z.string().optional(),
     stat3_value: z.string().optional(),
+    portfolio_budget: z.string().optional(),
+    portfolio_cpc: z.string().optional(),
+    portfolio_ctr: z.string().optional(),
+    portfolio_brands: z.string().optional(),
+    portfolio_shoots: z.string().optional(),
   }),
 });
 
@@ -35,8 +40,17 @@ const portfolio = defineCollection({
     platform: z.string().optional(),
     result: z.string().optional(),
     cover_image: z.string().optional(),
-    service: z.string().optional(),
+    images: z.array(z.string()).optional(),
+    video_url: z.string().optional(),
+    service: z.enum(['Ads','Branding','Both']).optional(),
     published: z.boolean().default(true),
+    description: z.string().optional(),
+    stat1_label: z.string().optional(),
+    stat1_value: z.string().optional(),
+    stat2_label: z.string().optional(),
+    stat2_value: z.string().optional(),
+    stat3_label: z.string().optional(),
+    stat3_value: z.string().optional(),
   }),
 });
 
@@ -50,4 +64,19 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { homepage, updates, portfolio, blog };
+
+const services = defineCollection({
+  type: 'data',
+  schema: z.object({
+    part: z.enum(['A','B','C']),
+    name: z.string(),
+    description: z.string(),
+    price: z.string(),
+    price_note: z.string().optional(),
+    addons: z.string().optional(),
+    order: z.number().default(99),
+    published: z.boolean().default(true),
+  }),
+});
+
+export const collections = { homepage, updates, portfolio, blog, services };

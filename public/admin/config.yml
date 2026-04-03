@@ -25,8 +25,21 @@ collections:
         widget: select
         options: [Ads, Branding, Both]
       - { label: "Headline Result", name: result, widget: string }
+      - { label: "Description", name: description, widget: text, required: false }
       - { label: "Full Case Study Story", name: body, widget: markdown }
-      - { label: "Cover Image URL", name: cover_image, widget: string, required: false }
+      - { label: "Cover Image", name: cover_image, widget: image, required: false }
+      - label: "Gallery Images"
+        name: images
+        widget: list
+        required: false
+        field: { label: Image, name: image, widget: image }
+      - { label: "Video URL (YouTube/Vimeo/Reel)", name: video_url, widget: string, required: false }
+      - { label: "Stat 1 Value", name: stat1_value, widget: string, required: false }
+      - { label: "Stat 1 Label", name: stat1_label, widget: string, required: false }
+      - { label: "Stat 2 Value", name: stat2_value, widget: string, required: false }
+      - { label: "Stat 2 Label", name: stat2_label, widget: string, required: false }
+      - { label: "Stat 3 Value", name: stat3_value, widget: string, required: false }
+      - { label: "Stat 3 Label", name: stat3_label, widget: string, required: false }
       - { label: "Published?", name: published, widget: boolean, default: true }
   - name: blog
     label: Blog
@@ -37,9 +50,9 @@ collections:
     fields:
       - { label: "Title", name: title, widget: string }
       - { label: "Publish Date", name: date, widget: datetime, format: "YYYY-MM-DD" }
-      - { label: "Category", name: category, widget: string }
+      - { label: "Description", name: description, widget: text, required: false }
+      - { label: "Cover Image", name: cover, widget: image, required: false }
       - { label: "Body", name: body, widget: markdown }
-      - { label: "Featured?", name: featured, widget: boolean, default: false }
   - name: updates
     label: Growth Journal
     label_singular: Update
@@ -57,18 +70,71 @@ collections:
       - { label: "Body", name: body, widget: text }
       - { label: "Published?", name: published, widget: boolean, default: true }
   - name: homepage
-    label: Homepage
+    label: Homepage Settings
     files:
       - name: settings
-        label: Homepage Settings
+        label: Homepage & Portfolio Settings
         file: src/content/homepage/settings.json
         fields:
-          - { label: "Hero Headline Line 1", name: hero_line1, widget: string }
-          - { label: "Hero Headline Line 2", name: hero_line2, widget: string }
-          - { label: "Hero Subtext", name: hero_subtext, widget: text }
-          - { label: "Stat 1 Label", name: stat1_label, widget: string }
-          - { label: "Stat 1 Value", name: stat1_value, widget: string }
-          - { label: "Stat 2 Label", name: stat2_label, widget: string }
-          - { label: "Stat 2 Value", name: stat2_value, widget: string }
-          - { label: "Stat 3 Label", name: stat3_label, widget: string }
-          - { label: "Stat 3 Value", name: stat3_value, widget: string }
+          - label: "Hero"
+            name: hero
+            widget: object
+            collapsed: false
+            fields:
+              - { label: "Headline Line 1", name: hero_line1, widget: string }
+              - { label: "Headline Line 2", name: hero_line2, widget: string }
+              - { label: "Subtext", name: hero_subtext, widget: text }
+          - label: "Homepage Stats"
+            name: homestats
+            widget: object
+            collapsed: false
+            fields:
+              - { label: "Stat 1 Label", name: stat1_label, widget: string }
+              - { label: "Stat 1 Value", name: stat1_value, widget: string }
+              - { label: "Stat 2 Label", name: stat2_label, widget: string }
+              - { label: "Stat 2 Value", name: stat2_value, widget: string }
+              - { label: "Stat 3 Label", name: stat3_label, widget: string }
+              - { label: "Stat 3 Value", name: stat3_value, widget: string }
+          - label: "Portfolio — Ads Stats"
+            name: portads
+            widget: object
+            collapsed: false
+            fields:
+              - { label: "Total Budget Managed (number only, e.g. 2.5)", name: portfolio_budget, widget: string }
+              - { label: "Budget Label", name: portfolio_budget_label, widget: string }
+              - { label: "Avg CPC (number only, e.g. 0.62)", name: portfolio_cpc, widget: string }
+              - { label: "CPC Label", name: portfolio_cpc_label, widget: string }
+              - { label: "Avg CTR (number only, e.g. 3.82)", name: portfolio_ctr, widget: string }
+              - { label: "CTR Label", name: portfolio_ctr_label, widget: string }
+          - label: "Portfolio — Branding Stats"
+            name: portbrand
+            widget: object
+            collapsed: false
+            fields:
+              - { label: "Brands Built (number only, e.g. 12)", name: portfolio_brands, widget: string }
+              - { label: "Brands Label", name: portfolio_brands_label, widget: string }
+              - { label: "Photo Shoots (number only, e.g. 8)", name: portfolio_shoots, widget: string }
+              - { label: "Shoots Label", name: portfolio_shoots_label, widget: string }
+
+  - name: services
+    label: Services & Pricing
+    label_singular: Service
+    folder: src/content/services
+    create: true
+    slug: "{{fields.part | downcase}}-{{order}}-{{slug}}"
+    format: json
+    fields:
+      - label: "Part"
+        name: part
+        widget: select
+        options:
+          - { label: "Part A — Content Assets", value: "A" }
+          - { label: "Part B — Paid Media", value: "B" }
+          - { label: "Part C — Strategy & Planning", value: "C" }
+      - { label: "Service Name", name: name, widget: string }
+      - { label: "Description", name: description, widget: text }
+      - { label: "Price", name: price, widget: string, hint: "e.g. ฿1,500/asset or 15% of budget" }
+      - { label: "Price Note (small print)", name: price_note, widget: string, required: false }
+      - { label: "Add-ons", name: addons, widget: string, required: false }
+      - { label: "Display Order", name: order, widget: number, default: 99, hint: "Lower number = higher up in the list" }
+      - { label: "Published", name: published, widget: boolean, default: true }
