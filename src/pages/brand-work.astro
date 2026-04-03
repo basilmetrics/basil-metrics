@@ -1,5 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const bwEntry = await getEntry('brand-work', 'settings');
+const bw = bwEntry?.data || {};
+const mosaic = [
+  { image: bw.mosaic_1_image || '', label: bw.mosaic_1_label || 'Brand Identity', link: bw.mosaic_1_link || '' },
+  { image: bw.mosaic_2_image || '', label: bw.mosaic_2_label || 'Photography', link: bw.mosaic_2_link || '' },
+  { image: bw.mosaic_3_image || '', label: bw.mosaic_3_label || 'Creative Direction', link: bw.mosaic_3_link || '' },
+  { image: bw.mosaic_4_image || '', label: bw.mosaic_4_label || 'Brand Strategy', link: bw.mosaic_4_link || '' },
+  { image: bw.mosaic_5_image || '', label: bw.mosaic_5_label || 'Visual Identity', link: bw.mosaic_5_link || '' },
+];
 ---
 
 <BaseLayout
