@@ -209,7 +209,14 @@ declare module 'astro:content' {
 "settings": {
 	id: "settings";
   collection: "brand-work";
-  data: InferEntrySchema<"brand-work">
+  data: any
+};
+};
+"brandwork": {
+"settings": {
+	id: "settings";
+  collection: "brandwork";
+  data: InferEntrySchema<"brandwork">
 };
 };
 "homepage": {
