@@ -1,0 +1,1 @@
+import"./hoisted.CR5IYDCd.js";const t=document.getElementById("brand-curtain");t&&requestAnimationFrame(()=>setTimeout(()=>t.classList.add("out"),60));const e=document.getElementById("mosaic-bg");e&&setTimeout(()=>{e.style.opacity="1"},400);
