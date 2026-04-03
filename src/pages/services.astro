@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allServices = await getCollection('services');
+const published = allServices
+  .filter(s => s.data.published !== false)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const partA = published.filter(s => s.data.part === 'A');
+const partB = published.filter(s => s.data.part === 'B');
+const partC = published.filter(s => s.data.part === 'C');
+
+const parts = [
+  { key: 'A', label: 'Part A', title: 'Content Assets', subtitle: 'What we create', services: partA },
+  { key: 'B', label: 'Part B', title: 'Paid Media', subtitle: 'Where we run it', services: partB },
+  { key: 'C', label: 'Part C', title: 'Strategy & Planning', subtitle: 'How we grow you', services: partC },
+];
+
+const allForModal = published.map((s, i) => ({
+  idx: i,
+  name: s.data.name,
+  part: s.data.part,
+  price: s.data.price,
+  price_note: s.data.price_note || '',
+  description: s.data.description,
+  addons: s.data.addons || '',
+}));
+---
+
+<BaseLayout
+  title="Services & Fees — Basil Metrics"
+  description="Basil Metrics service menu and pricing for Bangkok F&B brands."
+  noindex={true}
+>
+
+<!-- HERO -->
+<section style="background:#263519;padding:96px 48px 52px;position:relative;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Sora',sans-serif;font-size:clamp(6rem,14vw,12rem);font-weight:800;color:rgba(246,251,240,0.03);line-height:1;pointer-events:none;user-select:none;letter-spacing:-0.05em;">FEES</div>
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
+    <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(137,243,55,0.25);padding:5px 14px;border-radius:2px;margin-bottom:24px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:#89F337;box-shadow:0 0 6px #89F337;display:inline-block;"></span>
+      <span style="font-family:'Sora',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#89F337;">Internal — Not for Distribution</span>
+    </div>
+    <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#F6FBF0;letter-spacing:-0.03em;margin:0 0 14px;line-height:1.05;">Services &amp; Fees</h1>
+    <p style="font-family:'Sora',sans-serif;font-size:15px;color:#C8DDB8;max-width:480px;line-height:1.7;margin:0 0 32px;">Our full service menu. All prices in Thai Baht. You only pay for what you need — click any service to see full details.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="#part-a" style="font-family:'Sora',sans-serif;font-size:12px;font-weight:600;color:#89F337;text-decoration:none;border:1px solid rgba(137,243,55,0.25);padding:7px 16px;border-radius:2px;transition:background 0.2s;" onmouseover="this.style.background='rgba(137,243,55,0.08)'" onmouseout="this.style.background='transparent'">A — Content</a>
+      <a href="#part-b" style="font-family:'Sora',sans-serif;font-size:12px;font-weight:600;color:#89F337;text-decoration:none;border:1px solid rgba(137,243,55,0.25);padding:7px 16px;border-radius:2px;transition:background 0.2s;" onmouseover="this.style.background='rgba(137,243,55,0.08)'" onmouseout="this.style.background='transparent'">B — Paid Media</a>
+      <a href="#part-c" style="font-family:'Sora',sans-serif;font-size:12px;font-weight:600;color:#89F337;text-decoration:none;border:1px solid rgba(137,243,55,0.25);padding:7px 16px;border-radius:2px;transition:background 0.2s;" onmouseover="this.style.background='rgba(137,243,55,0.08)'" onmouseout="this.style.background='transparent'">C — Strategy</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div style="background:#F6FBF0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 48px 6rem;box-sizing:border-box;">
+
+    {parts.map(part => (
+      <div id={`part-${part.key.toLowerCase()}`} style="padding-top:4rem;">
+
+        <!-- Part header -->
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid rgba(38,53,25,0.08);">
+          <span style="font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#89F337;background:#263519;padding:4px 10px;border-radius:2px;">{part.label}</span>
+          <h2 style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:#263519;letter-spacing:-0.02em;margin:0;">{part.title}</h2>
+          <span style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;margin-left:auto;">{part.subtitle}</span>
+        </div>
+
+        <!-- Service cards -->
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(38,53,25,0.08);" class="svc-grid">
+          {part.services.map((s, i) => {
+            const globalIdx = allForModal.findIndex(m => m.name === s.data.name);
+            return (
+              <button
+                onclick={`openModal(${globalIdx})`}
+                class="svc-card"
+                style="background:#fff;padding:1.75rem 2rem;text-align:left;border:none;cursor:pointer;width:100%;transition:background 0.18s,transform 0.18s;position:relative;"
+                onmouseover="this.style.background='#F6FBF0';this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.background='#fff';this.style.transform=''"
+              >
+                <!-- Top row: name + price -->
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:10px;">
+                  <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0;line-height:1.3;text-align:left;">{s.data.name}</h3>
+                  <div style="text-align:right;flex-shrink:0;">
+                    <div style="font-family:'Sora',sans-serif;font-size:15px;font-weight:800;color:#263519;line-height:1;white-space:nowrap;">{s.data.price}</div>
+                    {s.data.price_note && <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;margin-top:3px;max-width:160px;text-align:right;line-height:1.4;">{s.data.price_note}</div>}
+                  </div>
+                </div>
+                <!-- Description preview -->
+                <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.65;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">{s.data.description}</p>
+                <!-- See more hint -->
+                <div style="font-family:'Sora',sans-serif;font-size:11px;color:#263519;font-weight:600;display:flex;align-items:center;gap:4px;">
+                  See full details
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </button>
+            );
+          })}
+          {part.services.length % 2 !== 0 && <div style="background:#fafaf8;"></div>}
+        </div>
+      </div>
+    ))}
+
+    <!-- CTA -->
+    <div style="margin-top:4rem;background:#263519;padding:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+      <div>
+        <h2 style="font-family:'Sora',sans-serif;font-size:1.6rem;font-weight:800;color:#F6FBF0;margin:0 0 8px;letter-spacing:-0.02em;">Build your package.</h2>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;margin:0;">Tell us what you need — we'll put together a price that fits.</p>
+      </div>
+      <a href="/contact" style="display:inline-flex;align-items:center;gap:8px;background:#89F337;color:#263519;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;padding:14px 28px;border-radius:3px;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;flex-shrink:0;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+        Start a conversation →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="svc-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(38,53,25,0.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#fff;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;border-radius:4px;position:relative;box-shadow:0 24px 64px rgba(38,53,25,0.3);">
+
+    <!-- Modal header -->
+    <div style="background:#263519;padding:28px 32px 24px;position:sticky;top:0;z-index:1;">
+      <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;background:rgba(246,251,240,0.1);border:1px solid rgba(246,251,240,0.2);border-radius:50%;width:36px;height:36px;cursor:pointer;color:#F6FBF0;font-size:18px;display:flex;align-items:center;justify-content:center;line-height:1;transition:background 0.2s;" onmouseover="this.style.background='rgba(246,251,240,0.2)'" onmouseout="this.style.background='rgba(246,251,240,0.1)'">✕</button>
+      <div id="modal-part" style="font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#89F337;margin-bottom:8px;"></div>
+      <h2 id="modal-name" style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:#F6FBF0;margin:0 0 6px;letter-spacing:-0.02em;padding-right:40px;"></h2>
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+        <span id="modal-price" style="font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:800;color:#89F337;line-height:1;"></span>
+        <span id="modal-price-note" style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;"></span>
+      </div>
+    </div>
+
+    <!-- Modal body -->
+    <div style="padding:28px 32px 32px;">
+      <div style="font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#82976E;margin-bottom:12px;">What's included</div>
+      <p id="modal-desc" style="font-family:'Sora',sans-serif;font-size:14px;color:#445538;line-height:1.8;margin:0 0 20px;"></p>
+      <div id="modal-addons-wrap" style="display:none;padding:14px 16px;background:#F6FBF0;border-left:3px solid #89F337;margin-top:8px;">
+        <div style="font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#263519;margin-bottom:6px;">Add-ons</div>
+        <p id="modal-addons" style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.65;margin:0;"></p>
+      </div>
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(38,53,25,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <span style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;line-height:1.5;">Interested? Mention this service<br/>when you get in touch.</span>
+        <a href="/contact" style="font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:#263519;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid rgba(38,53,25,0.25);padding-bottom:2px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#263519'" onmouseout="this.style.borderColor='rgba(38,53,25,0.25)'">
+          Get in touch →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (max-width:768px) { .svc-grid { grid-template-columns:1fr !important; } }
+  #svc-modal.open { display:flex !important; animation:fadeIn 0.2s ease; }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  .svc-card:focus { outline:2px solid #89F337; outline-offset:2px; }
+</style>
+
+<script define:vars={{ allForModal }}>
+  window.openModal = function(idx) {
+    const s = allForModal[idx];
+    if (!s) return;
+    const partLabels = { A: 'Part A — Content Assets', B: 'Part B — Paid Media', C: 'Part C — Strategy & Planning' };
+    document.getElementById('modal-part').textContent = partLabels[s.part] || '';
+    document.getElementById('modal-name').textContent = s.name;
+    document.getElementById('modal-price').textContent = s.price;
+    document.getElementById('modal-price-note').textContent = s.price_note;
+    document.getElementById('modal-desc').textContent = s.description;
+    const addonsWrap = document.getElementById('modal-addons-wrap');
+    const addonsEl   = document.getElementById('modal-addons');
+    if (s.addons) {
+      addonsEl.textContent = s.addons;
+      addonsWrap.style.display = 'block';
+    } else {
+      addonsWrap.style.display = 'none';
+    }
+    const modal = document.getElementById('svc-modal');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeModal = function() {
+    document.getElementById('svc-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.getElementById('svc-modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) window.closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') window.closeModal();
+  });
+</script>
+
+</BaseLayout>

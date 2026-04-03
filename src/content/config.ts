@@ -64,4 +64,19 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { homepage, updates, portfolio, blog };
+
+const services = defineCollection({
+  type: 'data',
+  schema: z.object({
+    part: z.enum(['A','B','C']),
+    name: z.string(),
+    description: z.string(),
+    price: z.string(),
+    price_note: z.string().optional(),
+    addons: z.string().optional(),
+    order: z.number().default(99),
+    published: z.boolean().default(true),
+  }),
+});
+
+export const collections = { homepage, updates, portfolio, blog, services };

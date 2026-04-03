@@ -115,3 +115,26 @@ collections:
               - { label: "Brands Label", name: portfolio_brands_label, widget: string }
               - { label: "Photo Shoots (number only, e.g. 8)", name: portfolio_shoots, widget: string }
               - { label: "Shoots Label", name: portfolio_shoots_label, widget: string }
+
+  - name: services
+    label: Services & Pricing
+    label_singular: Service
+    folder: src/content/services
+    create: true
+    slug: "{{fields.part | downcase}}-{{order}}-{{slug}}"
+    format: json
+    fields:
+      - label: "Part"
+        name: part
+        widget: select
+        options:
+          - { label: "Part A — Content Assets", value: "A" }
+          - { label: "Part B — Paid Media", value: "B" }
+          - { label: "Part C — Strategy & Planning", value: "C" }
+      - { label: "Service Name", name: name, widget: string }
+      - { label: "Description", name: description, widget: text }
+      - { label: "Price", name: price, widget: string, hint: "e.g. ฿1,500/asset or 15% of budget" }
+      - { label: "Price Note (small print)", name: price_note, widget: string, required: false }
+      - { label: "Add-ons", name: addons, widget: string, required: false }
+      - { label: "Display Order", name: order, widget: number, default: 99, hint: "Lower number = higher up in the list" }
+      - { label: "Published", name: published, widget: boolean, default: true }
