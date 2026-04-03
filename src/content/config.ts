@@ -101,4 +101,4 @@ const brandWork = defineCollection({
   }),
 });
 
-export const collections = { homepage, updates, portfolio, blog, services, "brand-work": brandWork };
+export const collections = { homepage, updates, portfolio, blog, services, brandwork: brandWork };

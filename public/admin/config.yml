@@ -148,7 +148,7 @@ collections:
     files:
       - name: settings
         label: Brand Work Page Settings
-        file: src/content/brand-work/settings.json
+        file: src/content/brandwork/settings.json
         fields:
           - { label: "Hero Background 1 — Left column", name: hero_1_image, widget: image, required: false }
           - { label: "Hero Background 2 — Middle column", name: hero_2_image, widget: image, required: false }
