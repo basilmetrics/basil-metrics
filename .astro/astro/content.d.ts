@@ -205,7 +205,14 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"homepage": {
+		"brand-work": {
+"settings": {
+	id: "settings";
+  collection: "brand-work";
+  data: InferEntrySchema<"brand-work">
+};
+};
+"homepage": {
 "settings": {
 	id: "settings";
   collection: "homepage";
