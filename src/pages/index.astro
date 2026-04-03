@@ -56,7 +56,7 @@ const tickerItems = [
 
 
   <!-- HERO -->
-  <section style="position:relative;z-index:1;background:#F6FBF0;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:4rem 2rem 4rem;border-bottom:1px solid rgba(38,53,25,0.08);position:relative;overflow:hidden;">
+  <section style="position:relative;z-index:1;background:#F6FBF0;min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:3rem 2rem 3rem;border-bottom:1px solid rgba(38,53,25,0.08);position:relative;overflow:hidden;">
     <div style="max-width:1200px;margin:0 auto;width:100%;">
       <span style="font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1.5rem;position:relative;z-index:1;">Bangkok, Thailand — F&B Performance Marketing</span>
       <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:#263519;margin-bottom:1.5rem;max-width:900px;position:relative;z-index:1;" id="hero-h1">
@@ -438,7 +438,7 @@ const tickerItems = [
   function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
 
   function runCount() {
-    const duration = 800;
+    const duration = 2000;
     const start = performance.now();
     function tick(now) {
       const t = Math.min((now - start) / duration, 1);
@@ -460,9 +460,52 @@ const tickerItems = [
     });
   }
 
-  new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) { runCount(); }
-  }, { threshold: 0.3 }).observe(statsBox);
+  runCount();
 </script>
 
 </BaseLayout>
+<style>
+@media (max-width: 768px) {
+  .hero-stats {
+    display: flex !important;
+    flex-direction: column !important;
+    max-width: 100% !important;
+    animation: statsSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) both !important;
+    animation-delay: 0.3s !important;
+  }
+  @keyframes statsSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-stats > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.9rem 1rem !important;
+    border-bottom: 1px solid rgba(38,53,25,0.08) !important;
+    border-right: none !important;
+    background: #FFFFFF !important;
+  }
+  .hero-stats > div:last-child { border-bottom: none !important; }
+  .hero-stats > div > p:first-child {
+    font-size: 0.5rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #82976E !important;
+    margin: 0 !important;
+    flex: 1 !important;
+  }
+  .hero-stats > div > p:last-child {
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    color: #263519 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+  }
+  .services-grid { grid-template-columns: 1fr !important; }
+  .results-grid  { grid-template-columns: 1fr !important; }
+  .cta-inner     { grid-template-columns: 1fr !important; }
+  .how-step      { grid-template-columns: 50px 1fr !important; gap: 1rem !important; }
+}
+</style>
