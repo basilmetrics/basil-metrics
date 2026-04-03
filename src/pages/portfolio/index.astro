@@ -1,0 +1,368 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const allEntries = await getCollection('portfolio');
+const entries = allEntries
+  .filter(e => e.data.published !== false)
+  .map((e, i) => ({
+    idx: i,
+    category: e.data.category || '',
+    service: e.data.service || 'Ads',
+    platform: e.data.platform || '',
+    label: e.data.client_name || '',
+    result: e.data.result || '',
+    description: e.data.description || '',
+    cover: e.data.cover_image || '',
+    images: e.data.images || [],
+    video_url: e.data.video_url || '',
+    slug: e.slug,
+    stat1_label: e.data.stat1_label || '',
+    stat1_value: e.data.stat1_value || '',
+    stat2_label: e.data.stat2_label || '',
+    stat2_value: e.data.stat2_value || '',
+    stat3_label: e.data.stat3_label || '',
+    stat3_value: e.data.stat3_value || '',
+  }));
+
+const hp = await getEntry('homepage', 'settings');
+const s = hp.data;
+const stats = {
+  budget: parseFloat(s.portfolio_budget || '2.5'),
+  budgetLabel: s.portfolio_budget_label || 'Million ฿ managed',
+  cpc: parseFloat(s.portfolio_cpc || '0.62'),
+  cpcLabel: s.portfolio_cpc_label || 'Avg cost per click (฿)',
+  ctr: parseFloat(s.portfolio_ctr || '3.82'),
+  ctrLabel: s.portfolio_ctr_label || 'Avg CTR (%)',
+  brands: parseInt(s.portfolio_brands || '12'),
+  brandsLabel: s.portfolio_brands_label || 'Brands built',
+  shoots: parseInt(s.portfolio_shoots || '8'),
+  shootsLabel: s.portfolio_shoots_label || 'Photo shoots',
+};
+---
+
+<BaseLayout
+  schema={{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://basilmetrics.com"},{"@type":"ListItem","position":2,"name":"Portfolio","item":"https://basilmetrics.com/portfolio"}]}]}}
+  title="F&B Campaign Results Bangkok | Basil Metrics Portfolio"
+  description="Real Meta, TikTok & Google campaign results plus brand work for Bangkok F&B brands."
+>
+
+<!-- HERO -->
+<section id="port-hero" style="background:#263519;padding:120px 48px 64px;position:relative;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Sora',sans-serif;font-size:clamp(8rem,20vw,18rem);font-weight:800;color:rgba(246,251,240,0.03);line-height:1;pointer-events:none;user-select:none;letter-spacing:-0.05em;">WORK</div>
+  <div style="max-width:1200px;margin:0 auto;position:relative;z-index:1;">
+    <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1rem;">Our Work</span>
+    <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:#F6FBF0;letter-spacing:-0.03em;margin:0 0 1rem;line-height:1.05;">Proof of Work.</h1>
+    <p style="font-family:'Sora',sans-serif;font-size:clamp(1rem,1.8vw,1.1rem);color:#C8DDB8;max-width:480px;line-height:1.7;margin:0 0 3rem;">Real campaigns. Real numbers. Benchmarked against industry averages.</p>
+
+    <!-- Two stat groups -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(137,243,55,0.15);max-width:780px;" class="hero-stat-grid">
+
+      <!-- Ads stats -->
+      <div style="background:#1e2c14;padding:24px 28px;" id="ads-stat-box">
+        <div style="font-family:'Sora',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#89F337;margin-bottom:16px;display:flex;align-items:center;gap:8px;" class="stat-label">
+          <span style="width:6px;height:6px;background:#89F337;border-radius:50%;display:inline-block;box-shadow:0 0 6px #89F337;" class="stat-dot"></span>
+          Ads Performance
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <div>
+            <div class="count-stat" data-target={stats.budget} data-decimals="1" data-prefix="฿" data-suffix="M" style="font-family:'Sora',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;color:#F6FBF0;line-height:1;margin-bottom:4px;">฿0M</div>
+            <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;line-height:1.4;">{stats.budgetLabel}</div>
+          </div>
+          <div>
+            <div class="count-stat" data-target={stats.cpc} data-decimals="2" data-prefix="฿" data-suffix="" style="font-family:'Sora',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;color:#F6FBF0;line-height:1;margin-bottom:4px;">฿0.00</div>
+            <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;line-height:1.4;">{stats.cpcLabel}</div>
+          </div>
+          <div>
+            <div class="count-stat" data-target={stats.ctr} data-decimals="2" data-prefix="" data-suffix="%" style="font-family:'Sora',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;color:#F6FBF0;line-height:1;margin-bottom:4px;">0.00%</div>
+            <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;line-height:1.4;">{stats.ctrLabel}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Branding stats -->
+      <div style="background:#1e2c14;padding:24px 28px;border-left:1px solid rgba(137,243,55,0.15);" id="brand-stat-box">
+        <div style="font-family:'Sora',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#82976E;margin-bottom:16px;display:flex;align-items:center;gap:8px;" class="stat-label">
+          <span style="width:6px;height:6px;background:#89F337;border-radius:50%;display:inline-block;box-shadow:0 0 6px #89F337;" class="stat-dot"></span>
+          Brand Work
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+          <div>
+            <div class="count-stat" data-target={stats.brands} data-decimals="0" data-prefix="" data-suffix="" style="font-family:'Sora',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;color:#F6FBF0;line-height:1;margin-bottom:4px;">0</div>
+            <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;line-height:1.4;">{stats.brandsLabel}</div>
+          </div>
+          <div>
+            <div class="count-stat" data-target={stats.shoots} data-decimals="0" data-prefix="" data-suffix="" style="font-family:'Sora',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;color:#F6FBF0;line-height:1;margin-bottom:4px;">0</div>
+            <div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;line-height:1.4;">{stats.shootsLabel}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FILTER + GRID -->
+<div style="background:#F6FBF0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px 6rem;box-sizing:border-box;">
+
+    <!-- Filter tabs -->
+    <div style="display:flex;gap:0;border-bottom:1px solid rgba(38,53,25,0.1);margin-bottom:3rem;overflow-x:auto;">
+      {['All','Ads','Branding'].map((t,i) => (
+        <button data-filter={t} class="filter-tab" style={`font-family:'Sora',sans-serif;font-size:13px;font-weight:600;padding:1.25rem 1.75rem;background:none;border:none;cursor:pointer;margin-bottom:-1px;transition:all 0.18s;border-bottom:2px solid ${i===0?'#263519':'transparent'};color:${i===0?'#263519':'#82976E'};white-space:nowrap;letter-spacing:0.02em;`}>{t}</button>
+      ))}
+    </div>
+
+    <!-- Grid -->
+    <div id="port-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,53,25,0.08);">
+      {entries.map(e => (
+        <div
+          class="port-item"
+          data-svc={e.service}
+          style={`background:#fff;cursor:pointer;position:relative;overflow:hidden;transition:transform 0.22s,box-shadow 0.22s;${e.idx===0?'grid-column:span 2;':''}`}
+          onclick={`openLightbox(${e.idx})`}
+          onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 32px rgba(38,53,25,0.12)'"
+          onmouseout="this.style.transform='';this.style.boxShadow=''"
+        >
+          <div style={`overflow:hidden;aspect-ratio:${e.idx===0?'16/9':'4/3'};background:#EEF3E8;position:relative;`}>
+            {e.video_url ? (
+              <div style="width:100%;height:100%;background:#1a2210;display:flex;align-items:center;justify-content:center;position:relative;">
+                {e.cover && <img src={e.cover} alt={e.label} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;" loading="lazy"/>}
+                <div style="width:60px;height:60px;background:rgba(137,243,55,0.92);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 0 24px rgba(137,243,55,0.4);">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#263519"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            ) : e.cover ? (
+              <img src={e.cover} alt={e.label} style="width:100%;height:100%;object-fit:cover;transition:transform 0.55s;display:block;" loading="lazy"/>
+            ) : (
+              <div style="width:100%;height:100%;background:#EEF3E8;display:flex;align-items:center;justify-content:center;">
+                <span style="font-family:'Sora',sans-serif;font-size:11px;color:#82976E;">Image via CMS</span>
+              </div>
+            )}
+            <div style="position:absolute;top:14px;left:14px;">
+              <span style={`font-family:'Sora',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:5px 12px;border-radius:2px;background:${e.service==='Branding'?'#263519':'#89F337'};color:${e.service==='Branding'?'#89F337':'#263519'};`}>{e.service}</span>
+            </div>
+            {(e.images.length > 0 || e.video_url) && (
+              <div style="position:absolute;top:14px;right:14px;background:rgba(14,17,11,0.72);padding:4px 10px;border-radius:2px;display:flex;align-items:center;gap:5px;">
+                {e.video_url && <svg width="10" height="10" viewBox="0 0 24 24" fill="#F6FBF0"><path d="M8 5v14l11-7z"/></svg>}
+                {e.images.length > 0 && <span style="font-family:'Sora',sans-serif;font-size:9px;color:#F6FBF0;font-weight:500;">+{e.images.length} photos</span>}
+              </div>
+            )}
+          </div>
+          <div style="padding:1.75rem;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+              <span style="font-family:'Sora',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">{e.category}</span>
+              {e.platform && <span style="font-family:'Sora',sans-serif;font-size:10px;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:2px 10px;font-weight:600;">{e.platform}</span>}
+            </div>
+            <p style="font-family:'Sora',sans-serif;font-size:11px;color:#82976E;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 6px;">{e.label}</p>
+            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:#263519;line-height:1.4;margin:0 0 1rem;">{e.result}</h3>
+            {e.stat1_value && (
+              <div style="display:flex;gap:20px;padding-top:12px;border-top:1px solid rgba(38,53,25,0.07);margin-bottom:1rem;">
+                <div><div style="font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:800;color:#263519;line-height:1;">{e.stat1_value}</div><div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;margin-top:3px;">{e.stat1_label}</div></div>
+                {e.stat2_value && <div><div style="font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:800;color:#263519;line-height:1;">{e.stat2_value}</div><div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;margin-top:3px;">{e.stat2_label}</div></div>}
+              </div>
+            )}
+            <span style="display:inline-flex;align-items:center;gap:6px;color:#263519;font-family:'Sora',sans-serif;font-size:12px;font-weight:600;border-bottom:1px solid rgba(38,53,25,0.2);padding-bottom:1px;">
+              Open case study →
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p style="font-family:'Sora',sans-serif;font-size:11px;color:#82976E;line-height:1.8;margin-top:2.5rem;opacity:0.7;">
+      Benchmarks: <a href="https://www.wordstream.com/blog/ws/2016/02/29/google-adwords-industry-benchmarks" target="_blank" rel="noopener" style="color:#82976E;text-decoration:underline;">WordStream Google</a>, <a href="https://www.wordstream.com/blog/ws/2021/09/15/facebook-ads-benchmarks" target="_blank" rel="noopener" style="color:#82976E;text-decoration:underline;">WordStream Meta</a>, <a href="https://www.rivaliq.com/blog/tiktok-benchmark-report/" target="_blank" rel="noopener" style="color:#82976E;text-decoration:underline;">Rival IQ TikTok</a>. Currency at ฿35/USD.
+    </p>
+  </div>
+</div>
+
+<!-- CTA -->
+<section style="background:#263519;padding:4rem 48px;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+    <div>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;color:#F6FBF0;margin:0 0 8px;letter-spacing:-0.02em;">Want results like these?</h2>
+      <p style="font-family:'Sora',sans-serif;font-size:14px;color:#C8DDB8;margin:0;">Tell us your brand and goals — we'll show you what's possible.</p>
+    </div>
+    <a href="/contact" style="display:inline-flex;align-items:center;gap:8px;background:#89F337;color:#263519;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;padding:16px 32px;border-radius:3px;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;flex-shrink:0;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      Start a campaign
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#263519" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" aria-modal="true" role="dialog" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(14,17,11,0.96);backdrop-filter:blur(10px);">
+  <button onclick="closeLightbox()" aria-label="Close" style="position:fixed;top:20px;right:20px;background:rgba(246,251,240,0.1);border:1px solid rgba(246,251,240,0.15);border-radius:50%;width:44px;height:44px;cursor:pointer;color:#F6FBF0;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:10;" onmouseover="this.style.background='rgba(246,251,240,0.2)'" onmouseout="this.style.background='rgba(246,251,240,0.1)'">✕</button>
+  <div style="max-width:1100px;margin:0 auto;height:100%;display:grid;grid-template-rows:auto 1fr auto auto;padding:24px 24px 20px;box-sizing:border-box;gap:14px;">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-right:52px;">
+      <div>
+        <span id="lb-service" style="font-family:'Sora',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#89F337;display:block;margin-bottom:4px;"></span>
+        <h2 id="lb-title" style="font-family:'Sora',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:800;color:#F6FBF0;margin:0;letter-spacing:-0.02em;line-height:1.1;"></h2>
+        <p id="lb-result" style="font-family:'Sora',sans-serif;font-size:13px;color:#C8DDB8;margin:6px 0 0;max-width:600px;line-height:1.5;"></p>
+      </div>
+      <div id="lb-stats" style="display:flex;gap:1px;background:rgba(137,243,55,0.12);flex-shrink:0;"></div>
+    </div>
+    <div style="position:relative;background:#1a2210;border-radius:4px;overflow:hidden;min-height:0;">
+      <img id="lb-img" src="" alt="" style="width:100%;height:100%;object-fit:contain;display:block;"/>
+      <iframe id="lb-video" src="" frameborder="0" allow="autoplay;fullscreen" allowfullscreen style="display:none;width:100%;height:100%;border:none;"></iframe>
+      <button id="lb-prev" onclick="lbNav(-1)" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(14,17,11,0.7);border:1px solid rgba(246,251,240,0.15);color:#F6FBF0;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:22px;display:none;align-items:center;justify-content:center;line-height:1;">‹</button>
+      <button id="lb-next" onclick="lbNav(1)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(14,17,11,0.7);border:1px solid rgba(246,251,240,0.15);color:#F6FBF0;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:22px;display:none;align-items:center;justify-content:center;line-height:1;">›</button>
+    </div>
+    <div id="lb-thumbs" style="display:flex;gap:8px;overflow-x:auto;flex-shrink:0;padding:2px 0;"></div>
+    <p id="lb-desc" style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.65;margin:0;max-width:700px;"></p>
+  </div>
+</div>
+
+<style>
+  @media (max-width:768px) {
+    #port-grid { grid-template-columns:1fr !important; }
+    #port-grid .port-item { grid-column:span 1 !important; }
+    .hero-stat-grid { grid-template-columns:1fr !important; }
+  }
+  @media (max-width:1024px) {
+    #port-grid { grid-template-columns:repeat(2,1fr) !important; }
+    #port-grid .port-item:first-child { grid-column:span 2 !important; }
+  }
+  #lightbox { animation:lbin 0.2s ease; }
+  @keyframes lbin { from{opacity:0} to{opacity:1} }
+  .filter-tab:hover { color:#263519 !important; }
+  #lb-prev:hover,#lb-next:hover { background:rgba(137,243,55,0.2) !important; }
+  .port-item img { transition:transform 0.55s ease; }
+  .port-item:hover img { transform:scale(1.04); }
+  ::-webkit-scrollbar { height:4px;width:4px; }
+  ::-webkit-scrollbar-thumb { background:rgba(137,243,55,0.3);border-radius:2px; }
+</style>
+
+<script define:vars={{ entries }}>
+  // Counting animation
+  function easeOut(t) { return 1 - Math.pow(1-t, 3); }
+  function runCounters() {
+    document.querySelectorAll('.count-stat').forEach(el => {
+      const target   = parseFloat(el.dataset.target || '0');
+      const decimals = parseInt(el.dataset.decimals || '0');
+      const prefix   = el.dataset.prefix || '';
+      const suffix   = el.dataset.suffix || '';
+      const dur = 2200, start = performance.now();
+      (function tick(now) {
+        const ease = easeOut(Math.min((now-start)/dur, 1));
+        el.textContent = prefix + (ease*target).toFixed(decimals) + suffix;
+        if (now-start < dur) requestAnimationFrame(tick);
+      })(performance.now());
+    });
+  }
+  const hero = document.getElementById('port-hero');
+  if (hero) new IntersectionObserver((e,o) => { if(e[0].isIntersecting){runCounters();o.disconnect();} }, {threshold:0.2}).observe(hero);
+  document.addEventListener('astro:page-load', () => {
+    const h = document.getElementById('port-hero');
+    if (h) new IntersectionObserver((e,o) => { if(e[0].isIntersecting){runCounters();o.disconnect();} }, {threshold:0.2}).observe(h);
+  });
+
+  // Stat box highlight
+  function updateStatBoxes(f) {
+    const adsLbl = document.querySelector('#ads-stat-box .stat-label');
+    const brandLbl = document.querySelector('#brand-stat-box .stat-label');
+    const adsDot = document.querySelector('#ads-stat-box .stat-dot');
+    const brandDot = document.querySelector('#brand-stat-box .stat-dot');
+    if (f === 'All') {
+      if (adsLbl) adsLbl.style.color='#89F337';
+      if (brandLbl) brandLbl.style.color='#89F337';
+      if (adsDot) { adsDot.style.background='#89F337'; adsDot.style.boxShadow='0 0 6px #89F337'; }
+      if (brandDot) { brandDot.style.background='#89F337'; brandDot.style.boxShadow='0 0 6px #89F337'; }
+    } else if (f === 'Ads') {
+      if (adsLbl) adsLbl.style.color='#89F337';
+      if (brandLbl) brandLbl.style.color='#4a6a3a';
+      if (adsDot) { adsDot.style.background='#89F337'; adsDot.style.boxShadow='0 0 6px #89F337'; }
+      if (brandDot) { brandDot.style.background='#2a3a1a'; brandDot.style.boxShadow='none'; }
+    } else {
+      if (adsLbl) adsLbl.style.color='#4a6a3a';
+      if (brandLbl) brandLbl.style.color='#89F337';
+      if (adsDot) { adsDot.style.background='#2a3a1a'; adsDot.style.boxShadow='none'; }
+      if (brandDot) { brandDot.style.background='#89F337'; brandDot.style.boxShadow='0 0 6px #89F337'; }
+    }
+  }
+  updateStatBoxes('All');
+
+  // Filter tabs
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const f = tab.dataset.filter || 'All';
+      document.querySelectorAll('.filter-tab').forEach(t => { t.style.borderBottomColor='transparent'; t.style.color='#82976E'; });
+      tab.style.borderBottomColor='#263519'; tab.style.color='#263519';
+      updateStatBoxes(f);
+      document.querySelectorAll('.port-item').forEach(item => {
+        const s = item.dataset.svc || '';
+        const show = f==='All' || s===f || s==='Both';
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  // Lightbox
+  let current=null, imgIdx=0;
+  function allMedia(e) {
+    const list=[];
+    if (e.video_url) list.push({type:'video',src:e.video_url});
+    if (e.cover)    list.push({type:'image',src:e.cover});
+    (e.images||[]).forEach(src=>list.push({type:'image',src}));
+    return list;
+  }
+  window.openLightbox = idx => {
+    current=entries[idx]; imgIdx=0;
+    document.getElementById('lightbox').style.display='block';
+    document.body.style.overflow='hidden';
+    document.getElementById('lb-service').textContent=(current.service||'')+(current.platform?' · '+current.platform:'');
+    document.getElementById('lb-title').textContent=current.label||'';
+    document.getElementById('lb-result').textContent=current.result||'';
+    document.getElementById('lb-desc').textContent=current.description||'';
+    const statsEl=document.getElementById('lb-stats');
+    statsEl.innerHTML='';
+    [[current.stat1_value,current.stat1_label],[current.stat2_value,current.stat2_label],[current.stat3_value,current.stat3_label]]
+      .filter(([v])=>v)
+      .forEach(([v,l],i)=>{ statsEl.innerHTML+=`<div style="padding:10px 18px;background:#1a2210;${i?'border-left:1px solid rgba(137,243,55,0.12)':''}"><div style="font-family:'Sora',sans-serif;font-size:1.3rem;font-weight:800;color:#89F337;line-height:1;">${v}</div><div style="font-family:'Sora',sans-serif;font-size:10px;color:#82976E;margin-top:3px;">${l}</div></div>`; });
+    renderMedia(); renderThumbs();
+  };
+  function renderMedia() {
+    const media=allMedia(current), item=media[imgIdx]||{type:'image',src:''};
+    const img=document.getElementById('lb-img'), vid=document.getElementById('lb-video');
+    const prev=document.getElementById('lb-prev'), next=document.getElementById('lb-next');
+    if (item.type==='video') {
+      img.style.display='none'; vid.style.display='block';
+      let src=item.src;
+      if (src.includes('youtube.com/watch')) src=src.replace('watch?v=','embed/');
+      else if (src.includes('youtu.be/')) src=src.replace('youtu.be/','www.youtube.com/embed/');
+      else if (src.includes('vimeo.com/')) src=src.replace('vimeo.com/','player.vimeo.com/video/');
+      vid.src=src;
+    } else {
+      vid.style.display='none'; vid.src='';
+      img.style.display='block'; img.src=item.src; img.alt=current.label||'';
+    }
+    const show=media.length>1;
+    prev.style.display=show?'flex':'none'; next.style.display=show?'flex':'none';
+  }
+  function renderThumbs() {
+    const media=allMedia(current), el=document.getElementById('lb-thumbs');
+    el.style.display=media.length>1?'flex':'none';
+    el.innerHTML=media.map((m,i)=>{
+      const active=i===imgIdx, border=active?'border:2px solid #89F337;':'border:2px solid transparent;', op=active?'1':'0.45';
+      return m.type==='video'
+        ? `<div onclick="lbGoTo(${i})" style="height:56px;aspect-ratio:16/9;background:#1a2210;border-radius:2px;cursor:pointer;${border}opacity:${op};display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#89F337"><path d="M8 5v14l11-7z"/></svg></div>`
+        : `<img src="${m.src}" alt="Thumb ${i+1}" onclick="lbGoTo(${i})" style="height:56px;aspect-ratio:4/3;object-fit:cover;border-radius:2px;cursor:pointer;${border}opacity:${op};flex-shrink:0;" loading="lazy"/>`;
+    }).join('');
+  }
+  window.lbNav=d=>{const n=allMedia(current).length;imgIdx=(imgIdx+d+n)%n;renderMedia();renderThumbs();};
+  window.lbGoTo=i=>{imgIdx=i;renderMedia();renderThumbs();};
+  window.closeLightbox=()=>{
+    document.getElementById('lb-video').src='';
+    document.getElementById('lightbox').style.display='none';
+    document.body.style.overflow='';
+  };
+  document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)window.closeLightbox();});
+  document.addEventListener('keydown',e=>{
+    if(document.getElementById('lightbox').style.display==='none')return;
+    if(e.key==='Escape')window.closeLightbox();
+    if(e.key==='ArrowRight')window.lbNav(1);
+    if(e.key==='ArrowLeft')window.lbNav(-1);
+  });
+</script>
+
+</BaseLayout>
