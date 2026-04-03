@@ -13,6 +13,8 @@ collections:
     folder: src/content/portfolio
     create: true
     slug: "{{slug}}"
+    identifier_field: client_name
+    summary: "{{fields.service}} · {{fields.client_name}} — {{fields.platform}}"
     fields:
       - { label: "Client Name", name: client_name, widget: string }
       - { label: "Client Category", name: category, widget: string }
@@ -123,6 +125,8 @@ collections:
     create: true
     slug: "{{fields.part | downcase}}-{{order}}-{{slug}}"
     format: json
+    identifier_field: name
+    summary: "{{fields.part}} · {{fields.name}} — {{fields.price}}"
     fields:
       - label: "Part"
         name: part
