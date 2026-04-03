@@ -150,6 +150,9 @@ collections:
         label: Mosaic Gallery Settings
         file: src/content/brand-work/settings.json
         fields:
+          - { label: "Hero Background 1 (Left column)", name: hero_1_image, widget: image, required: false }
+          - { label: "Hero Background 2 (Middle column)", name: hero_2_image, widget: image, required: false }
+          - { label: "Hero Background 3 (Right column)", name: hero_3_image, widget: image, required: false }
           - { label: "Slot 1 Image (Large Left — tall)", name: mosaic_1_image, widget: image, required: false }
           - { label: "Slot 1 Label", name: mosaic_1_label, widget: string, required: false }
           - { label: "Slot 1 Link (optional)", name: mosaic_1_link, widget: string, required: false }

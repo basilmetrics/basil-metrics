@@ -11,6 +11,11 @@ const mosaic = [
   { image: bw.mosaic_4_image || '', label: bw.mosaic_4_label || 'Brand Strategy', link: bw.mosaic_4_link || '' },
   { image: bw.mosaic_5_image || '', label: bw.mosaic_5_label || 'Visual Identity', link: bw.mosaic_5_link || '' },
 ];
+const hero = [
+  bw.hero_1_image || '',
+  bw.hero_2_image || '',
+  bw.hero_3_image || '',
+];
 ---
 
 <BaseLayout
@@ -33,9 +38,9 @@ const mosaic = [
 
   <!-- Mosaic image grid background -->
   <div id="mosaic-bg" style="position:absolute;inset:0;z-index:1;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;opacity:0;transition:opacity 1.2s ease;">
-    <div class="mosaic-cell" style="background:#1a2410;grid-column:1;grid-row:1/3;"></div>
-    <div class="mosaic-cell" style="background:#141a0d;grid-column:2;grid-row:1;"></div>
-    <div class="mosaic-cell" style="background:#1e2814;grid-column:3;grid-row:1;"></div>
+    <div class="mosaic-cell" style="background:#1a2410;grid-column:1;grid-row:1/3;overflow:hidden;">{hero[0] && <img src={hero[0]} alt="Brand work" style="width:100%;height:100%;object-fit:cover;opacity:0.6;" loading="lazy"/>}</div>
+    <div class="mosaic-cell" style="background:#141a0d;grid-column:2;grid-row:1;overflow:hidden;">{hero[1] && <img src={hero[1]} alt="Brand work" style="width:100%;height:100%;object-fit:cover;opacity:0.6;" loading="lazy"/>}</div>
+    <div class="mosaic-cell" style="background:#1e2814;grid-column:3;grid-row:1;overflow:hidden;">{hero[2] && <img src={hero[2]} alt="Brand work" style="width:100%;height:100%;object-fit:cover;opacity:0.6;" loading="lazy"/>}</div>
     <div class="mosaic-cell" style="background:#121709;grid-column:2;grid-row:2;"></div>
     <div class="mosaic-cell" style="background:#192210;grid-column:3;grid-row:2;"></div>
   </div>
