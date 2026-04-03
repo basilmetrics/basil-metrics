@@ -5,8 +5,15 @@ import { fileURLToPath } from 'url';
 
 let bw = {};
 try {
-  const settingsPath = new URL('../../src/content/brandwork/settings.json', import.meta.url);
-  bw = JSON.parse(readFileSync(fileURLToPath(settingsPath), 'utf-8'));
+  // Try brandwork first, fall back to brand-work
+  let settingsPath;
+  try {
+    settingsPath = new URL('../../src/content/brandwork/settings.json', import.meta.url);
+    bw = JSON.parse(readFileSync(fileURLToPath(settingsPath), 'utf-8'));
+  } catch(e1) {
+    settingsPath = new URL('../../src/content/brand-work/settings.json', import.meta.url);
+    bw = JSON.parse(readFileSync(fileURLToPath(settingsPath), 'utf-8'));
+  }
 } catch(e) {
   bw = {};
 }
