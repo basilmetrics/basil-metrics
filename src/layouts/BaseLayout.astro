@@ -25,34 +25,34 @@ const {
   noindex = false,
 } = Astro.props;
 
-const siteUrl   = 'https://basilmetrics.com';
-const canonUrl  = canonical ?? `${siteUrl}${Astro.url.pathname}`;
+const siteUrl  = 'https://basilmetrics.com';
+const canonUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
 const fullTitle = title.includes('Basil Metrics') ? title : `${title} — Basil Metrics`;
 ---
-
-
-
-  
-  
-  {fullTitle}
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  {schema && }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonUrl} />
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+  <meta property="og:type"        content={ogType} />
+  <meta property="og:title"       content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={ogImage} />
+  <meta property="og:url"         content={canonUrl} />
+  <meta property="og:site_name"   content="Basil Metrics" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={ogImage} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
   <style>html,body{background:#F6FBF0!important;color:#263519!important;}</style>
   <ViewTransitions />
 </head>
@@ -65,7 +65,6 @@ const fullTitle = title.includes('Basil Metrics') ? title : `${title} — Basil 
   <Footer />
 
   <script>
-    // Fade-up on scroll — re-runs after every page transition
     function initFadeUp() {
       const io = new IntersectionObserver(
         entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
@@ -75,10 +74,10 @@ const fullTitle = title.includes('Basil Metrics') ? title : `${title} — Basil 
     }
     initFadeUp();
     document.addEventListener('astro:page-load', initFadeUp);
-  
+  </script>
 
   {readingProgress && (
-    
+    <script>
       function initReadProgress() {
         const bar = document.getElementById('read-prog');
         if (!bar) return;
@@ -90,7 +89,7 @@ const fullTitle = title.includes('Basil Metrics') ? title : `${title} — Basil 
       }
       initReadProgress();
       document.addEventListener('astro:page-load', initReadProgress);
-    
+    </script>
   )}
-
-
+</body>
+</html>
