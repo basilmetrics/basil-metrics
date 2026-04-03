@@ -1,0 +1,287 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Ads Work — Performance Advertising for Bangkok F&B | Basil Metrics"
+  description="Meta, TikTok, Google, Grab and LINE MAN advertising for Bangkok restaurants and F&B brands. Real results, measurable ROAS."
+>
+
+<!-- HERO -->
+<section
+  id="ads-hero"
+  transition:name="pillar-ads"
+  style="background:#263519;min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;"
+>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\");background-size:200px 200px;opacity:0.35;"></div>
+
+  <div style="max-width:1200px;margin:0 auto;padding:140px 2rem 80px;width:100%;position:relative;z-index:1;">
+
+    <!-- Back link -->
+    <a href="/" style="display:inline-flex;align-items:center;gap:8px;color:#82976E;font-family:'Sora',sans-serif;font-size:12px;font-weight:500;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:48px;" onmouseover="this.style.color='#F6FBF0'" onmouseout="this.style.color='#82976E'">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to home
+    </a>
+
+    <p style="color:#89F337;font-family:'Sora',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;margin:0 0 24px;">Ads Work</p>
+
+    <h1 style="color:#F6FBF0;font-family:'Sora',sans-serif;font-size:clamp(2.4rem,5.5vw,4.4rem);font-weight:800;line-height:1.08;letter-spacing:-0.025em;max-width:820px;margin:0 0 28px;">
+      Ads that make every<br/>
+      <span style="color:#89F337;">baht work harder.</span>
+    </h1>
+
+    <p style="color:#82976E;font-family:'Sora',sans-serif;font-size:clamp(1rem,1.8vw,1.15rem);line-height:1.7;max-width:520px;margin:0 0 64px;">
+      We run performance advertising across every platform your customers use — built for Bangkok's F&B market, optimised for measurable return.
+    </p>
+
+    <!-- Stats -->
+    <div style="display:flex;gap:0;border:1px solid rgba(246,251,240,0.1);max-width:600px;" class="ads-stats">
+      <div style="flex:1;padding:20px 24px;border-right:1px solid rgba(246,251,240,0.1);">
+        <div id="a-cpc" style="color:#89F337;font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;line-height:1;margin-bottom:6px;">฿0.00</div>
+        <div style="color:#82976E;font-family:'Sora',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;">Cost per click</div>
+      </div>
+      <div style="flex:1;padding:20px 24px;border-right:1px solid rgba(246,251,240,0.1);">
+        <div id="a-reach" style="color:#89F337;font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;line-height:1;margin-bottom:6px;">0</div>
+        <div style="color:#82976E;font-family:'Sora',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;">Profile visits, one campaign</div>
+      </div>
+      <div style="flex:1;padding:20px 24px;">
+        <div id="a-ctr" style="color:#89F337;font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;line-height:1;margin-bottom:6px;">0.00%</div>
+        <div style="color:#82976E;font-family:'Sora',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;">Average CTR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticker -->
+  <div aria-hidden="true" style="border-top:1px solid rgba(130,151,110,0.2);padding:16px 0;overflow:hidden;position:relative;z-index:1;">
+    <div class="ads-ticker" style="display:flex;width:max-content;">
+      {['Meta Ads','TikTok Ads','Google Ads','Grab Ads','LINE MAN Ads','Meta Ads','TikTok Ads','Google Ads','Grab Ads','LINE MAN Ads'].map(item => (
+        <span style="color:#82976E;font-family:'Sora',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;padding:0 28px;">{item}<span style="color:#89F337;margin-left:28px;">✦</span></span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section style="background:#F6FBF0;padding:6rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="fade-up" style="margin-bottom:3.5rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.5rem;">Where We Run</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;margin:0;">Every platform your customers are on.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);" class="platforms-grid">
+
+      <div class="fade-up platform-card" style="background:#fff;padding:2rem 1.5rem;">
+        <div style="width:40px;height:40px;background:#263519;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#89F337"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 8px;">Meta</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.65;margin:0;">Facebook & Instagram ads. Reach, retarget, and convert your ideal dining customer.</p>
+      </div>
+
+      <div class="fade-up platform-card" style="background:#fff;padding:2rem 1.5rem;">
+        <div style="width:40px;height:40px;background:#263519;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#89F337"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        </div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 8px;">TikTok</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.65;margin:0;">Discovery-first video ads. We build content that earns attention before spending budget.</p>
+      </div>
+
+      <div class="fade-up platform-card" style="background:#fff;padding:2rem 1.5rem;">
+        <div style="width:40px;height:40px;background:#263519;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#89F337"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+        </div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 8px;">Google</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.65;margin:0;">Search & display ads capturing high-intent buyers actively looking for a place to eat.</p>
+      </div>
+
+      <div class="fade-up platform-card" style="background:#fff;padding:2rem 1.5rem;">
+        <div style="width:40px;height:40px;background:#263519;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#89F337"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 13.802l-2.95-.924c-.64-.203-.654-.64.136-.953l11.57-4.461c.537-.194 1.006.131.326.784z"/></svg>
+        </div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 8px;">Grab</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.65;margin:0;">Delivery platform ads reaching hungry customers at the exact moment of decision.</p>
+      </div>
+
+      <div class="fade-up platform-card" style="background:#fff;padding:2rem 1.5rem;">
+        <div style="width:40px;height:40px;background:#263519;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#89F337"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.977C23.176 14.393 24 12.458 24 10.314"/></svg>
+        </div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#263519;margin:0 0 8px;">LINE MAN</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.65;margin:0;">Thailand's #1 delivery app. Campaigns built for the platform Bangkok actually uses.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:#263519;padding:6rem 2rem;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="fade-up" style="margin-bottom:3.5rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.5rem;">The Process</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#F6FBF0;letter-spacing:-0.02em;margin:0;">How we run your ads.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(246,251,240,0.08);" class="process-grid">
+
+      <div class="fade-up" style="padding:2.5rem 2rem;">
+        <div style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:1.25rem;">01</div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#F6FBF0;margin:0 0 12px;">Audit</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.7;margin:0;">We review your current ads, audiences, and spend. Find what's wasting money and what's worth scaling.</p>
+      </div>
+
+      <div class="fade-up" style="padding:2.5rem 2rem;border-left:1px solid rgba(246,251,240,0.08);">
+        <div style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:1.25rem;">02</div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#F6FBF0;margin:0 0 12px;">Strategy</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.7;margin:0;">Platform selection, audience mapping, budget allocation. A plan built around your actual goals.</p>
+      </div>
+
+      <div class="fade-up" style="padding:2.5rem 2rem;border-left:1px solid rgba(246,251,240,0.08);">
+        <div style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:1.25rem;">03</div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#F6FBF0;margin:0 0 12px;">Launch</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.7;margin:0;">We build the creative, set the audiences, and go live. You focus on running your restaurant.</p>
+      </div>
+
+      <div class="fade-up" style="padding:2.5rem 2rem;border-left:1px solid rgba(246,251,240,0.08);">
+        <div style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#89F337;line-height:1;margin-bottom:1.25rem;">04</div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#F6FBF0;margin:0 0 12px;">Scale</h3>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#82976E;line-height:1.7;margin:0;">Weekly optimisation. We watch the numbers, cut what underperforms, and double what works.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section style="background:#F6FBF0;padding:6rem 2rem;border-bottom:1px solid rgba(38,53,25,0.07);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="fade-up" style="margin-bottom:3.5rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:0.5rem;">Proof</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;color:#263519;letter-spacing:-0.02em;margin:0;">Real numbers from real campaigns.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(38,53,25,0.08);border:1px solid rgba(38,53,25,0.08);" class="results-grid">
+
+      <div class="fade-up" style="background:#fff;padding:2.5rem;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;">
+          <span style="font-family:'Sora',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">Dessert & F&B Brand</span>
+          <span style="font-family:'Sora',sans-serif;font-size:10px;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:2px 10px;font-weight:600;">Meta</span>
+        </div>
+        <p style="font-family:'Sora',sans-serif;font-size:11px;color:#82976E;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 8px;">Beating the Feed</p>
+        <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1.1;margin:0 0 12px;">฿0.62 per click</p>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#263519;line-height:1.6;margin:0 0 1.5rem;">14,399 profile & LINE visits · 3.82% CTR · ฿8,935 total spend</p>
+        <div style="border-top:1px solid rgba(38,53,25,0.07);padding-top:12px;">
+          <p style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;font-style:italic;margin:0;">Industry avg: ~฿110 cost per lead (WordStream)</p>
+        </div>
+      </div>
+
+      <div class="fade-up" style="background:#fff;padding:2.5rem;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;">
+          <span style="font-family:'Sora',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">Dessert & F&B Brand</span>
+          <span style="font-family:'Sora',sans-serif;font-size:10px;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:2px 10px;font-weight:600;">TikTok</span>
+        </div>
+        <p style="font-family:'Sora',sans-serif;font-size:11px;color:#82976E;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 8px;">The Viral Sprint</p>
+        <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1.1;margin:0 0 12px;">+400 followers in 18 hrs</p>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#263519;line-height:1.6;margin:0 0 1.5rem;">547 new followers/day · account reached 94.6K · on track for 100K</p>
+        <div style="border-top:1px solid rgba(38,53,25,0.07);padding-top:12px;">
+          <p style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;font-style:italic;margin:0;">Industry avg: 2–3% monthly growth (Rival IQ)</p>
+        </div>
+      </div>
+
+      <div class="fade-up" style="background:#fff;padding:2.5rem;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1.5rem;">
+          <span style="font-family:'Sora',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#82976E;font-weight:600;">Premium Retail Brand</span>
+          <span style="font-family:'Sora',sans-serif;font-size:10px;background:rgba(137,243,54,0.15);color:#263519;border-radius:99px;padding:2px 10px;font-weight:600;">Google</span>
+        </div>
+        <p style="font-family:'Sora',sans-serif;font-size:11px;color:#82976E;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 8px;">Capturing the Buyer</p>
+        <p style="font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#263519;line-height:1.1;margin:0 0 12px;">฿4.75 per click</p>
+        <p style="font-family:'Sora',sans-serif;font-size:13px;color:#263519;line-height:1.6;margin:0 0 1.5rem;">~1,000 high-intent clicks · 4.30% CTR · bottom-of-funnel traffic</p>
+        <div style="border-top:1px solid rgba(38,53,25,0.07);padding-top:12px;">
+          <p style="font-family:'Sora',sans-serif;font-size:12px;color:#82976E;font-style:italic;margin:0;">Industry avg: ~฿118 CPC for retail (WordStream)</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<section style="background:#89F337;padding:4rem 2rem;">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center;" class="strip-grid">
+    <div class="fade-up">
+      <div style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;color:#263519;line-height:1;margin-bottom:8px;">฿0.62</div>
+      <div style="font-family:'Sora',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#263519;opacity:0.7;">Cost per click</div>
+    </div>
+    <div class="fade-up">
+      <div style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;color:#263519;line-height:1;margin-bottom:8px;">+400</div>
+      <div style="font-family:'Sora',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#263519;opacity:0.7;">Followers in 18 hours</div>
+    </div>
+    <div class="fade-up">
+      <div style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;color:#263519;line-height:1;margin-bottom:8px;">3.82%</div>
+      <div style="font-family:'Sora',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#263519;opacity:0.7;">Average CTR</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#F6FBF0;padding:6rem 2rem;">
+  <div style="max-width:720px;margin:0 auto;text-align:center;">
+    <div class="fade-up">
+      <span style="font-family:'Sora',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#82976E;font-weight:500;display:block;margin-bottom:1rem;">Ready to fix your ads?</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:800;color:#263519;letter-spacing:-0.025em;line-height:1.1;margin:0 0 1.5rem;">Stop wasting ad spend.<br/>Start getting results.</h2>
+      <p style="font-family:'Sora',sans-serif;font-size:15px;color:#82976E;line-height:1.7;margin:0 0 2.5rem;max-width:480px;margin-left:auto;margin-right:auto;">Tell us your brand, your platforms, your budget. We'll audit your current setup and show you exactly where the money is going — and where it should be going.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="/contact" style="display:inline-flex;align-items:center;gap:8px;background:#263519;color:#F6FBF0;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;padding:16px 36px;border-radius:3px;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          Get a free audit
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/portfolio" style="display:inline-flex;align-items:center;gap:8px;color:#263519;font-family:'Sora',sans-serif;font-size:14px;font-weight:500;padding:16px 24px;text-decoration:none;border:1px solid rgba(38,53,25,0.25);border-radius:3px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#263519'" onmouseout="this.style.borderColor='rgba(38,53,25,0.25)'">
+          View all case studies
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes ads-ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .ads-ticker { animation: ads-ticker 20s linear infinite; }
+  .platform-card { transition: background 0.2s; }
+  .platform-card:hover { background: #F6FBF0 !important; }
+  @media (max-width:768px) {
+    .platforms-grid { grid-template-columns: 1fr 1fr !important; }
+    .process-grid   { grid-template-columns: 1fr 1fr !important; }
+    .results-grid   { grid-template-columns: 1fr !important; }
+    .strip-grid     { grid-template-columns: 1fr !important; }
+    .ads-stats      { flex-direction: column !important; }
+    .ads-stats > div { border-right: none !important; border-bottom: 1px solid rgba(246,251,240,0.1) !important; }
+    .ads-stats > div:last-child { border-bottom: none !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ads-ticker { animation: none; }
+  }
+</style>
+
+<script>
+  const targets = [
+    { el: document.getElementById('a-cpc'),   to:0.62,  prefix:'฿', suffix:'',  decimals:2 },
+    { el: document.getElementById('a-reach'), to:14399, prefix:'',  suffix:'',  decimals:0 },
+    { el: document.getElementById('a-ctr'),   to:3.82,  prefix:'',  suffix:'%', decimals:2 },
+  ];
+  function easeOut(t){ return 1-Math.pow(1-t,3); }
+  function runCount(){
+    const dur=2200, start=performance.now();
+    function tick(now){
+      const ease=easeOut(Math.min((now-start)/dur,1));
+      targets.forEach(({el,to,prefix,suffix,decimals})=>{ if(el) el.textContent=prefix+(ease*to).toFixed(decimals)+suffix; });
+      if((now-start)<dur) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const hero=document.getElementById('ads-hero');
+  if(hero) new IntersectionObserver((e,o)=>{ if(e[0].isIntersecting){runCount();o.disconnect();} },{threshold:0.2}).observe(hero);
+  document.addEventListener('astro:page-load',()=>{
+    const h=document.getElementById('ads-hero');
+    if(h) new IntersectionObserver((e,o)=>{ if(e[0].isIntersecting){runCount();o.disconnect();} },{threshold:0.2}).observe(h);
+  });
+</script>
+
+</BaseLayout>
