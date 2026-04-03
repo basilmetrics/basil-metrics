@@ -79,4 +79,26 @@ const services = defineCollection({
   }),
 });
 
-export const collections = { homepage, updates, portfolio, blog, services };
+
+const brandWork = defineCollection({
+  type: 'data',
+  schema: z.object({
+    mosaic_1_image: z.string().optional(),
+    mosaic_1_label: z.string().optional(),
+    mosaic_1_link: z.string().optional(),
+    mosaic_2_image: z.string().optional(),
+    mosaic_2_label: z.string().optional(),
+    mosaic_2_link: z.string().optional(),
+    mosaic_3_image: z.string().optional(),
+    mosaic_3_label: z.string().optional(),
+    mosaic_3_link: z.string().optional(),
+    mosaic_4_image: z.string().optional(),
+    mosaic_4_label: z.string().optional(),
+    mosaic_4_link: z.string().optional(),
+    mosaic_5_image: z.string().optional(),
+    mosaic_5_label: z.string().optional(),
+    mosaic_5_link: z.string().optional(),
+  }),
+});
+
+export const collections = { homepage, updates, portfolio, blog, services, "brand-work": brandWork };
