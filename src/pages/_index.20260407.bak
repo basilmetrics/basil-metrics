@@ -1,0 +1,1058 @@
+---
+import { getEntry } from "astro:content";
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const hp = await getEntry("homepage", "settings");
+const { hero_subtext } = hp.data;
+
+const services = [
+  { n: '01', name: 'Brand Architecture', desc: 'Visual identity systems designed to scale — from single outlet to multi-location franchise.' },
+  { n: '02', name: 'Performance Ads',    desc: 'Meta, Google, and TikTok campaigns structured for measurable, attributable return.' },
+  { n: '03', name: 'Creative Direction', desc: 'Photography, video, and copy that earns attention before spending a single baht of budget.' },
+  { n: '04', name: 'Growth Analytics',  desc: 'Clear reporting on ROAS, CPA, and LTV. Real numbers, acted on fast.' },
+];
+
+const results = [
+  { category: 'Dessert & F&B Brand', platform: 'Meta',   metric: '0.62 ฿ per click',        detail: '14,399 profile & LINE visits · 3.82% CTR · ฿8,935 total spend',    benchmark: 'Industry avg: ~฿110 cost per lead (WordStream)', label: 'Beating the Feed'    },
+  { category: 'Dessert & F&B Brand', platform: 'TikTok', metric: '+400 followers in 18 hrs', detail: '547 new followers/day · reached 94.6K · on track for 100K',         benchmark: 'Industry avg: 2–3% monthly growth (Rival IQ)',   label: 'The Viral Sprint'    },
+  { category: 'Premium Retail Brand', platform: 'Google', metric: '4.75 ฿ per click',         detail: '~1,000 high-intent clicks · 4.30% CTR · bottom-of-funnel traffic', benchmark: 'Industry avg: ~฿118 CPC for retail (WordStream)', label: 'Capturing the Buyer' },
+];
+
+// Split headline into words for staggered letter reveal
+const headlineLines = [
+  "Bangkok's F&B Brands",
+  "Don't Need More Ads.",
+  "They Need Better Ones."
+];
+---
+
+<BaseLayout
+  schema={{"@context":"https://schema.org","@graph":[{"@type":["MarketingAgency","LocalBusiness"],"@id":"https://basilmetrics.com/#organization","name":"Basil Metrics","url":"https://basilmetrics.com","logo":"https://basilmetrics.com/logo.svg","description":"Performance marketing agency specializing in Meta, TikTok and Google ads for F&B and retail brands in Bangkok, Thailand.","areaServed":{"@type":"City","name":"Bangkok"},"address":{"@type":"PostalAddress","addressLocality":"Bangkok","addressCountry":"TH"},"priceRange":"฿฿","knowsAbout":["Meta Ads","TikTok Marketing","Google Ads","F&B Marketing","ROAS Optimization","Brand Strategy","Performance Marketing","Content Creation"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much do Meta ads cost for Bangkok restaurants?","acceptedAnswer":{"@type":"Answer","text":"The industry average is ฿110 per lead. Basil Metrics campaigns average ฿0.62 per click."}},{"@type":"Question","name":"Which platforms work best for F&B marketing in Bangkok?","acceptedAnswer":{"@type":"Answer","text":"Meta drives direct traffic. TikTok drives discovery. Google captures high-intent buyers. Basil Metrics runs all three."}},{"@type":"Question","name":"What is ROAS and why does it matter for Bangkok restaurants?","acceptedAnswer":{"@type":"Answer","text":"ROAS measures revenue generated per baht spent on advertising. Tracking it across Meta, TikTok and Google is essential to scaling profitably."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://basilmetrics.com"}]}]}}
+  title="Bangkok F&B Performance Marketing Agency | Basil Metrics"
+  description="Meta, TikTok & Google ads for Bangkok restaurants & F&B brands. ฿0.62 cost per click. Real ROAS. Book a free strategy call today."
+>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO — immersive dark stage, multi-layer parallax
+═══════════════════════════════════════════════════════════════ -->
+<section id="hero" transition:name="hero-section">
+
+  <!-- Layer 0: mesh gradient orbs (deepest depth, moves slowest) -->
+  <div class="mesh" id="mesh-layer" aria-hidden="true" data-depth="0.12">
+    <div class="mesh__orb mesh__orb--1" id="mesh-orb-1"></div>
+    <div class="mesh__orb mesh__orb--2"></div>
+    <div class="mesh__orb mesh__orb--3"></div>
+    <div class="mesh__orb mesh__orb--4"></div>
+  </div>
+
+  <!-- Layer 1: grain -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Layer 2: hero text (mid depth, moves at medium speed) -->
+  <div class="hero__text container" id="text-layer" data-depth="0.05">
+    <!-- Eyebrow -->
+    <p class="hero__eyebrow reveal-fade" data-delay="0">
+      Bangkok, Thailand — F&amp;B Performance Marketing
+    </p>
+
+    <!-- Headline: word-by-word clip-path reveal (cinema style) -->
+    <h1 class="hero__headline" id="hero-headline" aria-label="Bangkok's F&B Brands Don't Need More Ads. They Need Better Ones.">
+      {headlineLines.map((line, li) => (
+        <span class="headline__line" aria-hidden="true">
+          {line.split(' ').map((word, wi) => (
+            <span class="headline__word">
+              <span
+                class="headline__inner"
+                style={`transition-delay:${(li * 4 + wi) * 55 + 180}ms`}
+                set:html={word === "Better" || word === "Ones." ? `<em>${word}</em>` : word}
+              ></span>
+            </span>
+          ))}
+        </span>
+      ))}
+    </h1>
+
+    <p class="hero__sub reveal-fade" data-delay="820">{hero_subtext}</p>
+  </div>
+
+  <!-- Layer 3: work cards (closest depth, moves fastest) -->
+  <div class="hero__cards container" id="cards-layer" data-depth="0.02">
+    <div class="cards-grid">
+
+      <!-- ── ADS WORK — CMS field: ads_cover_image ── -->
+      <a
+        href="/ads-work"
+        transition:name="pillar-ads"
+        class="wcard reveal-card magnetic-el"
+        data-delay="680"
+        aria-label="Ads Work — performance advertising results"
+      >
+        <!--
+          CMS WIRING: background-image maps to ads_cover_image
+          Aspect ratio preserved via padding-bottom on .wcard__frame
+          Admin: basilmetrics.com/admin → Ads Work → Cover Image
+          Recommended upload: 1200×800px, JPG, <300KB
+        -->
+        <div class="wcard__frame">
+          <div
+            class="wcard__photo"
+            id="ads-photo"
+            style="background-image:url('https://res.cloudinary.com/dk6qpakzw/image/upload/v1774925583/cld-sample-2.jpg');"
+            role="img"
+            aria-label="Performance advertising work"
+          ></div>
+        </div>
+
+        <!-- Glassmorphism surface -->
+        <div class="wcard__glass" aria-hidden="true"></div>
+        <!-- Lime bottom accent line -->
+        <div class="wcard__line" aria-hidden="true"></div>
+
+        <!-- Top: tag + platforms -->
+        <div class="wcard__top">
+          <span class="wcard__tag">Ads Work</span>
+          <span class="wcard__platforms">Meta · TikTok · Google</span>
+        </div>
+
+        <!--
+          Metric box: CMS field → ads_metric_value + ads_metric_label
+          Glassmorphism: frosted, sharp border, GPU-composited
+        -->
+        <div class="wcard__metric glass-pill" aria-label="Key metric: ฿0.62 cost per click">
+          <span class="wcard__metric-val">฿0.62</span>
+          <span class="wcard__metric-lbl">Cost Per Click</span>
+        </div>
+
+        <!-- Bottom: headline + CTA (magnetic zone) -->
+        <div class="wcard__body">
+          <h2 class="wcard__headline">
+            Performance<br/>advertising that<br/>actually converts.
+          </h2>
+          <span class="wcard__cta magnetic-el">
+            See results
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ── BRAND WORK — CMS field: brand_cover_image ── -->
+      <a
+        href="/brand-work"
+        transition:name="pillar-brand"
+        class="wcard reveal-card magnetic-el"
+        data-delay="820"
+        aria-label="Brand Work — creative and identity work"
+      >
+        <!--
+          CMS WIRING: background-image maps to brand_cover_image
+          Admin: basilmetrics.com/admin → Brand Work → Cover Image
+          Recommended upload: 1200×800px, JPG, <300KB
+        -->
+        <div class="wcard__frame">
+          <div
+            class="wcard__photo"
+            id="brand-photo"
+            style="background-image:url('https://res.cloudinary.com/dk6qpakzw/image/upload/v1774925584/cld-sample-4.jpg');"
+            role="img"
+            aria-label="Brand identity and creative work"
+          ></div>
+        </div>
+
+        <div class="wcard__glass" aria-hidden="true"></div>
+        <div class="wcard__line" aria-hidden="true"></div>
+
+        <div class="wcard__top">
+          <span class="wcard__tag">Brand Work</span>
+          <span class="wcard__platforms">Identity · Photography</span>
+        </div>
+
+        <!-- CMS field → brand_metric_value + brand_metric_label -->
+        <div class="wcard__metric glass-pill" aria-label="Key metric: +400 followers in 18 hours">
+          <span class="wcard__metric-val">+400</span>
+          <span class="wcard__metric-lbl">Followers / 18 hrs</span>
+        </div>
+
+        <div class="wcard__body">
+          <h2 class="wcard__headline">
+            Brands built to<br/>be remembered<br/>and recognised.
+          </h2>
+          <span class="wcard__cta magnetic-el">
+            View work
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+  <!-- Sharp bottom edge — no wave, no curve -->
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SERVICES — cream, zero gap from hero
+═══════════════════════════════════════════════════════════════ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-head scroll-reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="section-title">Services</h2>
+    </div>
+    <div class="ruled-grid ruled-grid--2">
+      {services.map((s, i) => (
+        <div class="scard scroll-reveal magnetic-el" style={`transition-delay:${i * 80}ms`}>
+          <p class="scard__num">{s.n}</p>
+          <h3 class="scard__name">{s.name}</h3>
+          <p class="scard__desc">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     RESULTS
+═══════════════════════════════════════════════════════════════ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-head scroll-reveal">
+      <span class="eyebrow">Proof of Work</span>
+      <h2 class="section-title">Results</h2>
+    </div>
+    <div class="ruled-grid ruled-grid--3">
+      {results.map((r, i) => (
+        <div class="rcard scroll-reveal" style={`transition-delay:${i * 100}ms`}>
+          <div class="rcard__meta">
+            <span class="rcard__cat">{r.category}</span>
+            <span class="rcard__plat">{r.platform}</span>
+          </div>
+          <p class="rcard__label">{r.label}</p>
+          <p class="rcard__metric">{r.metric}</p>
+          <p class="rcard__detail">{r.detail}</p>
+          <div class="rcard__bench"><p>{r.benchmark}</p></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HOW WE WORK
+═══════════════════════════════════════════════════════════════ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-head scroll-reveal">
+      <span class="eyebrow">Our Process</span>
+      <h2 class="section-title">How We Work</h2>
+    </div>
+    <div class="how-wrap">
+      <div class="how-line" id="how-line"></div>
+      <div class="how-step scroll-reveal"><span class="how-num">01</span><div><h3 class="how-title">We look at what's really going on.</h3><p class="how-desc">Before we spend a single baht of your money, we look at your current setup. We check your social feeds, your past ads, and how customers actually book a table to see what's working and what needs fixing.</p></div></div>
+      <div class="how-step scroll-reveal"><span class="how-num">02</span><div><h3 class="how-title">You pick exactly what you need.</h3><p class="how-desc">No bloated agency retainers. We give you a clear menu of what we can do. You only pay for what actually helps you grow.</p></div></div>
+      <div class="how-step scroll-reveal"><span class="how-num">03</span><div><h3 class="how-title">We build and launch.</h3><p class="how-desc">Our team of five takes over the heavy lifting. We create the content, set up your audiences, fix your LINE OA, and get your campaigns running.</p></div></div>
+      <div class="how-step how-step--last scroll-reveal"><span class="how-num">04</span><div><h3 class="how-title">We keep the tables full.</h3><p class="how-desc">We watch your ad spend closely every week, making adjustments to ensure steady, predictable foot traffic month after month.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FAQ — dark
+═══════════════════════════════════════════════════════════════ -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-head scroll-reveal">
+      <span class="eyebrow">Got Questions</span>
+      <h2 class="section-title section-title--light">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq">
+      <details class="faq__item scroll-reveal"><summary class="faq__q">Do you only work with big restaurant chains?<span class="faq__plus" aria-hidden="true">+</span></summary><p class="faq__a">Not at all. We really love partnering with independent founders — whether you're opening a specialty coffee shop, a neighborhood bakery, or a new tapas bar.</p></details>
+      <details class="faq__item scroll-reveal"><summary class="faq__q">How much does it cost to work with you?<span class="faq__plus" aria-hidden="true">+</span></summary><p class="faq__a">Our projects start at 5,000 THB, and we build a custom price based strictly on the exact services you choose.</p></details>
+      <details class="faq__item scroll-reveal"><summary class="faq__q">Do you shoot photos and videos, or just run ads?<span class="faq__plus" aria-hidden="true">+</span></summary><p class="faq__a">We do both. We're a dedicated team of five — we shoot the photos and videos that capture the actual vibe of your venue, then run the ads to make sure people see them.</p></details>
+      <details class="faq__item scroll-reveal"><summary class="faq__q">Where do you run the ads?<span class="faq__plus" aria-hidden="true">+</span></summary><p class="faq__a">Wherever your customers are — Instagram, Facebook, TikTok, Google Search, and delivery campaigns inside Grab and LINE MAN.</p></details>
+      <details class="faq__item scroll-reveal"><summary class="faq__q">How long does it take to see results?<span class="faq__plus" aria-hidden="true">+</span></summary><p class="faq__a">Follower and reach numbers move within days. Building a reliable, steady flow of customers takes 30–60 days of testing and tweaking.</p></details>
+      <details class="faq__item faq__item--last scroll-reveal"><summary class="faq__q">Can you work with our existing agency or in-house team?<span class="faq__plus" aria-hidden="true">+</span></summary><p class="faq__a">Absolutely. We can handle just the paid media, just the creative, or slot into whatever gap you need filled — without stepping on anyone's toes.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════════════════════════ -->
+<section class="section section--cream section--cta-wrap">
+  <div class="container">
+    <div class="cta-block scroll-reveal">
+      <div class="cta-block__grain" aria-hidden="true"></div>
+      <div class="cta-block__inner">
+        <div class="cta-block__copy">
+          <span class="eyebrow eyebrow--muted">Ready to launch</span>
+          <h2 class="cta-block__headline">Your Next Campaign Starts With One Conversation.</h2>
+          <p class="cta-block__sub">Tell us your brand, your goals, your budget. We'll map out a campaign that actually converts.</p>
+        </div>
+        <div class="cta-block__actions">
+          <a href="/contact" class="btn-lime magnetic-el">Start a Campaign →</a>
+          <a href="/portfolio" class="cta-block__link">View case studies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CSS — premium system
+═══════════════════════════════════════════════════════════════ -->
+<style>
+  /* ── Brand & motion tokens ───────────────────────────────────── */
+  :root {
+    /* Colors */
+    --c-forest:  #263519;
+    --c-cream:   #F6FBF0;
+    --c-sage:    #82976E;
+    --c-lime:    #89F337;
+    --c-lsage:   #C8DDB8;
+    --c-darkest: #0d1509;
+    --font:      'Sora', sans-serif;
+
+    /* Premium easing suite */
+    --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);   /* cinematic float-in  */
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* magnetic bounce    */
+    --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);   /* standard smooth     */
+
+    /* 8pt grid */
+    --sp-1:  8px;  --sp-2: 16px;  --sp-3: 24px;  --sp-4: 32px;
+    --sp-5: 40px;  --sp-6: 48px;  --sp-8: 64px;  --sp-10: 80px; --sp-12: 96px;
+
+    /* Fluid container pad */
+    --pad: clamp(1rem, 4vw, 2rem);
+
+    /* Glassmorphism */
+    --glass-bg:     rgba(13, 21, 9, 0.45);
+    --glass-border: rgba(137, 243, 55, 0.18);
+    --glass-blur:   12px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--pad); }
+
+  /* ── HERO ──────────────────────────────────────────────────── */
+  #hero {
+    background: var(--c-darkest);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* No min-height — height = content, zero gap */
+  }
+
+  /* ── Mesh orbs ── */
+  .mesh { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  .mesh__orb {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform; /* GPU-composited */
+  }
+  .mesh__orb--1 {
+    width: clamp(380px, 56vw, 700px);
+    height: clamp(380px, 56vw, 700px);
+    background: radial-gradient(circle, #89F337 0%, transparent 68%);
+    filter: blur(clamp(56px, 7vw, 90px));
+    opacity: 0.44;
+    top: -14%; left: -18%;
+  }
+  .mesh__orb--2 {
+    width: clamp(280px, 44vw, 560px);
+    height: clamp(280px, 44vw, 560px);
+    background: radial-gradient(circle, #3a5c1e 0%, transparent 68%);
+    filter: blur(clamp(48px, 6vw, 80px));
+    opacity: 0.56;
+    top: 28%; right: -10%;
+    animation: orb2 22s ease-in-out infinite alternate;
+  }
+  .mesh__orb--3 {
+    width: clamp(240px, 34vw, 440px);
+    height: clamp(240px, 34vw, 440px);
+    background: radial-gradient(circle, #1a2e0d 0%, transparent 68%);
+    filter: blur(clamp(42px, 5vw, 72px));
+    opacity: 0.7;
+    bottom: 6%; left: 26%;
+    animation: orb3 17s ease-in-out infinite alternate;
+  }
+  .mesh__orb--4 {
+    width: clamp(160px, 22vw, 300px);
+    height: clamp(160px, 22vw, 300px);
+    background: radial-gradient(circle, #89F337 0%, transparent 72%);
+    filter: blur(clamp(36px, 4vw, 60px));
+    opacity: 0.18;
+    top: 52%; left: 52%;
+    animation: orb4 25s ease-in-out infinite alternate;
+  }
+  @keyframes orb2 {
+    0%   { transform: translate(0,0) scale(1); }
+    33%  { transform: translate(-80px,64px) scale(1.08); }
+    66%  { transform: translate(-144px,-48px) scale(0.94); }
+    100% { transform: translate(-44px,96px) scale(1.04); }
+  }
+  @keyframes orb3 {
+    0%   { transform: translate(0,0) scale(1); }
+    50%  { transform: translate(60px,-96px) scale(1.12); }
+    100% { transform: translate(-44px,44px) scale(0.92); }
+  }
+  @keyframes orb4 {
+    0%   { transform: translate(0,0); }
+    50%  { transform: translate(-32px,-48px); }
+    100% { transform: translate(48px,32px); }
+  }
+
+  /* Grain overlay */
+  .grain {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 200px; opacity: 0.38;
+  }
+
+  /* ── Hero text ── */
+  .hero__text {
+    position: relative; z-index: 2;
+    padding-top: clamp(88px, 12vw, 144px);
+    padding-bottom: var(--sp-6);
+    /* Parallax: JS moves this layer */
+    will-change: transform;
+  }
+  .hero__eyebrow {
+    font-family: var(--font); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--c-lime);
+    margin-bottom: var(--sp-3);
+  }
+
+  /* ── Headline word reveal ── */
+  .hero__headline {
+    font-family: var(--font);
+    font-size: clamp(2rem, 5.5vw, 4.4rem);
+    font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.025em; color: var(--c-cream);
+    max-width: 900px; margin-bottom: var(--sp-3);
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .hero__headline em { color: var(--c-lime); font-style: normal; }
+
+  .headline__line { display: block; overflow: hidden; }
+
+  /* Each word is a clip mask — word slides up from bottom */
+  .headline__word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    margin-right: 0.25em;
+  }
+  .headline__inner {
+    display: inline-block;
+    transform: translateY(105%);           /* starts hidden below clip */
+    opacity: 0;
+    transition:
+      transform 0.75s var(--ease-out),
+      opacity   0.5s ease;
+    will-change: transform, opacity;
+  }
+  /* JS adds .revealed to #hero-headline which triggers children */
+  #hero-headline.revealed .headline__inner {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .hero__sub {
+    font-family: var(--font);
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    font-weight: 400; line-height: 1.7;
+    color: var(--c-sage); max-width: 520px;
+  }
+
+  /* ── Reveal animations ── */
+  /* Fade+slide for eyebrow / subtext */
+  .reveal-fade {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    will-change: transform, opacity;
+  }
+  .reveal-fade.in { opacity: 1; transform: translateY(0); }
+
+  /* Cards: clip-path mask reveal (cinema curtain) */
+  .reveal-card {
+    clip-path: inset(0 0 100% 0);          /* clipped from bottom */
+    opacity: 0;
+    transition:
+      clip-path 0.9s var(--ease-out),
+      opacity   0.6s ease;
+    will-change: clip-path, opacity;
+  }
+  .reveal-card.in {
+    clip-path: inset(0 0 0% 0);            /* fully revealed */
+    opacity: 1;
+  }
+
+  /* ── Hero cards ── */
+  .hero__cards {
+    position: relative; z-index: 3;
+    padding-bottom: var(--sp-8);
+    padding-top: var(--sp-5);
+    will-change: transform; /* parallax layer */
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-2);
+  }
+
+  /* ── Work card ── */
+  .wcard {
+    position: relative;
+    display: flex; flex-direction: column;
+    border-radius: 8px; overflow: hidden;
+    min-height: clamp(280px, 36vw, 460px);
+    /* Glassmorphism ring */
+    box-shadow:
+      0 0 0 1px var(--glass-border),
+      0 8px 32px rgba(0,0,0,0.3);
+    transition:
+      box-shadow  0.4s var(--ease-smooth),
+      transform   0.5s var(--ease-spring);
+    will-change: transform;
+  }
+  .wcard:hover {
+    box-shadow:
+      0 0 0 1px rgba(137,243,55,0.45),
+      0 28px 64px rgba(0,0,0,0.45),
+      0 0 80px rgba(137,243,55,0.06);
+  }
+
+  /* Photo — CMS-ready, aspect-ratio preserved via frame */
+  .wcard__frame {
+    position: absolute; inset: 0;
+    overflow: hidden; border-radius: inherit;
+  }
+  .wcard__photo {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    /* CMS: swap background-image. Aspect ratio handled by .wcard min-height */
+    filter: brightness(0.9) saturate(1.05);
+    transition: transform 0.7s var(--ease-smooth), filter 0.4s ease;
+    will-change: transform; /* GPU */
+  }
+  .wcard:hover .wcard__photo {
+    transform: scale(1.05);
+    filter: brightness(0.72) saturate(0.95);
+  }
+
+  /* Glassmorphism surface — floats over photo */
+  .wcard__glass {
+    position: absolute; inset: 0; z-index: 1;
+    /* Very subtle glass — bottom gradient only, top stays crystal clear */
+    background: linear-gradient(
+      to bottom,
+      rgba(13,21,9,0) 0%,
+      rgba(13,21,9,0) 44%,
+      rgba(13,21,9,0.52) 70%,
+      rgba(13,21,9,0.88) 100%
+    );
+    transition: opacity 0.35s ease;
+  }
+
+  /* Lime accent bottom line */
+  .wcard__line {
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--c-lime);
+    z-index: 5;
+    transition: width 0.55s var(--ease-out);
+    will-change: width;
+  }
+  .wcard:hover .wcard__line { width: 100%; }
+
+  /* Top row */
+  .wcard__top {
+    position: relative; z-index: 4;
+    display: flex; align-items: center; gap: var(--sp-1);
+    padding: var(--sp-2) var(--sp-2) 0;
+  }
+  .wcard__tag {
+    font-family: var(--font); font-size: 9px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-lime);
+    border: 1px solid rgba(137,243,55,0.4);
+    padding: 4px 10px; border-radius: 2px;
+    background: rgba(13,21,9,0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .wcard__platforms {
+    font-family: var(--font); font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(200,221,184,0.7);
+  }
+
+  /* ── Glassmorphism metric pill — top-right, sharp, no shading ── */
+  .glass-pill {
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+  }
+  .wcard__metric {
+    position: absolute;
+    top: var(--sp-2); right: var(--sp-2); /* 16px × 16px — 8pt grid */
+    z-index: 5;
+    border-radius: 4px;
+    padding: 10px 14px;
+    text-align: right; min-width: 96px;
+    opacity: 0; transform: translateY(-8px) scale(0.96);
+    transition:
+      opacity   0.3s var(--ease-out),
+      transform 0.35s var(--ease-spring);
+    will-change: transform, opacity;
+  }
+  .wcard:hover .wcard__metric {
+    opacity: 1; transform: translateY(0) scale(1);
+  }
+  .wcard__metric-val {
+    display: block;
+    font-family: var(--font);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 800; color: var(--c-lime); line-height: 1; margin-bottom: 4px;
+  }
+  .wcard__metric-lbl {
+    display: block; font-family: var(--font); font-size: 8px;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--c-sage);
+  }
+
+  /* Card body */
+  .wcard__body {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    z-index: 4; padding: 0 var(--sp-2) var(--sp-3);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .wcard__headline {
+    font-family: var(--font);
+    font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+    font-weight: 800; color: var(--c-cream);
+    line-height: 1.1; letter-spacing: -0.02em;
+  }
+  .wcard__cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--c-lime); font-family: var(--font);
+    font-size: 13px; font-weight: 600;
+    transition: gap 0.22s ease;
+  }
+  .wcard:hover .wcard__cta { gap: 14px; }
+
+  /* ── Section system ── */
+  .section { padding: var(--sp-12) 0; border-bottom: 1px solid rgba(38,53,25,0.07); }
+  .section--cream { background: var(--c-cream); }
+  .section--dark  { background: var(--c-forest); border-color: rgba(137,243,55,0.1); }
+  .section--cta-wrap { padding-bottom: clamp(var(--sp-10), 10vw, 112px); border-bottom: none; }
+
+  .section-head { margin-bottom: var(--sp-5); }
+  .section-title {
+    font-family: var(--font); font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 800; color: var(--c-forest);
+    letter-spacing: -0.02em; line-height: 1.1;
+  }
+  .section-title--light { color: var(--c-cream); }
+  .eyebrow {
+    display: block; font-family: var(--font); font-size: 11px;
+    font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--c-sage); margin-bottom: var(--sp-1);
+  }
+  .eyebrow--muted { color: rgba(130,151,110,0.55); }
+
+  /* ── Ruled grid ── */
+  .ruled-grid {
+    display: grid; gap: 1px;
+    background: rgba(38,53,25,0.08);
+    border: 1px solid rgba(38,53,25,0.08); border-radius: 2px;
+  }
+  .ruled-grid--2 { grid-template-columns: repeat(2,1fr); }
+  .ruled-grid--3 { grid-template-columns: repeat(3,1fr); }
+
+  /* Service card */
+  .scard {
+    background: #fff; padding: var(--sp-5);
+    transition: background 0.2s ease, transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+    will-change: transform;
+  }
+  .scard:hover {
+    background: var(--c-cream); transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(38,53,25,0.09);
+  }
+  .scard__num  { font-family:var(--font); font-size:10px; color:var(--c-sage); font-weight:600; letter-spacing:0.1em; margin-bottom:var(--sp-2); }
+  .scard__name { font-family:var(--font); font-size:1.05rem; font-weight:700; color:var(--c-forest); margin-bottom:var(--sp-1); }
+  .scard__desc { font-family:var(--font); font-size:0.875rem; color:var(--c-sage); line-height:1.68; }
+
+  /* Result card */
+  .rcard {
+    background: #fff; padding: var(--sp-5) var(--sp-4);
+    display: flex; flex-direction: column; gap: var(--sp-1);
+    transition: background 0.2s ease, transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+    will-change: transform;
+  }
+  .rcard:hover { background: var(--c-cream); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(38,53,25,0.09); }
+  .rcard__meta   { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:var(--sp-1); }
+  .rcard__cat    { font-family:var(--font); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#6a8a5a; font-weight:600; }
+  .rcard__plat   { font-family:var(--font); font-size:10px; background:rgba(137,243,54,0.15); color:var(--c-forest); border-radius:99px; padding:3px 10px; font-weight:600; }
+  .rcard__label  { font-family:var(--font); font-size:11px; color:var(--c-sage); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; }
+  .rcard__metric { font-family:var(--font); font-size:clamp(1.5rem,2vw,1.75rem); font-weight:800; color:var(--c-forest); line-height:1.1; }
+  .rcard__detail { font-family:var(--font); font-size:0.8rem; color:var(--c-forest); line-height:1.6; }
+  .rcard__bench  { border-top:1px solid rgba(38,53,25,0.07); padding-top:var(--sp-1); margin-top:auto; }
+  .rcard__bench p { font-family:var(--font); font-size:0.72rem; color:var(--c-sage); line-height:1.55; font-style:italic; }
+
+  /* How We Work */
+  .how-wrap { border-top:1px solid rgba(38,53,25,0.08); position:relative; padding-left:var(--sp-4); }
+  .how-line { position:absolute; left:0; top:0; width:2px; height:0; background:var(--c-lime); transition:height 1.4s var(--ease-out); }
+  .how-line.line-in { height:100%; }
+  .how-step { display:grid; grid-template-columns:var(--sp-10) 1fr; gap:var(--sp-4); padding:var(--sp-4) 0; border-bottom:1px solid rgba(38,53,25,0.07); align-items:start; }
+  .how-step--last { border-bottom:none; }
+  .how-num   { font-family:var(--font); font-size:clamp(2rem,3.5vw,2.75rem); font-weight:800; color:var(--c-lime); line-height:1; }
+  .how-title { font-family:var(--font); font-size:1rem; font-weight:700; color:var(--c-forest); margin-bottom:var(--sp-1); }
+  .how-desc  { font-family:var(--font); font-size:0.875rem; color:var(--c-sage); line-height:1.7; }
+
+  /* FAQ */
+  .faq { border-top:1px solid rgba(137,243,55,0.12); }
+  .faq__item { border-bottom:1px solid rgba(137,243,55,0.12); }
+  .faq__item--last { border-bottom:none; }
+  .faq__q { font-family:var(--font); font-size:0.92rem; font-weight:600; color:var(--c-cream); padding:var(--sp-3) 0; display:flex; justify-content:space-between; align-items:center; cursor:pointer; list-style:none; gap:var(--sp-3); }
+  .faq__q::-webkit-details-marker { display:none; }
+  .faq__plus { font-size:1.4rem; color:var(--c-lime); font-weight:300; flex-shrink:0; transition:transform 0.22s ease; }
+  details[open] .faq__plus { transform:rotate(45deg); }
+  .faq__a { font-family:var(--font); font-size:0.875rem; color:var(--c-lsage); line-height:1.7; padding-bottom:var(--sp-3); }
+
+  /* CTA */
+  .cta-block { background:var(--c-forest); padding:clamp(var(--sp-6),6vw,var(--sp-10)) clamp(var(--sp-4),5vw,var(--sp-8)); position:relative; overflow:hidden; border-radius:4px; }
+  .cta-block__grain { position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; opacity:0.4; z-index:0; }
+  .cta-block__inner { position:relative; z-index:1; display:grid; grid-template-columns:1fr auto; gap:var(--sp-6); align-items:center; }
+  .cta-block__headline { font-family:var(--font); font-size:clamp(1.6rem,3vw,2.75rem); font-weight:800; color:var(--c-cream); line-height:1.1; letter-spacing:-0.02em; margin:var(--sp-1) 0 var(--sp-2); max-width:480px; }
+  .cta-block__sub { font-family:var(--font); font-size:0.9rem; color:var(--c-sage); line-height:1.7; max-width:420px; }
+  .cta-block__actions { display:flex; flex-direction:column; align-items:center; gap:var(--sp-1); min-width:180px; }
+  .cta-block__link { font-family:var(--font); font-size:0.78rem; color:var(--c-sage); text-decoration:underline; text-underline-offset:3px; }
+
+  /* ── Scroll reveal (sections) ── */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity   0.75s var(--ease-out),
+      transform 0.75s var(--ease-out);
+    will-change: transform, opacity;
+  }
+  .scroll-reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ── Magnetic element reset ── */
+  .magnetic-el { will-change: transform; }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .cards-grid      { grid-template-columns: 1fr; }
+    .wcard           { min-height: clamp(260px, 52vw, 380px); }
+    .ruled-grid--2,
+    .ruled-grid--3   { grid-template-columns: 1fr; }
+    .how-step        { grid-template-columns: 56px 1fr; gap: var(--sp-2); }
+    .cta-block__inner { grid-template-columns: 1fr; }
+  }
+
+  /* ── Reduced motion: skip all animations ── */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-fade,
+    .reveal-card,
+    .scroll-reveal,
+    .headline__inner,
+    .wcard__photo,
+    .wcard,
+    .mesh__orb--2,
+    .mesh__orb--3,
+    .mesh__orb--4 {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+    }
+    #hero-headline .headline__inner { transform: none; opacity: 1; }
+    .wcard__metric { opacity: 1; transform: none; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT — modular, GPU-first, 60fps
+═══════════════════════════════════════════════════════════════ -->
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   MODULE 1 — Cinema entrance sequence
+   Triggers: page load, Astro view transitions
+═══════════════════════════════════════════════════════════════ */
+function runEntrance() {
+  // Eyebrow
+  const eyebrow = document.querySelector('.hero__eyebrow');
+  if (eyebrow) setTimeout(() => eyebrow.classList.add('in'), 80);
+
+  // Headline: word clip-path reveal via class on parent
+  const headline = document.getElementById('hero-headline');
+  if (headline) setTimeout(() => headline.classList.add('revealed'), 200);
+
+  // Subtext
+  const sub = document.querySelector('.hero__sub');
+  if (sub) setTimeout(() => sub.classList.add('in'), 840);
+
+  // Cards: clip-path curtain reveal
+  document.querySelectorAll('.reveal-card').forEach(el => {
+    const delay = parseInt(el.dataset.delay || '0', 10);
+    setTimeout(() => el.classList.add('in'), delay);
+  });
+}
+runEntrance();
+
+/* ═══════════════════════════════════════════════════════════════
+   MODULE 2 — Multi-layer parallax + cursor mesh (desktop)
+   3 layers move at different speeds for depth illusion:
+     mesh-layer  depth=0.12  (slowest, deepest)
+     text-layer  depth=0.05  (medium)
+     cards-layer depth=0.02  (fastest, closest)
+═══════════════════════════════════════════════════════════════ */
+(function parallaxCursor() {
+  const hero = document.getElementById('hero');
+  const orb1 = document.getElementById('mesh-orb-1');
+  if (!hero || orb1 === null) return;
+
+  // Parallax layers
+  const layers = [
+    { el: document.getElementById('mesh-layer'),  depth: 0.14 },
+    { el: document.getElementById('text-layer'),  depth: 0.05 },
+    { el: document.getElementById('cards-layer'), depth: 0.025 },
+  ].filter(l => l.el);
+
+  // Orb-1 gets extra tracking (strongest parallax)
+  let tx = 0, ty = 0;
+  const orbState = { cx: 0, cy: 0 };
+
+  // Layer current positions
+  const layerState = layers.map(() => ({ cx: 0, cy: 0 }));
+
+  let raf = null;
+  let heroRect = hero.getBoundingClientRect();
+
+  // Update rect on resize (debounced)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { heroRect = hero.getBoundingClientRect(); }, 120);
+  }, { passive: true });
+
+  hero.addEventListener('mousemove', e => {
+    const relX = (e.clientX - heroRect.left) / heroRect.width  - 0.5;
+    const relY = (e.clientY - heroRect.top)  / heroRect.height - 0.5;
+    // Orb tracks actual cursor position
+    tx = relX * heroRect.width  * 0.38;
+    ty = relY * heroRect.height * 0.38;
+    // Layers get relative mouse direction
+    layers.forEach((l, i) => {
+      layerState[i].tx = relX * heroRect.width  * l.depth;
+      layerState[i].ty = relY * heroRect.height * l.depth;
+    });
+    if (!raf) raf = requestAnimationFrame(lerp);
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    tx = 0; ty = 0;
+    layers.forEach((_, i) => { layerState[i].tx = 0; layerState[i].ty = 0; });
+    if (!raf) raf = requestAnimationFrame(lerp);
+  });
+
+  function lerp() {
+    // Smooth orb
+    orbState.cx += (tx - orbState.cx) * 0.07;
+    orbState.cy += (ty - orbState.cy) * 0.07;
+    orb1.style.transform = `translate(${orbState.cx}px,${orbState.cy}px)`;
+
+    // Smooth layers
+    layers.forEach((l, i) => {
+      const s = layerState[i];
+      s.cx = s.cx || 0; s.cy = s.cy || 0;
+      s.cx += ((s.tx || 0) - s.cx) * 0.06;
+      s.cy += ((s.ty || 0) - s.cy) * 0.06;
+      l.el.style.transform = `translate(${s.cx}px,${s.cy}px)`;
+    });
+
+    // Keep running while any diff is meaningful
+    const diffs = [
+      Math.abs(tx - orbState.cx), Math.abs(ty - orbState.cy),
+      ...layers.map((_, i) => Math.abs((layerState[i].tx||0) - layerState[i].cx) + Math.abs((layerState[i].ty||0) - layerState[i].cy))
+    ];
+    if (diffs.some(d => d > 0.15)) {
+      raf = requestAnimationFrame(lerp);
+    } else {
+      raf = null;
+    }
+  }
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   MODULE 3 — Magnetic CTAs
+   Elements with class .magnetic-el pull toward cursor on hover.
+   Max pull: 18px. Snaps back with spring easing via CSS.
+═══════════════════════════════════════════════════════════════ */
+(function magneticCTAs() {
+  const MAX_PULL = 18; // pixels
+
+  document.querySelectorAll('.magnetic-el').forEach(el => {
+    let raf = null;
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+
+    function lerp() {
+      cx += (tx - cx) * 0.14;
+      cy += (ty - cy) * 0.14;
+      el.style.transform = `translate(${cx}px,${cy}px)`;
+      if (Math.abs(tx-cx) > 0.1 || Math.abs(ty-cy) > 0.1) {
+        raf = requestAnimationFrame(lerp);
+      } else {
+        el.style.transform = `translate(${tx}px,${ty}px)`;
+        raf = null;
+      }
+    }
+
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width  / 2);
+      const dy = e.clientY - (r.top  + r.height / 2);
+      // Clamp pull distance
+      tx = Math.max(-MAX_PULL, Math.min(MAX_PULL, dx * 0.35));
+      ty = Math.max(-MAX_PULL, Math.min(MAX_PULL, dy * 0.35));
+      if (!raf) raf = requestAnimationFrame(lerp);
+    });
+
+    el.addEventListener('mouseleave', () => {
+      tx = 0; ty = 0;
+      if (!raf) raf = requestAnimationFrame(lerp);
+    });
+  });
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   MODULE 4 — Mobile scroll-progress animations
+   On touch devices: background colour shifts + cards scale
+   as scroll progress increases. Zero cursor events needed.
+═══════════════════════════════════════════════════════════════ */
+(function mobileScrollProgress() {
+  if (!('ontouchstart' in window)) return; // desktop only uses cursor
+
+  const hero    = document.getElementById('hero');
+  const cards   = document.querySelectorAll('.wcard');
+  const orb1    = document.getElementById('mesh-orb-1');
+  if (!hero) return;
+
+  let lastY = 0, raf = null;
+  let currentShift = 0;
+
+  window.addEventListener('scroll', () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      const scrollY  = window.scrollY;
+      const heroH    = hero.offsetHeight;
+      // progress 0→1 as user scrolls through hero
+      const progress = Math.min(1, scrollY / (heroH * 0.6));
+
+      // Orb drift with scroll velocity
+      const velocity = scrollY - lastY;
+      lastY = scrollY;
+      currentShift += (velocity * -1.8 - currentShift) * 0.1;
+      if (orb1) orb1.style.transform = `translateY(${currentShift}px)`;
+
+      // Cards subtle scale: 1 → 0.97 as you scroll down
+      const scale = 1 - progress * 0.03;
+      cards.forEach(c => {
+        c.style.transform = `scale(${scale})`;
+      });
+
+      // Background lightens ever so slightly (atmosphere shift)
+      const lum = Math.round(progress * 8); // 0–8
+      if (hero) hero.style.setProperty(
+        '--scroll-shift',
+        `rgb(${13 + lum},${21 + lum},${9 + lum})`
+      );
+
+      raf = null;
+    });
+  }, { passive: true });
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   MODULE 5 — Gyroscope (mobile, premium fallback)
+═══════════════════════════════════════════════════════════════ */
+(function gyroMesh() {
+  const orb = document.getElementById('mesh-orb-1');
+  if (!orb || !('ontouchstart' in window)) return;
+
+  const MAX = 44;
+  let gx = 0, gy = 0, cx = 0, cy = 0, raf = null;
+
+  function listen() {
+    window.addEventListener('deviceorientation', e => {
+      gx = Math.max(-MAX, Math.min(MAX, (e.gamma || 0) * 0.55));
+      gy = Math.max(-MAX, Math.min(MAX, (e.beta  || 0) * 0.3));
+      if (!raf) raf = requestAnimationFrame(function loop() {
+        cx += (gx - cx) * 0.07;
+        cy += (gy - cy) * 0.07;
+        orb.style.transform = `translate(${cx}px,${cy}px)`;
+        if (Math.abs(gx-cx)>0.15 || Math.abs(gy-cy)>0.15) raf = requestAnimationFrame(loop);
+        else raf = null;
+      });
+    }, { passive: true });
+  }
+
+  if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
+    // iOS 13+ needs user gesture
+    document.addEventListener('touchstart', function ask() {
+      DeviceOrientationEvent.requestPermission()
+        .then(state => { if (state === 'granted') listen(); });
+      document.removeEventListener('touchstart', ask);
+    }, { once: true });
+  } else {
+    listen();
+  }
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   MODULE 6 — Scroll observers
+   Sections float in with dampened easing via CSS var(--ease-out)
+═══════════════════════════════════════════════════════════════ */
+function initScrollObservers() {
+  // Section scroll reveals
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => revealObs.observe(el));
+
+  // How-We-Work progress line
+  const line = document.getElementById('how-line');
+  if (line) {
+    new IntersectionObserver((entries, obs) => {
+      if (entries[0].isIntersecting) { line.classList.add('line-in'); obs.disconnect(); }
+    }, { threshold: 0.12 }).observe(line);
+  }
+}
+
+initScrollObservers();
+document.addEventListener('astro:page-load', () => {
+  runEntrance();
+  initScrollObservers();
+});
+</script>
+
+</BaseLayout>
