@@ -212,13 +212,11 @@ declare module 'astro:content' {
   data: any
 };
 };
-"brandwork": {
-"settings": {
-	id: "settings";
+"brandwork": Record<string, {
+  id: string;
   collection: "brandwork";
-  data: InferEntrySchema<"brandwork">
-};
-};
+  data: InferEntrySchema<"brandwork">;
+}>;
 "homepage": {
 "settings": {
 	id: "settings";
