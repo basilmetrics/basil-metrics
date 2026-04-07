@@ -1,5 +1,5 @@
 ---
-client_name: CURATED AND CO. BANGKOK
+client_name: Premium Retail Brand Case
 category: Premium Retail Brand
 platform: Google
 service: Ads
